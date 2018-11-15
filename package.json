@@ -1,0 +1,22 @@
+{
+  "name": "mit_psycology_dept",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freelance-work/mit_psycology_dept.git"
+  },
+  "author": "freelance-work",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/freelance-work/mit_psycology_dept/issues"
+  },
+  "homepage": "https://github.com/freelance-work/mit_psycology_dept#readme",
+  "dependencies": {
+    "electron": "^3.0.9"
+  }
+}
