@@ -1,6 +1,7 @@
 const electron = require('electron');
 const url = require('url');
 const path = require('path');
+const config = require('./config/config')
 
 const Store = require('electron-store');
 const store = new Store();
@@ -50,7 +51,10 @@ ipcMain.on(CLEAR_STORAGE, () => {
 })
 
 app.on('ready', () => {
-  mainWindow = new BrowserWindow({});
+  mainWindow = new BrowserWindow({
+    'minHeight': config.dimensions.height,
+    'minWidth': config.dimensions.width
+  });
 
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
