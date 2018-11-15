@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/freelance-work/mit_psycology_dept#readme",
   "dependencies": {
-    "electron": "^3.0.9"
+    "electron": "^3.0.9",
+    "electron-store": "^2.0.0"
   }
 }
