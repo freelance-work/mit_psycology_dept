@@ -24,7 +24,7 @@ const {
 
 let mainWindow;
 
-ipcMain.on(PUT_PATIENT_IN_STORAGE, id => {
+ipcMain.on(PUT_PATIENT_IN_STORAGE, (e, id) => {
   if(id) {
     store.set('patient_id', id);
   }
