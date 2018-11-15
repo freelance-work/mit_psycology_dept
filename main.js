@@ -6,6 +6,9 @@ const config = require('./config/config')
 const Store = require('electron-store');
 const store = new Store();
 
+const en_strings = require('./strings/en');
+const kn_strings = require('./strings/kn');
+
 const {
   app,
   BrowserWindow,
@@ -20,6 +23,7 @@ const {
  HANDLE_GET_PATIENT_FROM_STORAGE,
  CLEAR_STORAGE,
  HANDLE_CLEAR_STORAGE,
+ HANDLE_LANGUAGE_CHANGE,
 } = require('./utils/constants');
 
 let mainWindow;
@@ -71,15 +75,39 @@ const mainMenuTemplate = [
     label: 'File',
     submenu: [
       {
+        label: 'Language',
+        submenu: [
+          {
+            label: 'English',
+            click() {
+              switchLanguage('en')
+            }
+          },
+          {
+            label: 'Kannada',
+            click() {
+              switchLanguage('kn')
+            }
+          }
+        ]
+      },
+      {
         label: 'Exit',
         accelerator: process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
         click() {
           app.quit();
         }
-      }
+      },
     ]
   }
 ];
+
+const switchLanguage = (lan) => {
+  mainWindow.send(HANDLE_LANGUAGE_CHANGE, {
+    language: lan,
+    strings: lan=='en' ? en_strings : kn_strings
+  });
+}
 
 if(process.env.NODE_ENV !== 'production') {
   mainMenuTemplate.push({
