@@ -2,19 +2,21 @@
 <html>
 	<head>
 		<title>App name</title>
+		<meta charset="utf-8" />
 		<link rel="stylesheet" href="assets/bootstrap/bootstrap.css">
 		<link rel="stylesheet" href="index.css">
-		<script src="assets/jquery.min.js"></script>
+		<script>window.$ = window.jQuery = require('./assets/jquery.min.js');</script>
 		<script src="assets/bootstrap/bootstrap.js"></script>
-
+		
 	</head>
 	<body>
 		<div class="container">
 			<div class="patient-container col-md-5">
-				<h2>Enter patient ID</h2>
-				<input class="form-control col-sm-9 patient-name-input"  placeholder="Patient Name">
-				<button  type="button" class="btn btn-primary start-btn col-md-3">Start</button>
+				<h2 id="patient-title">Enter patient ID</h2>
+				<input id="patient-id" class="form-control col-sm-9 patient-id-input"  placeholder="Patient ID">
+				<button id="start-btn" type="button" class="btn btn-primary start-btn col-md-3">Start</button>
 			</div>
 		</div>
+		<script src="index.js"></script>
 	</body>
 </html>
