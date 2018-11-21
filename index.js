@@ -11,6 +11,12 @@ const {
     HANDLE_LANGUAGE_CHANGE,
 } = require('./utils/constants');
 
+$(document).ready(() => {
+    let string =  JSON.parse(window.localStorage.getItem('lang'));
+    $('#patient-title').html(string.strings.landingPage.title);
+    $('#patient-id').attr("placeholder", string.strings.landingPage.placeholder);
+});
+
 $('#start-btn').on('click', () => {
     let patientID = $('#patient-id').val();
     if(patientID){
@@ -20,12 +26,12 @@ $('#start-btn').on('click', () => {
 
 ipcRenderer.on(HANDLE_PUT_PATIENT_IN_STORAGE, (e, res) => {
     if(res.success){
-        window.location = "views/gameMenu.html";
+        window.location = "views/gameMenu/gameMenu.html";
     }
 });
 
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
-    window.localStorage.setItem('lang', string);
+    window.localStorage.setItem('lang', JSON.stringify(string));
     $('#patient-title').html(string.strings.landingPage.title);
     $('#patient-id').attr("placeholder", string.strings.landingPage.placeholder);
 });
