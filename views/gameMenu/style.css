@@ -1,0 +1,60 @@
+body{
+    background-color: #E3F2FD;
+}
+
+.header-container{
+    /* background-color: #2196F3; */
+    text-align: center;
+    padding: 16px;
+}
+
+.game-card-container > div {
+    padding: 15px;
+}
+
+.game-item{
+    background-color: #1e678a;
+    height: 200px;
+    margin: 8px;
+    border-radius: 10px;
+    color: #ffffff;
+}
+
+
+.game-text{
+    padding: 5%;
+    font-size: 1.5em;
+    word-wrap:break-word;
+}
+
+#game1 {
+    background-image: url('../../assets/spot_emotion.png');
+    background-size: cover;
+}
+
+#game2{
+    background-image: url('../../assets/reaction_face.png');
+    background-size: cover;
+}
+
+#game3{
+    background-image: url('../../assets/reaction_word.png');
+    background-size: cover;
+}
+
+#game4{
+    background-image: url('../../assets/iowa_gambling.png');
+    background-size: cover;
+}
+
+#game5{
+    background-color: #f79e1d;
+}
+
+#game6{
+    background-color: #00897B;
+}
+
+.game-container{
+    margin-top: 32px;
+}
