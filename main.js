@@ -75,18 +75,24 @@ const mainMenuTemplate = [
     label: 'File',
     submenu: [
       {
+        label: 'New Patient',
+        click() {
+          createNewPatient();
+        }
+      },
+      {
         label: 'Language',
         submenu: [
           {
             label: 'English',
             click() {
-              switchLanguage('en')
+              switchLanguage('en');
             }
           },
           {
             label: 'Kannada',
             click() {
-              switchLanguage('kn')
+              switchLanguage('kn');
             }
           }
         ]
@@ -139,6 +145,15 @@ const mainMenuTemplate = [
     ]
   }
 ];
+
+const createNewPatient = () => {
+  store.clear();
+  mainWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'index.html'),
+    protocol: 'file:',
+    slashes: true
+  }));
+}
 
 const switchLanguage = (lan) => {
   mainWindow.send(HANDLE_LANGUAGE_CHANGE, {
