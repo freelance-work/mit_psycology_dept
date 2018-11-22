@@ -9,21 +9,26 @@ body{
 }
 
 .game-card-container > div {
-    padding: 15px;
+    padding: 0px;
 }
 
 .game-item{
     background-color: #1e678a;
-    height: 200px;
+    height: 0px;
     margin: 8px;
     border-radius: 10px;
     color: #ffffff;
+    transition: .5s;
 }
 
+.game-item:hover {    
+    -webkit-transform: scale(1.05);
+    opacity: 0.9;
+}
 
 .game-text{
     padding: 5%;
-    font-size: 1.5em;
+    font-size: 1.8em;
     word-wrap:break-word;
 }
 
