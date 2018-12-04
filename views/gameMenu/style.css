@@ -63,3 +63,7 @@ body{
 .game-container{
     margin-top: 32px;
 }
+
+a {
+    text-decoration: none !important;
+}

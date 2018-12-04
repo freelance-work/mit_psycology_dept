@@ -20,7 +20,6 @@ $(window).on('resize', () => {
 });
 
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
-    console.log("ge");
     window.localStorage.setItem('lang', string);
     $('.game-text1').html(string.strings.gamePage.game1);
     $('.game-text2').html(string.strings.gamePage.game2);
