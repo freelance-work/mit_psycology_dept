@@ -4,15 +4,12 @@ const fs = require('fs');
 const electron =  require('electron');
 const { ipcRenderer } = electron;
 
-const {
-  GET_PATIENT_FROM_STORAGE,
-} = require('./constants');
 
-exports.write = async function(json) {
+exports.write = async function(json, id) {
   try {
     const csv = json2csv(json);
 
-    let patientId;
+    let patientId = id;
 
     let today = new Date();
     let dd = today.getDate();
@@ -27,15 +24,12 @@ exports.write = async function(json) {
     } 
     let date = dd + '-' + mm + '-' + yyyy;
 
-    await ipcRenderer.send(GET_PATIENT_FROM_STORAGE, (e, res) => {
-      if(res.success) {
-        patientId = res.id;
-      }
-    });
-
-    fs.writeFile(patientId+date+'.csv', csv, function(err, data){
+    fs.writeFile('emo_recognition_'+patientId+'_'+date+'.csv', csv, function(err, data){
       if (err) console.log(err);
       console.log("Successfully Written to File.");
     });
+  } catch(err) {
+    console.log("Couldn't export to CSV");
+    return "failed";
   }
 }
