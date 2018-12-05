@@ -24,6 +24,8 @@ const {
  CLEAR_STORAGE,
  HANDLE_CLEAR_STORAGE,
  HANDLE_LANGUAGE_CHANGE,
+ PUT_EMOTION_RECOGNITION_DATA,
+ HANDLE_PUT_EMOTION_RECOGNITION_DATA,
 } = require('./utils/constants');
 
 let mainWindow;
@@ -35,6 +37,16 @@ ipcMain.on(PUT_PATIENT_IN_STORAGE, (e, id) => {
   mainWindow.send(HANDLE_PUT_PATIENT_IN_STORAGE, {
     success: true,
     message: 'Patient ID stored'
+  });
+});
+
+ipcMain.on(PUT_EMOTION_RECOGNITION_DATA, (e, data) => {
+  if(data) {
+    store.set('emotion_recognition', data)
+  }
+  mainWindow.send(HANDLE_PUT_EMOTION_RECOGNITION_DATA, {
+    success: true,
+    message: 'emotion recognition data stored'
   });
 });
 

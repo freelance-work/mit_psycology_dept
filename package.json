@@ -19,5 +19,9 @@
   "dependencies": {
     "electron": "^3.0.9",
     "electron-store": "^2.0.0"
+  },
+  "devDependencies": {
+    "fs": "0.0.1-security",
+    "json2csv": "^4.3.1"
   }
 }
