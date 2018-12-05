@@ -22,7 +22,8 @@ $(document).ready(() => {
   $('.image-box').css('background-image', 'url(../../assets/emotion_recognition/faces/' + dataSet.data[idx].faceID + '.jpg)');
 
   $('.emotion-button').click(function () {
-    if (idx > 67) {
+    ++idx;
+    if (idx > 69) {
       $('.final-modal-container').show();
       console.log(dataSet.data.length)
     } else {
@@ -47,7 +48,7 @@ $(document).ready(() => {
     }
     outputPayload.data.push(data)
       setTimeout(() => {
-        $('.image-box').css('background-image', 'url(../../assets/emotion_recognition/faces/' + dataSet.data[++idx].faceID + '.jpg)');
+        $('.image-box').css('background-image', 'url(../../assets/emotion_recognition/faces/' + dataSet.data[idx].faceID + '.jpg)');
         $('.emotion-button').prop('disabled', false);
         startTime = new Date();
       }, 1000);
