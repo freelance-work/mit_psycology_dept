@@ -6,9 +6,11 @@ const {
 } = require('../../utils/constants');
 
 $(document).ready(() => {
-  let string = JSON.parse(window.localStorage.getItem('lang'));
-  $('.g1-instruction-title').html(string.strings.game1.instructionTitle);
-  $('.g1-instructions').html(string.strings.game1.instruction);
+  try {
+    let string = JSON.parse(window.localStorage.getItem('lang'));
+    $('.g1-instruction-title').html(string.strings.game1.instructionTitle);
+    $('.g1-instructions').html(string.strings.game1.instruction);
+  } catch(err) { };
 });
 
 $(window).on('resize', () => {

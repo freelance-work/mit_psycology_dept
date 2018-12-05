@@ -13,7 +13,11 @@ $(document).ready(() => {
   let outputPayload = { "data": [] };
   let startTime = new Date();
   let endTime = new Date();
-  let string = JSON.parse(window.localStorage.getItem('lang'));
+  let string;
+
+  try {
+    string = JSON.parse(window.localStorage.getItem('lang'));
+  } catch(err) { };
 
   $('.image-box').css('background-image', 'url(../../assets/emotion_recognition/faces/' + dataSet.data[idx].faceID + '.jpg)');
 
