@@ -8,11 +8,14 @@ const {
 $(document).ready(() => {
   $('.game-item').css({ 'height': $('.game-item').width() + 'px' });
 
-  let string =  JSON.parse(window.localStorage.getItem('lang'));
-  $('.game-text1').html(string.strings.gamePage.game1);
-  $('.game-text2').html(string.strings.gamePage.game2);
-  $('.game-text3').html(string.strings.gamePage.game3);
-  $('.game-text4').html(string.strings.gamePage.game4);
+  let string;
+  try {
+    string =  JSON.parse(window.localStorage.getItem('lang'));
+    $('.game-text1').html(string.strings.gamePage.game1);
+    $('.game-text2').html(string.strings.gamePage.game2);
+    $('.game-text3').html(string.strings.gamePage.game3);
+    $('.game-text4').html(string.strings.gamePage.game4);
+  } catch(err) { };
 });
 
 $(window).on('resize', () => {
