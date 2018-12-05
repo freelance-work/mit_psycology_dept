@@ -26,6 +26,7 @@ $(document).ready(() => {
       $('.final-modal-container').show();
       console.log(dataSet.data.length)
     } else {
+    $('.emotion-button').prop('disabled', true);
     endTime = new Date();
     let data = { "faceId": dataSet.data[idx].faceID };
     let reactionTime = (endTime.getTime() - startTime.getTime()) / 1000;
@@ -47,6 +48,7 @@ $(document).ready(() => {
     outputPayload.data.push(data)
       setTimeout(() => {
         $('.image-box').css('background-image', 'url(../../assets/emotion_recognition/faces/' + dataSet.data[++idx].faceID + '.jpg)');
+        $('.emotion-button').prop('disabled', false);
         startTime = new Date();
       }, 1000);
     }
