@@ -2,10 +2,13 @@ const electron = require('electron');
 const payload = require('../../assets/emotion_recognition/emotion_recognition');
 const { ipcRenderer } = electron;
 const dataSet = { 'data': payload.data.sort(() => Math.random() - 0.5) };
+const csvHelper = require('../../utils/csvHelper');
 
 
 const {
   HANDLE_LANGUAGE_CHANGE,
+  PUT_EMOTION_RECOGNITION_DATA,
+  HANDLE_PUT_EMOTION_RECOGNITION_DATA,
 } = require('../../utils/constants');
 
 $(document).ready(() => {
@@ -24,7 +27,7 @@ $(document).ready(() => {
   $('.emotion-button').click(function () {
     if (idx > 67) {
       $('.final-modal-container').show();
-      console.log(dataSet.data.length)
+      ipcRenderer.send(PUT_EMOTION_RECOGNITION_DATA, outputPayload);
     } else {
     $('.emotion-button').prop('disabled', true);
     endTime = new Date();
@@ -50,9 +53,19 @@ $(document).ready(() => {
         $('.image-box').css('background-image', 'url(../../assets/emotion_recognition/faces/' + dataSet.data[++idx].faceID + '.jpg)');
         $('.emotion-button').prop('disabled', false);
         startTime = new Date();
-      }, 1000);
+      }, 500);
     }
   });
+
+  $('#export-btn').on('click', () => {
+    let id = window.localStorage.getItem('patientId');
+    csvHelper.write(outputPayload.data, id, 'emotion_recognition');
+  });
+
+  $('#exit-btn').on('click', () => {
+    window.location = '../gameMenu/gameMenu.html';
+  });
+
 });
 
 $(window).on('resize', () => {
@@ -62,11 +75,3 @@ $(window).on('resize', () => {
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   window.localStorage.setItem('lang', string);
 });
-
-$('#exit-btn').on('click', () => {
-  window.location = '../gameMenu/gameMenu.html';
-})
-
-$('#export-btn').on('click', () => {
-  prompt("Export");
-})

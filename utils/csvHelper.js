@@ -1,14 +1,15 @@
-const json2csv = require('json2csv');
+const json2csv = require('json2csv').parse;
 const fs = require('fs');
 
-const electron =  require('electron');
-const { ipcRenderer } = electron;
+const path = require('path');
+const remote = require('electron').remote
+const app = remote.app;
 
 
-exports.write = async function(json, id) {
+exports.write = async function(json, id, task) {
   try {
     const csv = json2csv(json);
-
+    
     let patientId = id;
 
     let today = new Date();
@@ -24,11 +25,14 @@ exports.write = async function(json, id) {
     } 
     let date = dd + '-' + mm + '-' + yyyy;
 
-    fs.writeFile('emo_recognition_'+patientId+'_'+date+'.csv', csv, function(err, data){
+    let appPath = app.getAppPath();
+    let docPath = path.join(appPath+'/output/'+task+'/'+patientId+'_'+date+'.csv');
+    fs.writeFile(docPath, csv, function(err, data){
       if (err) console.log(err);
-      console.log("Successfully Written to File.");
+      else console.log("Successfully Written to File.");
     });
   } catch(err) {
+    console.log(err);
     console.log("Couldn't export to CSV");
     return "failed";
   }
