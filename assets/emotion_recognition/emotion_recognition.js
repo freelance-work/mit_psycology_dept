@@ -1,6 +1,6 @@
 
 module.exports = {
-  [
+  "data" : [
     {
       faceID: 'SS_1188',
       response: 'FEAR'
@@ -25,7 +25,7 @@ module.exports = {
     {
       faceID: 'SS_0032',
       response: 'SURPRISE'
-    }
+    },
     {
       faceID: 'SS_0018',
       response: 'JOY'
@@ -67,7 +67,7 @@ module.exports = {
       response: 'SADNESS'
     },
     {
-      faceID: 'PB_0967',
+      faceID: 'PA_0967',
       response: 'ANGER'
     },
     {
@@ -79,7 +79,7 @@ module.exports = {
       response: 'FEAR'
     },
     {
-      faceID: 'PB_0112',
+      faceID: 'PA_0112',
       response: 'JOY'
     },
     {
@@ -301,7 +301,6 @@ module.exports = {
     {
       faceID:'MR2_2086',
       response:'SADNESS'
-    },  
-
+    }
   ]
 }
