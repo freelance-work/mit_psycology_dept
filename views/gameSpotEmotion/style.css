@@ -1,0 +1,27 @@
+.g1-instruction-container{
+    width: auto;
+    height: auto;
+    background-color: #f5f5f5;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
+.g1-instruction-title-container{
+    text-align: center;
+    margin: 16px;
+}
+
+.g1-instructions-content{
+    text-align: center;
+    margin: 16px;
+}
+
+.start-g1-btn{
+    margin-top: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+}
