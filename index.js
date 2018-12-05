@@ -21,15 +21,8 @@ $(document).ready(() => {
 
 $('#start-btn').on('click', () => {
   let patientID = $('#patient-id').val();
-  if(patientID){
-      ipcRenderer.send(PUT_PATIENT_IN_STORAGE, patientID);
-  }
-});
-
-ipcRenderer.on(HANDLE_PUT_PATIENT_IN_STORAGE, (e, res) => {
-  if(res.success){
-      window.location = "views/gameMenu/gameMenu.html";
-  }
+  window.localStorage.setItem('patientId', patientID);
+  window.location = "views/gameMenu/gameMenu.html";
 });
 
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
