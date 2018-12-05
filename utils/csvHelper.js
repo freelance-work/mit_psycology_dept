@@ -29,7 +29,10 @@ exports.write = async function(json, id, task) {
     let docPath = path.join(appPath+'/output/'+task+'/'+patientId+'_'+date+'.csv');
     fs.writeFile(docPath, csv, function(err, data){
       if (err) console.log(err);
-      else console.log("Successfully Written to File.");
+      else {
+        console.log("Successfully Written to File.");
+        return "success";
+      }
     });
   } catch(err) {
     console.log(err);
