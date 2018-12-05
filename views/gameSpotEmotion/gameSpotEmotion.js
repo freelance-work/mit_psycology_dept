@@ -22,6 +22,11 @@ $(document).ready(() => {
   $('.image-box').css('background-image', 'url(../../assets/emotion_recognition/faces/' + dataSet.data[idx].faceID + '.jpg)');
 
   $('.emotion-button').click(function () {
+    if (idx > 67) {
+      $('.final-modal-container').show();
+      console.log(dataSet.data.length)
+    } else {
+    $('.emotion-button').prop('disabled', true);
     endTime = new Date();
     let data = { "faceId": dataSet.data[idx].faceID };
     let reactionTime = (endTime.getTime() - startTime.getTime()) / 1000;
@@ -41,13 +46,9 @@ $(document).ready(() => {
       }
     }
     outputPayload.data.push(data)
-    
-    if (idx > 69) {
-      console.log(outputPayload.data);
-      console.log("open modal")
-    } else {
       setTimeout(() => {
         $('.image-box').css('background-image', 'url(../../assets/emotion_recognition/faces/' + dataSet.data[++idx].faceID + '.jpg)');
+        $('.emotion-button').prop('disabled', false);
         startTime = new Date();
       }, 1000);
     }
@@ -61,3 +62,11 @@ $(window).on('resize', () => {
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   window.localStorage.setItem('lang', string);
 });
+
+$('#exit-btn').on('click', () => {
+  window.location = '../gameMenu/gameMenu.html';
+})
+
+$('#export-btn').on('click', () => {
+  prompt("Export");
+})
