@@ -17,10 +17,6 @@ const {
 } = electron;
 
 const {
- PUT_PATIENT_IN_STORAGE,
- HANDLE_PUT_PATIENT_IN_STORAGE,
- GET_PATIENT_FROM_STORAGE,
- HANDLE_GET_PATIENT_FROM_STORAGE,
  CLEAR_STORAGE,
  HANDLE_CLEAR_STORAGE,
  HANDLE_LANGUAGE_CHANGE,
@@ -30,16 +26,6 @@ const {
 
 let mainWindow;
 
-ipcMain.on(PUT_PATIENT_IN_STORAGE, (e, id) => {
-  if(id) {
-    store.set('patient_id', id);
-  }
-  mainWindow.send(HANDLE_PUT_PATIENT_IN_STORAGE, {
-    success: true,
-    message: 'Patient ID stored'
-  });
-});
-
 ipcMain.on(PUT_EMOTION_RECOGNITION_DATA, (e, data) => {
   if(data) {
     store.set('emotion_recognition', data)
@@ -47,14 +33,6 @@ ipcMain.on(PUT_EMOTION_RECOGNITION_DATA, (e, data) => {
   mainWindow.send(HANDLE_PUT_EMOTION_RECOGNITION_DATA, {
     success: true,
     message: 'emotion recognition data stored'
-  });
-});
-
-ipcMain.on(GET_PATIENT_FROM_STORAGE, () => {
-  mainWindow.send(HANDLE_GET_PATIENT_FROM_STORAGE, {
-    success: true,
-    message: 'Got patient ID from storage',
-    id: store.get('patient_id')
   });
 });
 
