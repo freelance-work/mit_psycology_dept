@@ -1,5 +1,6 @@
 const json2csv = require('json2csv').parse;
 const fs = require('fs');
+const mkdirp = require('async-mkdirp');
 
 const path = require('path');
 const remote = require('electron').remote
@@ -26,8 +27,11 @@ exports.write = async function(json, id, task) {
     let date = dd + '-' + mm + '-' + yyyy;
 
     let appPath = app.getAppPath();
-    let docPath = path.join(appPath+'/output/'+task+'/'+patientId+'_'+date+'.csv');
-    fs.writeFile(docPath, csv, function(err, data){
+    let docPath = path.join(appPath+'/output/'+task);
+
+    await mkdirp(docPath);
+
+    fs.writeFile(docPath+'/'+patientId+'_'+date+'.csv', csv, function(err, data){
       if (err) console.log(err);
       else {
         console.log("Successfully Written to File.");
