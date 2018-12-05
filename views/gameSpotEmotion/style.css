@@ -25,3 +25,33 @@
     margin-bottom: 16px;
     text-align: center;
 }
+
+.image-container {
+    margin-top: 32px;
+}
+
+.image-box{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 65vh;
+    background-image: url("../../assets//emotion_recognition/faces/HW_0068.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
+.button-container {
+    position: relative;
+    text-align: center;
+}
+
+.emotion-buttons{
+    margin-top: 16px;
+}
+
+.emotion-button{
+    margin: 4px 4px 4px 4px;
+}
