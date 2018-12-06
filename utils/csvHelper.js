@@ -1,7 +1,7 @@
 const json2csv = require('json2csv').parse;
 const fs = require('fs');
 const mkdirp = require('async-mkdirp');
-
+const os = require('os');
 const path = require('path');
 
 
@@ -27,7 +27,7 @@ exports.write = async function(json, id, task) {
     if(process.platform == 'win32'){
       outputPath = 'C:/AFCO'
     } else if (process.platform == 'darwin'){
-      outputPath = '/Applications/AFCO'
+      outputPath = os.homedir() +'/Documents/AFCO'
     }
 
     let docPath = path.join(outputPath+'/output/'+task);
