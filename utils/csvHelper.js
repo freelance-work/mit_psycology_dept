@@ -31,13 +31,16 @@ exports.write = async function(json, id, task) {
 
     await mkdirp(docPath);
 
-    fs.writeFile(docPath+'/'+patientId+'_'+date+'.csv', csv, function(err, data){
-      if (err) console.log(err);
-      else {
-        console.log("Successfully Written to File.");
-        return "success";
-      }
+    return new Promise(function(resolve, reject) {
+      fs.writeFile(docPath+'/'+patientId+'_'+date+'.csv', csv, (err, data) => {
+        if (err) reject(err);
+        else {
+          console.log("Successfully Written to File.");
+          resolve("success");
+        }
+      });
     });
+
   } catch(err) {
     console.log(err);
     console.log("Couldn't export to CSV");

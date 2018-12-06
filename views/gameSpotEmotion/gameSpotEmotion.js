@@ -65,9 +65,9 @@ $(document).ready(() => {
   $('#export-btn').on('click', async () => {
     let id = window.localStorage.getItem('patientId');
     csvHelper.write(outputPayload.data, id, 'emotion_recognition').then((res)=>{
-    // if(res == "success"){
-      $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text('Exported');
-    // }
+      if(res == "success"){
+        $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text('Exported');
+      }
     })
   });
 
