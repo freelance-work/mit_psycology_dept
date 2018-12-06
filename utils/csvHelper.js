@@ -26,6 +26,8 @@ exports.write = async function(json, id, task) {
     let outputPath = '';
     if(process.platform == 'win32'){
       outputPath = 'C:/APCO'
+    } else if (process.platform == 'darwin'){
+      outputPath = '/Applications/AFCO'
     }
 
     let docPath = path.join(outputPath+'/output/'+task);
