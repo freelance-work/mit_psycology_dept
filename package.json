@@ -4,7 +4,36 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "build": {
+    "appId": "com.freelance.afco",
+    "dmg": {
+      "contents": [
+        {
+          "x": 150,
+          "y": 180
+        },
+        {
+          "x": 380,
+          "y": 180,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "squirrel",
+      "icon": "build/icon.ico"
+    }
   },
   "repository": {
     "type": "git",
@@ -23,6 +52,7 @@
   },
   "devDependencies": {
     "electron": "^3.0.9",
+    "electron-builder": "^20.38.2",
     "fs": "0.0.1-security",
     "json2csv": "^4.3.1"
   }
