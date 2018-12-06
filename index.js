@@ -13,9 +13,11 @@ const {
 
 $(document).ready(() => {
   try {
+    ipcRenderer.send(CLEAR_STORAGE);
     let string =  JSON.parse(window.localStorage.getItem('lang'));
     $('#patient-title').html(string.strings.landingPage.title);
     $('#patient-id').attr("placeholder", string.strings.landingPage.placeholder);
+    $('#start-btn').text(string.strings.landingPage.buttonText);
   } catch(err) {};
 });
 
@@ -29,4 +31,5 @@ ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   window.localStorage.setItem('lang', JSON.stringify(string));
   $('#patient-title').html(string.strings.landingPage.title);
   $('#patient-id').attr("placeholder", string.strings.landingPage.placeholder);
+  $('#start-btn').text(string.strings.landingPage.buttonText);
 });

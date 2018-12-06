@@ -2,14 +2,12 @@ const electron = require('electron');
 const url = require('url');
 const path = require('path');
 const config = require('./config/config')
-
 const Store = require('electron-store');
 const store = new Store();
-
 const en_strings = require('./strings/en');
 const kn_strings = require('./strings/kn');
 
- const isDev = process.mainModule.filename.indexOf('app.asar') === -1;
+const isDev = process.mainModule.filename.indexOf('app.asar') === -1;
 
 const {
   app,
@@ -24,6 +22,7 @@ const {
  HANDLE_LANGUAGE_CHANGE,
  PUT_EMOTION_RECOGNITION_DATA,
  HANDLE_PUT_EMOTION_RECOGNITION_DATA,
+ GET_EMOTION_RECOGNITION_DATA
 } = require('./utils/constants');
 
 let mainWindow;
@@ -37,6 +36,11 @@ ipcMain.on(PUT_EMOTION_RECOGNITION_DATA, (e, data) => {
     message: 'emotion recognition data stored'
   });
 });
+
+ipcMain.on(GET_EMOTION_RECOGNITION_DATA, (e) => {
+  let data = store.get('emotion_recognition')
+  e.returnValue = data;
+})
 
 ipcMain.on(CLEAR_STORAGE, () => {
   store.clear();

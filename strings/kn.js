@@ -13,6 +13,13 @@ module.exports = {
   game1: {
     instructionTitle: 'ಭಾವನೆಯ ಗುರುತಿಸುವಿಕೆ',
     instruction: 'ಮುಖಗಳನ್ನು ನೋಡಿ ಮತ್ತು ಮುಖವು ವ್ಯಕ್ತಪಡಿಸುವ ಭಾವನೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ.',
-    startButtonText: 'ಪ್ರಾರಂಭಿಸಿ'
+    startButtonText: 'ಪ್ರಾರಂಭಿಸಿ',
+    joy: 'ಸಂತೋಷ',
+    sadness: 'ದುಃಖ',
+    anger: 'ಕೋಪ',
+    neutral: 'ತಟಸ್ಥ',
+    disgust: 'ಅಸಹ್ಯ',
+    fear: 'ಭಯ',
+    surprise: 'ಸುಳಿವು'
   }
 }

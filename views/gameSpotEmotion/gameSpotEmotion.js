@@ -8,20 +8,26 @@ const app = remote.app;
 const {
   HANDLE_LANGUAGE_CHANGE,
   PUT_EMOTION_RECOGNITION_DATA,
-  HANDLE_PUT_EMOTION_RECOGNITION_DATA,
 } = require('../../utils/constants');
 
 $(document).ready(() => {
+
   let idx = 0;
   let outputPayload = { "data": [] };
   let startTime = new Date();
   let endTime = new Date();
-  let string;
-  
 
   try {
     string = JSON.parse(window.localStorage.getItem('lang'));
-  } catch(err) { };
+    $('#JOY').text(string.strings.game1.joy);
+    $('#SADNESS').text(string.strings.game1.sadness);
+    $('#ANGER').text(string.strings.game1.anger);
+    $('#NEUTRAL').text(string.strings.game1.neutral);
+    $('#DISGUST').text(string.strings.game1.disgust);
+    $('#FEAR').text(string.strings.game1.fear);
+    $('#SURPRISE').text(string.strings.game1.surprise);
+
+  } catch (err) { console.log(err)};
 
   $('.image-box').css('background-image', 'url(../../assets/emotion_recognition/faces/' + dataSet.data[idx].faceID + '.jpg)');
 
@@ -61,8 +67,8 @@ $(document).ready(() => {
 
   $('#export-btn').on('click', async () => {
     let id = window.localStorage.getItem('patientId');
-    csvHelper.write(outputPayload.data, id, 'emotion_recognition').then((res)=>{
-      if(res == "success"){
+    csvHelper.write(outputPayload.data, id, 'emotion_recognition').then((res) => {
+      if (res == "success") {
         $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text('Exported');
       }
     })
@@ -80,4 +86,11 @@ $(window).on('resize', () => {
 
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   window.localStorage.setItem('lang', string);
+  $('#JOY').text(string.strings.game1.joy);
+  $('#SADNESS').text(string.strings.game1.sadness);
+  $('#ANGER').text(string.strings.game1.anger);
+  $('#NEUTRAL').text(string.strings.game1.neutral);
+  $('#DISGUST').text(string.strings.game1.disgust);
+  $('#FEAR').text(string.strings.game1.fear);
+  $('#SURPRISE').text(string.strings.game1.surprise);
 });

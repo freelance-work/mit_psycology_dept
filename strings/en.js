@@ -13,6 +13,13 @@ module.exports = {
   game1: {
     instructionTitle: 'Emotion recognition',
     instruction: 'Look at the faces and choose the emotion the face is expressing.',
-    startButtonText: 'Start'
+    startButtonText: 'Start',
+    joy: 'JOY',
+    sadness: 'SADNESS',
+    anger: 'ANGER',
+    neutral: 'NEUTRAL',
+    disgust: 'DISGUST',
+    fear: 'FEAR',
+    surprise: 'SURPRISE'
   }
 }
