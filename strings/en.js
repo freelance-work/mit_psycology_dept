@@ -5,7 +5,7 @@ module.exports = {
     buttonText: 'Start'
   },  
   gamePage: {
-    game1: 'Spot Emotion',
+    game1: 'Emotion Recognition',
     game2: 'Face Reaction',
     game3: 'Word Reaction',
     game4: 'IOWA Gambling'
