@@ -3,8 +3,6 @@ const fs = require('fs');
 const mkdirp = require('async-mkdirp');
 
 const path = require('path');
-const remote = require('electron').remote
-const app = remote.app;
 
 
 exports.write = async function(json, id, task) {
@@ -25,9 +23,12 @@ exports.write = async function(json, id, task) {
       mm = '0' + mm;
     } 
     let date = dd + '-' + mm + '-' + yyyy;
+    let outputPath = '';
+    if(process.platform == 'win32'){
+      outputPath = 'C:/APCO'
+    }
 
-    let appPath = app.getAppPath();
-    let docPath = path.join(appPath+'/output/'+task);
+    let docPath = path.join(outputPath+'/output/'+task);
 
     await mkdirp(docPath);
 
