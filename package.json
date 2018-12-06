@@ -1,5 +1,5 @@
 {
-  "name": "mit_psycology_dept",
+  "name": "AFCO",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
@@ -31,7 +31,7 @@
       ]
     },
     "win": {
-      "target": "squirrel",
+      "target": "nsis",
       "icon": "build/icon.ico"
     }
   },
@@ -48,12 +48,12 @@
   "dependencies": {
     "async-mkdirp": "^1.2.7",
     "electron-store": "^2.0.0",
+    "json2csv": "^4.3.1",
     "path": "^0.12.7"
   },
   "devDependencies": {
     "electron": "^3.0.9",
     "electron-builder": "^20.38.2",
-    "fs": "0.0.1-security",
-    "json2csv": "^4.3.1"
+    "fs": "0.0.1-security"
   }
 }

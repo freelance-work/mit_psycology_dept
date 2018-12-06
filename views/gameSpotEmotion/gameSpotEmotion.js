@@ -3,13 +3,16 @@ const payload = require('../../assets/emotion_recognition/emotion_recognition');
 const { ipcRenderer } = electron;
 const dataSet = { 'data': payload.data.sort(() => Math.random() - 0.5) };
 const csvHelper = require('../../utils/csvHelper');
-
-
+const remote = require('electron').remote
+const app = remote.app;
 const {
   HANDLE_LANGUAGE_CHANGE,
   PUT_EMOTION_RECOGNITION_DATA,
   HANDLE_PUT_EMOTION_RECOGNITION_DATA,
 } = require('../../utils/constants');
+
+let appPath = app.getAppPath();
+let imagePath = appPath + '/assets/emotion_recognition/faces/';
 
 $(document).ready(() => {
   let idx = 0;
@@ -17,12 +20,13 @@ $(document).ready(() => {
   let startTime = new Date();
   let endTime = new Date();
   let string;
+  
 
   try {
     string = JSON.parse(window.localStorage.getItem('lang'));
   } catch(err) { };
 
-  $('.image-box').css('background-image', 'url(../../assets/emotion_recognition/faces/' + dataSet.data[idx].faceID + '.jpg)');
+  $('.image-box').css('background-image', 'url(' + imagePath + dataSet.data[idx].faceID + '.jpg)');
 
   $('.emotion-button').click(function () {
     $('.image-box').css('background-image', 'none');
@@ -46,12 +50,12 @@ $(document).ready(() => {
       }
     }
     outputPayload.data.push(data)
-    if (++idx > 2) {
+    if (++idx > 69) {
       $('.final-modal-container').show();
       ipcRenderer.send(PUT_EMOTION_RECOGNITION_DATA, outputPayload);
     } else {
       setTimeout(() => {
-        $('.image-box').css('background-image', 'url(../../assets/emotion_recognition/faces/' + dataSet.data[idx].faceID + '.jpg)');
+        $('.image-box').css('background-image', 'url(' + imagePath + dataSet.data[idx].faceID + '.jpg)');
         $('.emotion-button').prop('disabled', false);
         startTime = new Date();
       }, 500);
