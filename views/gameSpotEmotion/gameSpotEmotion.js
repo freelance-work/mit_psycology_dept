@@ -1,5 +1,5 @@
 const electron = require('electron');
-const payload = require('../../assets/emotion_recognition/emotion_recognition');
+const payload = require('../../assets/emotion_recognition');
 const { ipcRenderer } = electron;
 const dataSet = { 'data': payload.data.sort(() => Math.random() - 0.5) };
 const csvHelper = require('../../utils/csvHelper');
