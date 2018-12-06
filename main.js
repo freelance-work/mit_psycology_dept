@@ -9,6 +9,8 @@ const store = new Store();
 const en_strings = require('./strings/en');
 const kn_strings = require('./strings/kn');
 
+ const isDev = process.mainModule.filename.indexOf('app.asar') === -1;
+
 const {
   app,
   BrowserWindow,
@@ -152,7 +154,7 @@ const switchLanguage = (lan) => {
   });
 }
 
-if(process.env.NODE_ENV !== 'production') {
+if(isDev) {
   mainMenuTemplate.push({
     label: 'Developer Tools',
     submenu: [
