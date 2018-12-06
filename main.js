@@ -13,7 +13,8 @@ const {
   app,
   BrowserWindow,
   Menu,
-  ipcMain
+  ipcMain,
+  dialog
 } = electron;
 
 const {
@@ -143,15 +144,29 @@ const mainMenuTemplate = [
 ];
 
 const createNewPatient = () => {
-  store.clear();
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }));
+  let message;
+  if(store.get('lang')=='en') {
+    message= 'Are you sure you want to register a new patient, the old data will be lost.';
+  } else {
+    message = 'ಹೊಸ ರೋಗಿಯನ್ನು ನೋಂದಾಯಿಸಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುವಿರಾ, ಹಳೆಯ ಡೇಟಾ ಕಳೆದು ಹೋಗುತ್ತದೆ.'
+  }
+  
+  const dialogOptions = {type: 'info', buttons: ['Yes', 'Cancel'], message: message}
+
+  dialog.showMessageBox(dialogOptions, i => {
+    if(i==0) {
+      store.clear();
+      mainWindow.loadURL(url.format({
+        pathname: path.join(__dirname, 'index.html'),
+        protocol: 'file:',
+        slashes: true
+      }));
+    }
+  })
 }
 
 const switchLanguage = (lan) => {
+  store.set('lang', lan);
   mainWindow.send(HANDLE_LANGUAGE_CHANGE, {
     language: lan,
     strings: lan=='en' ? en_strings : kn_strings
