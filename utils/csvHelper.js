@@ -25,7 +25,7 @@ exports.write = async function(json, id, task) {
     let date = dd + '-' + mm + '-' + yyyy;
     let outputPath = '';
     if(process.platform == 'win32'){
-      outputPath = 'C:/APCO'
+      outputPath = 'C:/AFCO'
     }
 
     let docPath = path.join(outputPath+'/output/'+task);
