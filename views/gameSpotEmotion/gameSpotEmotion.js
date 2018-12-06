@@ -29,7 +29,7 @@ $(document).ready(() => {
 
   } catch (err) { console.log(err)};
 
-  $('.image-box').css('background-image', 'url(../../assets/emotion_recognition/faces/' + dataSet.data[idx].faceID + '.jpg)');
+  $('.image-box').css('background-image', 'url(../../assets/faces/' + dataSet.data[idx].faceID + '.jpg)');
 
   $('.emotion-button').click(function () {
     $('.image-box').css('background-image', 'none');
@@ -58,7 +58,7 @@ $(document).ready(() => {
       ipcRenderer.send(PUT_EMOTION_RECOGNITION_DATA, outputPayload);
     } else {
       setTimeout(() => {
-        $('.image-box').css('background-image', 'url(../../assets/emotion_recognition/faces/' + dataSet.data[idx].faceID + '.jpg)');
+        $('.image-box').css('background-image', 'url(../../assets/faces/' + dataSet.data[idx].faceID + '.jpg)');
         $('.emotion-button').prop('disabled', false);
         startTime = new Date();
       }, 500);
