@@ -46,7 +46,7 @@ $(document).ready(() => {
       }
     }
     outputPayload.data.push(data)
-    if (++idx > 69) {
+    if (++idx > 2) {
       $('.final-modal-container').show();
       ipcRenderer.send(PUT_EMOTION_RECOGNITION_DATA, outputPayload);
     } else {
@@ -58,9 +58,13 @@ $(document).ready(() => {
     }
   });
 
-  $('#export-btn').on('click', () => {
+  $('#export-btn').on('click', async () => {
     let id = window.localStorage.getItem('patientId');
-    csvHelper.write(outputPayload.data, id, 'emotion_recognition');
+    csvHelper.write(outputPayload.data, id, 'emotion_recognition').then((res)=>{
+    // if(res == "success"){
+      $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text('Exported');
+    // }
+    })
   });
 
   $('#exit-btn').on('click', () => {
