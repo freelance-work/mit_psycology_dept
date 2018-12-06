@@ -24,7 +24,7 @@ $(window).on('resize', () => {
 });
 
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
-    window.localStorage.setItem('lang', string);
+    window.localStorage.setItem('lang', JSON.stringify(string));
     $('.game-text1').html(string.strings.gamePage.game1);
     $('.game-text2').html(string.strings.gamePage.game2);
     $('.game-text3').html(string.strings.gamePage.game3);

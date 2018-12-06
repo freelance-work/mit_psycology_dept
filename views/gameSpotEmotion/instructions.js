@@ -19,7 +19,7 @@ $(window).on('resize', () => {
 });
 
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
-    window.localStorage.setItem('lang', string);
+    window.localStorage.setItem('lang', JSON.stringify(string));
     $('.g1-instruction-title').html(string.strings.game1.instructionTitle);
     $('.g1-instructions').html(string.strings.game1.instruction);
     $('#start-btn').text(string.strings.game1.startButtonText);
