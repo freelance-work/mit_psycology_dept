@@ -21,6 +21,8 @@ const {
  CLEAR_STORAGE,
  HANDLE_CLEAR_STORAGE,
  HANDLE_LANGUAGE_CHANGE,
+ PUT_TASK_STATE,
+ GET_TASK_STATE,
  PUT_EMOTION_RECOGNITION_DATA,
  HANDLE_PUT_EMOTION_RECOGNITION_DATA,
  GET_EMOTION_RECOGNITION_DATA
@@ -28,9 +30,22 @@ const {
 
 let mainWindow;
 
+/* TODO: Merge common functions like GET_TASK_STATE & GET_EMOTION_RECOGNITION_DATA */
+
+ipcMain.on(PUT_TASK_STATE, (e, data) => {
+  if(data) {
+    store.set('task_state', data);
+  }
+});
+
+ipcMain.on(GET_TASK_STATE, (e) => {
+  let data = store.get('task_state');
+  e.returnValue = data;
+});
+
 ipcMain.on(PUT_EMOTION_RECOGNITION_DATA, (e, data) => {
   if(data) {
-    store.set('emotion_recognition', data)
+    store.set('emotion_recognition', data);
   }
   mainWindow.send(HANDLE_PUT_EMOTION_RECOGNITION_DATA, {
     success: true,
@@ -39,7 +54,7 @@ ipcMain.on(PUT_EMOTION_RECOGNITION_DATA, (e, data) => {
 });
 
 ipcMain.on(GET_EMOTION_RECOGNITION_DATA, (e) => {
-  let data = store.get('emotion_recognition')
+  let data = store.get('emotion_recognition');
   e.returnValue = data;
 })
 

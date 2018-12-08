@@ -5,4 +5,6 @@ module.exports = {
   PUT_EMOTION_RECOGNITION_DATA: 'put_emotion_recognition_data',
   HANDLE_PUT_EMOTION_RECOGNITION_DATA: 'handle_put_emotion_recognition_data',
   GET_EMOTION_RECOGNITION_DATA: 'get_emotion_recognition_data',
+  PUT_TASK_STATE: 'put_task_state',
+  GET_TASK_STATE: 'get_task_state'
 };
