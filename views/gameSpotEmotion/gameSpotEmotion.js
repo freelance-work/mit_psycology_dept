@@ -8,6 +8,7 @@ const app = remote.app;
 const {
   HANDLE_LANGUAGE_CHANGE,
   PUT_EMOTION_RECOGNITION_DATA,
+  PUT_TASK_STATE,
 } = require('../../utils/constants');
 
 $(document).ready(() => {
@@ -75,6 +76,7 @@ $(document).ready(() => {
   });
 
   $('#exit-btn').on('click', () => {
+    ipcRenderer.send(PUT_TASK_STATE, {data: [1, 2]});
     window.location = '../gameMenu/gameMenu.html';
   });
 
