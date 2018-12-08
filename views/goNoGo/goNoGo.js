@@ -8,14 +8,14 @@ const {
 let face;
 let resp = { faceID: '', response: 'noResponse' };
 let setCount = 0;
-let setArr = [{name: 'JOY', obj : gamePayload.joyAnger},{name: 'JOY',obj : gamePayload.joyNeutral},{name: 'NEUTRAL', obj: gamePayload.angerNeutral},{name: 'NEUTRAL'},{name: 'ANGER'},{name:'ANGER'}];
+let setArr = [{emotion: 'JOY', obj : gamePayload.joyAnger},{emotion: 'JOY',obj : gamePayload.joyNeutral},{emotion: 'NEUTRAL', obj: gamePayload.angerNeutral},{emotion: 'NEUTRAL'},{emotion: 'ANGER'},{emotion:'ANGER'}];
 let payload = { "data": [] }
 
 $(document).ready(() => {
     startGame(setArr[setCount].obj);
     $(window).keypress(function (e) {
         if (e.which === 32) {
-            if (face.response == setArr[set]) {
+            if (face.response == setArr[set].emotion) {
                 if (resp.response == 'noResponse') {
                     resp = { ...resp, response: 'correct' }
                 }
