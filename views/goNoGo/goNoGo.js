@@ -66,6 +66,6 @@ startGame = (payloadSet) => {
                 emotion : face.response,
             };
             $('.quadrant' + quad).css({ 'background-image': 'url(../../assets/faces/' + face.faceID + '.jpg)' });
-        }, 5);
-    }, 50);
+        }, 500);
+    }, 1500);
 }
