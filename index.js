@@ -2,12 +2,9 @@ const electron =  require('electron');
 const { ipcRenderer } = electron;
 
 const {
-    PUT_PATIENT_IN_STORAGE,
-    HANDLE_PUT_PATIENT_IN_STORAGE,
-    GET_PATIENT_FROM_STORAGE,
-    HANDLE_GET_PATIENT_FROM_STORAGE,
     CLEAR_STORAGE,
     HANDLE_CLEAR_STORAGE,
+    GET_STRINGS,
     HANDLE_LANGUAGE_CHANGE,
     PUT_TASK_STATE,
 } = require('./utils/constants');
@@ -15,6 +12,7 @@ const {
 $(document).ready(() => {
   try {
     ipcRenderer.send(CLEAR_STORAGE);
+    window.localStorage.setItem('lang', JSON.stringify(ipcRenderer.sendSync(GET_STRINGS)));
     let string =  JSON.parse(window.localStorage.getItem('lang'));
     $('#patient-title').html(string.strings.landingPage.title);
     $('#patient-id').attr("placeholder", string.strings.landingPage.placeholder);

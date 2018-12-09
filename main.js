@@ -21,11 +21,15 @@ const {
  CLEAR_STORAGE,
  HANDLE_CLEAR_STORAGE,
  HANDLE_LANGUAGE_CHANGE,
+ GET_STRINGS,
  PUT_TASK_STATE,
  GET_TASK_STATE,
  PUT_EMOTION_RECOGNITION_DATA,
  HANDLE_PUT_EMOTION_RECOGNITION_DATA,
- GET_EMOTION_RECOGNITION_DATA
+ GET_EMOTION_RECOGNITION_DATA,
+ PUT_GONOGO_DATA,
+ HANDLE_PUT_GONOGO_DATA,
+ GET_GONOGO_DATA
 } = require('./utils/constants');
 
 let mainWindow;
@@ -40,6 +44,14 @@ ipcMain.on(PUT_TASK_STATE, (e, data) => {
 
 ipcMain.on(GET_TASK_STATE, (e) => {
   let data = store.get('task_state');
+  e.returnValue = data;
+});
+
+ipcMain.on(GET_STRINGS, (e) => {
+  let data = {
+    language: 'en',
+    strings: en_strings
+  }
   e.returnValue = data;
 });
 
@@ -58,6 +70,21 @@ ipcMain.on(GET_EMOTION_RECOGNITION_DATA, (e) => {
   e.returnValue = data;
 })
 
+ipcMain.on(PUT_GONOGO_DATA, (e, data) => {
+  if(data) {
+    store.set('gonogo', data);
+  }
+  mainWindow.send(HANDLE_PUT_GONOGO_DATA, {
+    success: true,
+    message: 'affective go-no-go data stored'
+  });
+});
+
+ipcMain.on(GET_GONOGO_DATA, (e) => {
+  let data = store.get('gonogo');
+  e.returnValue = data;
+})
+
 ipcMain.on(CLEAR_STORAGE, () => {
   store.clear();
   mainWindow.send(HANDLE_CLEAR_STORAGE, {
@@ -69,8 +96,10 @@ ipcMain.on(CLEAR_STORAGE, () => {
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
     'minHeight': config.dimensions.height,
-    'minWidth': config.dimensions.width
+    'minWidth': config.dimensions.width,
   });
+
+  mainWindow.setTitle('AFCO');
 
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),

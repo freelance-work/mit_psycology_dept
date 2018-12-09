@@ -56,7 +56,6 @@ $(document).ready(() => {
     outputPayload.data.push(data)
     if (++idx > 69) {
       $('.final-modal-container').show();
-      ipcRenderer.send(PUT_EMOTION_RECOGNITION_DATA, outputPayload);
     } else {
       setTimeout(() => {
         $('.image-box').css('background-image', 'url(../../assets/faces/' + dataSet.data[idx].faceID + '.jpg)');
@@ -86,7 +85,10 @@ $(document).ready(() => {
   });
 
   $('#exit-btn').on('click', () => {
-    ipcRenderer.send(PUT_TASK_STATE, {data: [1, 2]});
+    ipcRenderer.send(PUT_EMOTION_RECOGNITION_DATA, outputPayload);
+    if(outputPayload.data.length > 0) {
+      ipcRenderer.send(PUT_TASK_STATE, {data: [1, 2]});
+    }
     window.location = '../gameMenu/gameMenu.html';
   });
 

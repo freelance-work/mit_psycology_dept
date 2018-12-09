@@ -4,7 +4,7 @@ const csvHelper = require('../../utils/csvHelper');
 const gamePayload = require('../../assets/gonogo');
 const {
     HANDLE_LANGUAGE_CHANGE,
-    GET_EMOTION_RECOGNITION_DATA,
+    PUT_GONOGO_DATA,
     PUT_TASK_STATE,
 } = require('../../utils/constants');
 let face;
@@ -98,7 +98,7 @@ startGame = (payloadSet) => {
 
 $('#export-btn').on('click', async () => {
     let id = window.localStorage.getItem('patientId');
-    csvHelper.write(payload.data, id, 'emotion_recognition').then((res) => {
+    csvHelper.write(payload.data, id, 'go-no-go').then((res) => {
         if (res == "success") {
             $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text('Exported');
         }
@@ -106,14 +106,17 @@ $('#export-btn').on('click', async () => {
 });
 
 $('#exit-btn').on('click', () => {
+  ipcRenderer.send(PUT_GONOGO_DATA, payload);
+  if(payload.data.length > 0) {
     ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3] });
-    window.location = '../gameMenu/gameMenu.html';
+  }  
+  window.location = '../gameMenu/gameMenu.html';
 });
 
 $('#end-game-btn').on('click', () => {
-    clearInterval(timer);
-    $('#close-modal-btn').show();
-    $('.final-modal-container').show();
+  clearInterval(timer);
+  $('#close-modal-btn').show();
+  $('.final-modal-container').show();
 })
 
 $('#close-modal-btn').on('click', () => {

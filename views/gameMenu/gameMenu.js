@@ -6,6 +6,7 @@ const csvHelper = require('../../utils/csvHelper');
 const {
     HANDLE_LANGUAGE_CHANGE,
     GET_EMOTION_RECOGNITION_DATA,
+    GET_GONOGO_DATA,
     GET_TASK_STATE
 } = require('../../utils/constants');
 
@@ -15,7 +16,7 @@ $(document).ready(() => {
     let taskState = ipcRenderer.sendSync(GET_TASK_STATE);
 
     taskState.data.map(state => {
-      if(taskState.data.length - 1 == state) {
+      if(taskState.data.length - 1 >= state) {
         $('#gameCSV' + state).css('display', 'unset');
       }
       $('#game'+ state).css('filter', 'none');
@@ -40,6 +41,17 @@ $('#gameCSV1').on('click', async (e) => {
   let outputPayload = ipcRenderer.sendSync(GET_EMOTION_RECOGNITION_DATA);
   let id = window.localStorage.getItem('patientId');
   csvHelper.write(outputPayload.data, id, 'emotion_recognition').then((res) => {
+    if (res == "success") {
+      alert('CSV Exported');
+    }
+  })
+});
+
+$('#gameCSV2').on('click', async (e) => {
+  e.stopPropagation();
+  let outputPayload = ipcRenderer.sendSync(GET_GONOGO_DATA);
+  let id = window.localStorage.getItem('patientId');
+  csvHelper.write(outputPayload.data, id, 'go-no-go').then((res) => {
     if (res == "success") {
       alert('CSV Exported');
     }
