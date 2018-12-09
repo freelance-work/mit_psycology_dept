@@ -19,8 +19,12 @@ let count = 0;
 
 $(document).ready(() => {
     let string = JSON.parse(window.localStorage.getItem('lang'));
-    console.log(string)
-    $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction)
+    $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction);
+    $('#end-game-btn').text(string.strings.game2.exitbtn);
+    $('.modal-content-text').text(string.strings.game1.modalContent);
+    $('.modal-content-text').text(string.strings.game1.modalContent);
+    $('#exit-btn').text(string.strings.game1.modalexitbtn);
+    
     startGame(setArr[setCount].obj);
 
     $(window).keypress(function (e) {
@@ -127,3 +131,11 @@ $('#close-modal-btn').on('click', () => {
     $('#close-modal-btn').hide();
     startGame(setArr[setCount].obj);
 })
+
+ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
+    window.localStorage.setItem('lang', JSON.stringify(string));
+    $('.g1-instruction-title').html(string.strings.game1.instructionTitle);
+    $('.g1-instructions').html(string.strings.game1.instruction);
+    $('#start-btn').text(string.strings.game1.startButtonText);
+    $('#back-btn').text(string.strings.game1.backbtn);
+});

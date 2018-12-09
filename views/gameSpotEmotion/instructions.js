@@ -11,6 +11,8 @@ $(document).ready(() => {
     $('.g1-instruction-title').html(string.strings.game1.instructionTitle);
     $('.g1-instructions').html(string.strings.game1.instruction);
     $('#start-btn').text(string.strings.game1.startButtonText);
+    $('#back-btn').text(string.strings.game1.backbtn);
+    
   } catch(err) { };
 });
 
@@ -23,4 +25,5 @@ ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
     $('.g1-instruction-title').html(string.strings.game1.instructionTitle);
     $('.g1-instructions').html(string.strings.game1.instruction);
     $('#start-btn').text(string.strings.game1.startButtonText);
+    $('#back-btn').text(string.strings.game1.backbtn);
 });

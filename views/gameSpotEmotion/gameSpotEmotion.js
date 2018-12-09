@@ -20,6 +20,7 @@ $(document).ready(() => {
 
   try {
     string = JSON.parse(window.localStorage.getItem('lang'));
+    console.log(string);
     $('#JOY').text(string.strings.game1.joy);
     $('#SADNESS').text(string.strings.game1.sadness);
     $('#ANGER').text(string.strings.game1.anger);
@@ -27,8 +28,14 @@ $(document).ready(() => {
     $('#DISGUST').text(string.strings.game1.disgust);
     $('#FEAR').text(string.strings.game1.fear);
     $('#SURPRISE').text(string.strings.game1.surprise);
+    $('#close-modal-btn').text(string.strings.game1.modalCloseBtn);
+    $('.final-modal-content-tex').text(string.strings.game1.modalContent);
+    $('#exit-btn').text(string.strings.game1.modalexitbtn);
+    $('#export-btn').text(string.strings.game1.exportBtn);
+    $('#end-game-btn').text(string.strings.game1.modalexitbtn);
 
-  } catch (err) { console.log(err)};
+
+  } catch (err) { console.log(err) };
 
   $('.image-box').css('background-image', 'url(../../assets/faces/' + dataSet.data[idx].faceID + '.jpg)');
 
@@ -65,7 +72,7 @@ $(document).ready(() => {
     }
   });
 
-  $('#end-game-btn').on('click', ()=>{
+  $('#end-game-btn').on('click', () => {
     $('#close-modal-btn').show();
     $('.final-modal-container').show();
   })
@@ -87,8 +94,8 @@ $(document).ready(() => {
 
   $('#exit-btn').on('click', () => {
     ipcRenderer.send(PUT_EMOTION_RECOGNITION_DATA, outputPayload);
-    if(outputPayload.data.length > 0) {
-      ipcRenderer.send(PUT_TASK_STATE, {data: [1, 2]});
+    if (outputPayload.data.length > 0) {
+      ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2] });
     }
     window.location = '../gameMenu/gameMenu.html';
   });
@@ -108,4 +115,9 @@ ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   $('#DISGUST').text(string.strings.game1.disgust);
   $('#FEAR').text(string.strings.game1.fear);
   $('#SURPRISE').text(string.strings.game1.surprise);
+  $('#close-modal-btn').text(string.strings.game1.modalCloseBtn);
+  $('.modal-content-text').text(string.strings.game1.modalContent);
+  $('#exit-btn').text(string.strings.game1.modalexitbtn);
+  $('#export-btn').text(string.strings.game1.exportBtn);
+  $('#end-game-btn').text(string.strings.game1.modalexitbtn);
 });
