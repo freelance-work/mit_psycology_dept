@@ -31,15 +31,19 @@
 }
 
 .image-container {
-    padding-top: 32px;
+    padding-top: 16px;
+}
+
+.end-game-btn-container {
+    padding-top: 16px;
 }
 
 .image-box{
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    width: 70%;
-    height: 65vh;
+    width: 65%;
+    height: 60vh;
     background-image: url();
     background-size: cover;
     background-repeat: no-repeat;
@@ -61,6 +65,11 @@
 }
 
 .final-modal-container{
+    display: none;
+}
+
+#close-modal-btn{
+    margin-bottom: 16px;
     display: none;
 }
 

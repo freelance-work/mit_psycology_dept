@@ -31,17 +31,29 @@
 }
 
 .quadrant{
-    height: 45vh;
+    height: 40vh;
+    margin-left: 2vh;
+    margin-right: 2vh;
     /* max-width: 100vh; */
     background-color: #f5f5f5;
     margin-top: 3vh;
     background-size: cover;
     background-repeat: no-repeat;
     box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1);
+    background-position: center;
 }
 
 .modal-container{
     display: none;
+}
+
+#close-modal-btn{
+    margin-bottom: 16px;
+    display: none;
+}
+
+.end-game-btn-container {
+    padding-top: 16px;
 }
 
 .modal-container:after{
@@ -101,4 +113,11 @@
     /* border-radius: 5px; */
     z-index: 10;
     padding: 16px;
+}
+
+@media all and (max-width: 992px) {
+    .quadrant{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 }
