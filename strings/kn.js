@@ -25,22 +25,22 @@ module.exports = {
   game2: {
     instructions : [
       {
-        instruction : 'Set 1, Press space bar when you see a happy face, not angry face'
+        instruction : 'ಹೊಂದಿಸಿ 1, ನೀವು ಸಂತೋಷದ ಮುಖವನ್ನು ನೋಡಿದಾಗ ಸ್ಪೇಸ್ ಬಾರ್ ಅನ್ನು ಒತ್ತಿರಿ, ನೀವು ಕೋಪದ ಮುಖವನ್ನು ನೋಡಿದಾಗ ಏನೂ ಮಾಡಬೇಡಿ'
       },
       {
-        instruction : 'Set 2, Press space bar when you see a happy face, not neutral face'
+        instruction : 'ಹೊಂದಿಸಿ 2, ನೀವು ಸಂತೋಷದ ಮುಖವನ್ನು ನೋಡಿದಾಗ ಸ್ಪೇಸ್ ಬಾರ್ ಅನ್ನು ಒತ್ತಿ, ನೀವು ತಟಸ್ಥ ಮುಖವನ್ನು ನೋಡಿದಾಗ ಏನನ್ನೂ ಮಾಡಬೇಡಿ'
       },
       {
-        instruction : 'Set 3, Press space bar when you see a neutal face, not happy face'
+        instruction : 'ಹೊಂದಿಸಿ 3, ನೀವು ನ್ಯೂಟ್ಯಾಲ್ ಮುಖವನ್ನು ನೋಡಿದಾಗ ಸ್ಪೇಸ್ ಬಾರ್ ಅನ್ನು ಒತ್ತಿರಿ, ನೀವು ಸಂತೋಷದ ಮುಖವನ್ನು ನೋಡಿದಾಗ ಏನೂ ಮಾಡಬೇಡಿ'
       },
       {
-        instruction : 'Set 4, Press space bar when you see a neutral face, not angry face'
+        instruction : 'ಹೊಂದಿಸಿ 4, ನೀವು ತಟಸ್ಥ ಮುಖವನ್ನು ನೋಡಿದಾಗ ಸ್ಪೇಸ್ ಬಾರ್ ಅನ್ನು ಒತ್ತಿರಿ, ನೀವು ಕೋಪದ ಮುಖವನ್ನು ನೋಡಿದಾಗ ಏನೂ ಮಾಡಬೇಡಿ'
       },
       {
-        instruction : 'Set 5, Press space bar when you see a angry face, not happy face'
+        instruction : 'ಹೊಂದಿಸಿ 5, ಕೋಪದ ಮುಖವನ್ನು ನೀವು ನೋಡಿದಾಗ ಸ್ಪೇಸ್ ಬಾರ್ ಒತ್ತಿರಿ, ನೀವು ಸಂತೋಷದ ಮುಖವನ್ನು ನೋಡಿದಾಗ ಏನನ್ನೂ ಮಾಡಬೇಡಿ'
       },
       {
-        instruction : 'Set 6, Press space bar when you see a angry face, not neutral face'
+        instruction : 'ಹೊಂದಿಸಿ 6, ಕೋಪದ ಮುಖವನ್ನು ನೀವು ನೋಡಿದಾಗ ಸ್ಪೇಸ್ ಬಾರ್ ಒತ್ತಿರಿ, ನೀವು ತಟಸ್ಥ ಮುಖವನ್ನು ನೋಡಿದಾಗ ಏನೂ ಮಾಡಬೇಡಿ'
       }
     ]
   }
