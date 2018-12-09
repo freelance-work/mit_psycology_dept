@@ -160,10 +160,10 @@ const mainMenuTemplate = [
 
 const createNewPatient = () => {
   let message;
-  if(store.get('lang')=='en') {
-    message= 'Are you sure you want to register a new patient, the old data will be lost.';
+  if(store.get('lang')=='kn') {
+    message= 'ಹೊಸ ರೋಗಿಯನ್ನು ನೋಂದಾಯಿಸಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುವಿರಾ, ಹಳೆಯ ಡೇಟಾ ಕಳೆದು ಹೋಗುತ್ತದೆ.';
   } else {
-    message = 'ಹೊಸ ರೋಗಿಯನ್ನು ನೋಂದಾಯಿಸಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುವಿರಾ, ಹಳೆಯ ಡೇಟಾ ಕಳೆದು ಹೋಗುತ್ತದೆ.'
+    message = 'Are you sure you want to register a new patient, the old data will be lost.';
   }
   
   const dialogOptions = {type: 'info', buttons: ['Yes', 'Cancel'], message: message}
