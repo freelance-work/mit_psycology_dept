@@ -41,6 +41,7 @@ $(document).ready(() => {
     data = {
       ...data,
       "reactionTime": reactionTime,
+      "choice": this.id
     }
     if (this.id == dataSet.data[idx].response) {
       data = {
