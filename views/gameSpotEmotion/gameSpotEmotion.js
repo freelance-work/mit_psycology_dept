@@ -66,6 +66,16 @@ $(document).ready(() => {
     }
   });
 
+  $('#end-game-btn').on('click', ()=>{
+    $('#close-modal-btn').show();
+    $('.final-modal-container').show();
+  })
+
+  $('#close-modal-btn').on('click', () => {
+    $('.final-modal-container').hide();
+    $('#close-modal-btn').hide();
+  })
+
   $('#export-btn').on('click', async () => {
     let id = window.localStorage.getItem('patientId');
     csvHelper.write(outputPayload.data, id, 'emotion_recognition').then((res) => {

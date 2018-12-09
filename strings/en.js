@@ -21,5 +21,27 @@ module.exports = {
     disgust: 'DISGUST',
     fear: 'FEAR',
     surprise: 'SURPRISE'
+  },
+  game2: {
+    instructions : [
+      {
+        instruction : 'Set 1, press the spacebar only when you see a happy face, do not respond when you see angry face.'
+      },
+      {
+        instruction : 'Set 2, press the spacebar only when you see a happy face, do not respond when you see neutral face.'
+      },
+      {
+        instruction : 'Set 3, press the spacebar only when you see a neutral face, do not respond when you see happy face.'
+      },
+      {
+        instruction : 'Set 4, press the spacebar only when you see a neutral face, do not respond when you see angry face.'
+      },
+      {
+        instruction : 'Set 5, press the spacebar only when you see a angry face, do not respond when you see happy face.'
+      },
+      {
+        instruction : 'Set 6, press the spacebar only when you see a angry face, do not respond when you see neutral face.'
+      }
+    ]
   }
 }
