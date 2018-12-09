@@ -24,7 +24,7 @@ exports.write = async function (json, id, task) {
       mm = '0' + mm;
     }
     let date = dd + '-' + mm + '-' + yyyy;
-    let fileName = patientId + '_' + date + '.csv';
+    let fileName = patientId + '_' + date + task + '.csv';
 
     return new Promise(function (resolve, reject) {
       dialog.showSaveDialog({ defaultPath: fileName }, (filePath) => {
