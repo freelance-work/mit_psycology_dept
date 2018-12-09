@@ -6,8 +6,8 @@ module.exports = {
   },  
   gamePage: {
     game1: 'Emotion Recognition',
-    game2: 'Face Reaction',
-    game3: 'Word Reaction',
+    game2: 'Affective Go-No-Go',
+    game3: 'Word Affective Go–No-Go',
     game4: 'IOWA Gambling'
   },
   game1: {
