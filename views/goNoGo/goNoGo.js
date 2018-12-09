@@ -76,7 +76,7 @@ startGame = (payloadSet) => {
             clearInterval(timer);
             $('.modal-container').show();
         }
-        startRespTime = new Date();
+        
         setTimeout(function () {
             quad = Math.floor(Math.random() * 4) + 1;
             random_idx = Math.random();
@@ -92,6 +92,7 @@ startGame = (payloadSet) => {
                 emotion: face.response,
             };
             $('.quadrant' + quad).css({ 'background-image': 'url(../../assets/faces/' + face.faceID + '.jpg)' });
+            startRespTime = new Date();
         }, 500);
     }, 1500);
 }
