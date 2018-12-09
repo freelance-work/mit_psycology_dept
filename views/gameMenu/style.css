@@ -74,6 +74,14 @@ body{
 #gameCSV2 {
     background: darkseagreen;
     box-shadow: -3px -3px 1px green inset;
+    
+}
+
+#exp-btn {
+    position: relative;
+    left: 40%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .csv-button {
