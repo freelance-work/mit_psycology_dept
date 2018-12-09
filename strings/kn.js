@@ -21,5 +21,27 @@ module.exports = {
     disgust: 'ಅಸಹ್ಯ',
     fear: 'ಭಯ',
     surprise: 'ಸುಳಿವು'
+  },
+  game2: {
+    instructions : [
+      {
+        instruction : 'Set 1, Press space bar when you see a happy face, not angry face'
+      },
+      {
+        instruction : 'Set 2, Press space bar when you see a happy face, not neutral face'
+      },
+      {
+        instruction : 'Set 3, Press space bar when you see a neutal face, not happy face'
+      },
+      {
+        instruction : 'Set 4, Press space bar when you see a neutral face, not angry face'
+      },
+      {
+        instruction : 'Set 5, Press space bar when you see a angry face, not happy face'
+      },
+      {
+        instruction : 'Set 6, Press space bar when you see a angry face, not neutral face'
+      }
+    ]
   }
 }
