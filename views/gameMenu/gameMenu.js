@@ -51,7 +51,7 @@ $('#game1').on('click', () => {
 });
 
 $('#game2').on('click', () => {
-  if(ipcRenderer.sendSync(GET_TASK_STATE).data.length == 2) {
+  if(ipcRenderer.sendSync(GET_TASK_STATE).data.length >= 2) {
     window.location = "../goNoGo/instruction.html";
   }
 });
