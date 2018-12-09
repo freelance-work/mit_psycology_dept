@@ -1,3 +1,7 @@
+body{
+    user-select: none;
+}
+
 .g1-instruction-container{
     width: auto;
     height: auto;

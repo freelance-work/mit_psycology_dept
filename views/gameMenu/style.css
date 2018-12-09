@@ -1,5 +1,6 @@
 body{
     background-color: #E3F2FD;
+    user-select: none;
 }
 
 .header-container{
