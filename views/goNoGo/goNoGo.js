@@ -102,6 +102,7 @@ $('#export-btn').on('click', async () => {
     csvHelper.write(payload.data, id, 'go-no-go').then((res) => {
         if (res == "success") {
             $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text('Exported');
+            $('#close-modal-btn').hide();
         }
     })
 });

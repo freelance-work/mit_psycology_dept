@@ -80,6 +80,7 @@ $(document).ready(() => {
     csvHelper.write(outputPayload.data, id, 'emotion_recognition').then((res) => {
       if (res == "success") {
         $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text('Exported');
+        $('#close-modal-btn').hide();
       }
     })
   });
