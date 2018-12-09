@@ -20,12 +20,19 @@ module.exports = {
     neutral: 'NEUTRAL',
     disgust: 'DISGUST',
     fear: 'FEAR',
-    surprise: 'SURPRISE'
+    surprise: 'SURPRISE',
+    modalCloseBtn: 'Close',
+    modalContent: 'You are done with the game. Do you want to export the result to CSV ?',
+    modalexitbtn: 'Exit',
+    exportBtn : 'Export to CSV',
+    backbtn : 'Back'
   },
   game2: {
+    startbutton : "Start",
+    continuebutton : 'Continue',
     instructions : [
       {
-        instruction : 'Set 1, Press space bar when you see a happy face, do nothing when you see an angry face'
+        instruction : 'In this task you will see a series of faces, press the spacebar only when you see a happy face, do not respond when you see angry face.'
       },
       {
         instruction : 'Set 2, Press space bar when you see a happy face, do nothing when you see a neutral face'
