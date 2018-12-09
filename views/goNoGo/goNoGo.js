@@ -15,6 +15,7 @@ let payload = { "data": [] }
 let timer;
 let startRespTime = new Date();
 let endRespTime = new Date();
+let count = 0;
 
 $(document).ready(() => {
     let string = JSON.parse(window.localStorage.getItem('lang'));
@@ -40,6 +41,7 @@ $(document).ready(() => {
 
 $('.continue-btn').on('click', () => {
     $('.modal-container').hide();
+    $('.quadrant1, .quadrant2, .quadrant3, .quadrant4').css({ 'background-image': 'url()' });
     startGame(setArr[setCount].obj);
 })
 
@@ -47,7 +49,7 @@ startGame = (payloadSet) => {
     let string = JSON.parse(window.localStorage.getItem('lang'));
     let quad;
     let random_idx;
-    let count = 0;
+
     timer = setInterval(function () {
         if (count != 0) {
             if(resp.response == 'noResponse'){
@@ -60,19 +62,21 @@ startGame = (payloadSet) => {
             console.log(payload.data);
         }
 
-        $('.quadrant').css({ 'background-image': 'url()' });
-        resp = { faceID: '', response: 'noResponse', set: setCount }
-        if (++count > 30) {
+        $('.quadrant1, .quadrant2, .quadrant3, .quadrant4').css({ 'background-image': 'url()' });
+        resp = { faceID: '', response: 'noResponse', set: setCount, correctResponse : setArr[setCount].emotion }
+        if (++count > 5) {
+            count = 0;
             setCount++;
             if (setCount > 5) {
                 clearInterval(timer);
                 $('.final-modal-container').show();
             }
-            $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction)
+            $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction);
+            $('.quadrant1, .quadrant2, .quadrant3, .quadrant4').css({ 'background-image': 'url()' });
             clearInterval(timer);
             $('.modal-container').show();
         }
-        
+        startRespTime = new Date();
         setTimeout(function () {
             quad = Math.floor(Math.random() * 4) + 1;
             random_idx = Math.random();
@@ -88,7 +92,6 @@ startGame = (payloadSet) => {
                 emotion: face.response,
             };
             $('.quadrant' + quad).css({ 'background-image': 'url(../../assets/faces/' + face.faceID + '.jpg)' });
-            startRespTime = new Date();
         }, 500);
     }, 1500);
 }
@@ -108,11 +111,14 @@ $('#exit-btn').on('click', () => {
 });
 
 $('#end-game-btn').on('click', () => {
+    clearInterval(timer);
     $('#close-modal-btn').show();
     $('.final-modal-container').show();
 })
 
 $('#close-modal-btn').on('click', () => {
+    startRespTime = new Date()
     $('.final-modal-container').hide();
     $('#close-modal-btn').hide();
+    startGame(setArr[setCount].obj);
 })
