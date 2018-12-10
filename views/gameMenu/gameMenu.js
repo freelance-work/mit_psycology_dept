@@ -70,6 +70,13 @@ $('#game2').on('click', () => {
   }
 });
 
+$('#game3').on('click', () => {
+  if(ipcRenderer.sendSync(GET_TASK_STATE).data.length >= 3) {
+    window.location = "../wordAffectiveGoNoGo/instruction.html";
+  }
+});
+
+
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
     window.localStorage.setItem('lang', JSON.stringify(string));
     $('.game-text1').html(string.strings.gamePage.game1);
