@@ -36,7 +36,10 @@ module.exports = {
     instructionTitle: 'Affective Go-No-Go',
     instructions : [
       {
-        instruction : 'In this task you will see a series of faces, press the spacebar only when you see a happy face, do not respond when you see angry face.'
+        instruction :  'Trial, Press space bar when you see a happy face, do nothing when you see a angry face.'
+      },
+      {
+        instruction : 'Set 1, Press space bar when you see a happy face, do nothing when you see a angry face.'
       },
       {
         instruction : 'Set 2, Press space bar when you see a happy face, do nothing when you see a neutral face'

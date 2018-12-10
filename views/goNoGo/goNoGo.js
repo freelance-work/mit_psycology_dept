@@ -10,7 +10,7 @@ const {
 let face;
 let resp = { faceID: '', response: 'noResponse' };
 let setCount = 0;
-let setArr = [{ emotion: 'JOY', obj: gamePayload.joyAnger }, { emotion: 'JOY', obj: gamePayload.joyNeutral }, { emotion: 'NEUTRAL', obj: gamePayload.neutralJoy }, { emotion: 'NEUTRAL', obj: gamePayload.neutralAngry }, { emotion: 'ANGER', obj: gamePayload.angerJoy }, { emotion: 'ANGER', obj: gamePayload.angerNeutral }];
+let setArr = [{ emotion: 'JOY', obj: gamePayload.joyAnger }, { emotion: 'JOY', obj: gamePayload.joyAnger }, { emotion: 'JOY', obj: gamePayload.joyNeutral }, { emotion: 'NEUTRAL', obj: gamePayload.neutralJoy }, { emotion: 'NEUTRAL', obj: gamePayload.neutralAngry }, { emotion: 'ANGER', obj: gamePayload.angerJoy }, { emotion: 'ANGER', obj: gamePayload.angerNeutral }];
 let payload = { "data": [] }
 let timer;
 let startRespTime = new Date();
@@ -32,7 +32,6 @@ $(document).ready(() => {
       endRespTime = new Date();
       let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
       if (resp.response == 'noResponse' && reactionTime < 1.00) {
-        console.log(reactionTime);
         $('.quadrant').css({ 'border': '0px solid black'});
         setTimeout(function(){$('.quadrant' + quad).css({ 'border': '1px solid black'})},150)
         if (face.response == setArr[setCount].emotion) {
@@ -55,13 +54,14 @@ $('.continue-btn').on('click', () => {
 startGame = (payloadSet) => {
   let string = JSON.parse(window.localStorage.getItem('lang'));
   let random_idx;
+  let trial;
 
   timer = setInterval(function () {
     if (count != 0) {
       if(resp.response == 'noResponse'){
         endRespTime = new Date();
         let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
-        console.log(reactionTime);
+        if(reactionTime > 1.00) { reactionTime = 1.00 }
         if (face.response == setArr[setCount].emotion) {
             resp = { ...resp, response: 'incorrect', reactionTime : reactionTime }
         } else {
@@ -73,12 +73,16 @@ startGame = (payloadSet) => {
 
     $('.quadrant').css({ 'background-image': 'url()' });
     $('.quadrant').css({ 'border': '0px solid black'});
-    resp = { faceID: '', response: 'noResponse', set: setCount + 1, correctResponse : setArr[setCount].emotion }
-
-    if (++count > 30) {
+    resp = { faceID: '', response: 'noResponse', set: setCount, correctResponse : setArr[setCount].emotion }
+    if (setCount == 0){
+      trial = 10;
+    } else {
+      trial = 30;
+    }
+    if (++count > trial) {
       count = 0;
       setCount++;
-      if (setCount > 5) {
+      if (setCount > 6) {
           clearInterval(timer);
           $('.final-modal-content-text').html(string.strings.commons.modalContent);
           $('#exit-btn').text(string.strings.commons.modalExitButton);
@@ -149,7 +153,6 @@ $('#end-game-btn').on('click', () => {
 
 $('#close-modal-btn').on('click', () => {
   startRespTime = new Date();
-//   startRespTime.setMilliseconds(startRespTime.getMilliseconds() + 500);
   $('.final-modal-container').hide();
   $('#close-modal-btn').hide();
   startGame(setArr[setCount].obj);
