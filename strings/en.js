@@ -42,7 +42,7 @@ module.exports = {
         instruction : 'Set 2, Press space bar when you see a happy face, do nothing when you see a neutral face'
       },
       {
-        instruction : 'Set 3, Press space bar when you see a neutal face, do nothing when you see a happy face'
+        instruction : 'Set 3, Press space bar when you see a neutral face, do nothing when you see a happy face'
       },
       {
         instruction : 'Set 4, Press space bar when you see a neutral face, do nothing when you see an angry face'
