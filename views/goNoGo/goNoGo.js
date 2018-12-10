@@ -16,6 +16,7 @@ let timer;
 let startRespTime = new Date();
 let endRespTime = new Date();
 let count = 0;
+let quad;
 
 $(document).ready(() => {
   let string = JSON.parse(window.localStorage.getItem('lang'));
@@ -31,6 +32,9 @@ $(document).ready(() => {
       endRespTime = new Date();
       let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
       if (resp.response == 'noResponse' && reactionTime < 1.00) {
+        console.log(reactionTime);
+        $('.quadrant').css({ 'border': '0px solid black'});
+        setTimeout(function(){$('.quadrant' + quad).css({ 'border': '1px solid black'})},150)
         if (face.response == setArr[setCount].emotion) {
             resp = { ...resp, response: 'correct', reactionTime : reactionTime }
         } else {
@@ -43,13 +47,13 @@ $(document).ready(() => {
 
 $('.continue-btn').on('click', () => {
   $('.modal-container').hide();
-  $('.quadrant1, .quadrant2, .quadrant3, .quadrant4').css({ 'background-image': 'url()' });
+  $('.quadrant').css({ 'background-image': 'url()' });
+  $('.quadrant').css({ 'border': '0px solid black'});
   startGame(setArr[setCount].obj);
 })
 
 startGame = (payloadSet) => {
   let string = JSON.parse(window.localStorage.getItem('lang'));
-  let quad;
   let random_idx;
 
   timer = setInterval(function () {
@@ -57,6 +61,7 @@ startGame = (payloadSet) => {
       if(resp.response == 'noResponse'){
         endRespTime = new Date();
         let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
+        console.log(reactionTime);
         if (face.response == setArr[setCount].emotion) {
             resp = { ...resp, response: 'incorrect', reactionTime : reactionTime }
         } else {
@@ -66,10 +71,11 @@ startGame = (payloadSet) => {
       payload.data.push(resp);
     }
 
-    $('.quadrant1, .quadrant2, .quadrant3, .quadrant4').css({ 'background-image': 'url()' });
+    $('.quadrant').css({ 'background-image': 'url()' });
+    $('.quadrant').css({ 'border': '0px solid black'});
     resp = { faceID: '', response: 'noResponse', set: setCount + 1, correctResponse : setArr[setCount].emotion }
 
-    if (++count > 5) {
+    if (++count > 30) {
       count = 0;
       setCount++;
       if (setCount > 5) {
@@ -78,11 +84,13 @@ startGame = (payloadSet) => {
           $('#exit-btn').text(string.strings.commons.modalExitButton);
           $('#export-btn').text(string.strings.commons.exportButton);
           $('.final-modal-container').show();
+      } else {
+        $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction);
+        $('.quadrant').css({ 'background-image': 'url()' });
+        $('.quadrant').css({ 'border': '0px solid black'});
+        clearInterval(timer);
+        $('.modal-container').show();
       }
-      $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction);
-      $('.quadrant1, .quadrant2, .quadrant3, .quadrant4').css({ 'background-image': 'url()' });
-      clearInterval(timer);
-      $('.modal-container').show();
     }
     
     setTimeout(function () {
@@ -103,6 +111,7 @@ startGame = (payloadSet) => {
           emotion: face.response,
       };
       $('.quadrant' + quad).css({ 'background-image': 'url(../../assets/faces/' + face.faceID + '.jpg)' });
+      $('.quadrant' + quad).css({ 'border': '1px solid black'});
       startRespTime = new Date();
     }, 500);
   }, 1500);
@@ -139,7 +148,8 @@ $('#end-game-btn').on('click', () => {
 })
 
 $('#close-modal-btn').on('click', () => {
-  startRespTime = new Date()
+  startRespTime = new Date();
+//   startRespTime.setMilliseconds(startRespTime.getMilliseconds() + 500);
   $('.final-modal-container').hide();
   $('#close-modal-btn').hide();
   startGame(setArr[setCount].obj);
