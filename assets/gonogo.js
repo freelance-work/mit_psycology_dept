@@ -6,7 +6,7 @@ module.exports = {
       response: 'JOY'
     },
     {
-      faceID: 'DC_0319',
+      faceID: 'DC_0139',
       response: 'JOY'
     },
     {
@@ -178,7 +178,7 @@ module.exports = {
       response: 'ANGER'
     },
     {
-      faceID: 'MJ_1052',
+      faceID: 'MJ_0152',
       response: 'ANGER'
     },
     {
@@ -218,7 +218,7 @@ module.exports = {
       response: 'ANGER'
     },
     {
-      faceID: 'PO_0915',
+      faceID: 'PO_0951',
       response: 'ANGER'
     },
     {
@@ -611,7 +611,7 @@ module.exports = {
       response: 'JOY'
     },
     {
-      faceID: 'DC_0319',
+      faceID: 'DC_0139',
       response: 'JOY'
     },
     {
@@ -904,7 +904,7 @@ module.exports = {
       response: 'ANGER'
     },
     {
-      faceID: 'MJ_1052',
+      faceID: 'MJ_0152',
       response: 'ANGER'
     },
     {
@@ -944,7 +944,7 @@ module.exports = {
       response: 'ANGER'
     },
     {
-      faceID: 'PO_0915',
+      faceID: 'PO_0951',
       response: 'ANGER'
     },
     {
@@ -1026,7 +1026,7 @@ module.exports = {
       response: 'ANGER'
     },
     {
-      faceID: 'MJ_1052',
+      faceID: 'MJ_0152',
       response: 'ANGER'
     },
     {
@@ -1066,7 +1066,7 @@ module.exports = {
       response: 'ANGER'
     },
     {
-      faceID: 'PO_0915',
+      faceID: 'PO_0951',
       response: 'ANGER'
     },
     {
@@ -1094,7 +1094,7 @@ module.exports = {
       response: 'JOY'
     },
     {
-      faceID: 'DC_0319',
+      faceID: 'DC_0139',
       response: 'JOY'
     },
     {
@@ -1268,7 +1268,7 @@ module.exports = {
       response: 'ANGER'
     },
     {
-      faceID: 'MJ_1052',
+      faceID: 'MJ_0152',
       response: 'ANGER'
     },
     {
@@ -1308,7 +1308,7 @@ module.exports = {
       response: 'ANGER'
     },
     {
-      faceID: 'PO_0915',
+      faceID: 'PO_0951',
       response: 'ANGER'
     },
     {
