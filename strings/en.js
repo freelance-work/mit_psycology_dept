@@ -1,4 +1,15 @@
 module.exports = {
+  commons: {
+    modalCloseButton: 'Close',
+    modalContent: 'You are done with the game. Do you want to export the result to CSV?',
+    modalExitButton: 'Exit',
+    exportButton : 'Export to CSV',
+    backButton : 'Back',
+    startButton : "Start",
+    continueButton : 'Continue',
+    exported: 'Exported',
+    inGameExit: 'Are you sure you want to exit? The game cannot be resumed.'
+  },
   landingPage: {
     title: 'Enter patient ID',
     placeholder: 'Patient ID',
@@ -13,7 +24,6 @@ module.exports = {
   game1: {
     instructionTitle: 'Emotion recognition',
     instruction: 'Look at the faces and choose the emotion the face is expressing.',
-    startButtonText: 'Start',
     joy: 'JOY',
     sadness: 'SADNESS',
     anger: 'ANGER',
@@ -21,15 +31,9 @@ module.exports = {
     disgust: 'DISGUST',
     fear: 'FEAR',
     surprise: 'SURPRISE',
-    modalCloseBtn: 'Close',
-    modalContent: 'You are done with the game. Do you want to export the result to CSV ?',
-    modalexitbtn: 'Exit',
-    exportBtn : 'Export to CSV',
-    backbtn : 'Back'
   },
   game2: {
-    startbutton : "Start",
-    continuebutton : 'Continue',
+    instructionTitle: 'Affective Go-No-Go',
     instructions : [
       {
         instruction : 'In this task you will see a series of faces, press the spacebar only when you see a happy face, do not respond when you see angry face.'

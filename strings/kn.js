@@ -1,4 +1,14 @@
 module.exports = {
+  commons: {
+    modalCloseButton: 'ಮುಚ್ಚಿ',
+    modalContent: 'ನೀವು ಆಟದೊಂದಿಗೆ ಮಾಡಲಾಗುತ್ತದೆ. ನೀವು ಫಲಿತಾಂಶವನ್ನು CSV ಗೆ ರಫ್ತು ಮಾಡಲು ಬಯಸುವಿರಾ?',
+    modalExitButton: 'ನಿರ್ಗಮನ',
+    exportButton : 'CSV ಗೆ ರಫ್ತು ಮಾಡಿ',
+    backButton : 'ಹಿಂದೆ',
+    startButton : "ಪ್ರಾರಂಭಿಸಿ",
+    continueButton : 'ಮುಂದುವರೆಯಿರಿ',
+    exported: 'ರಫ್ತು ಮಾಡಲಾಗಿದೆ'
+  },
   landingPage: {
     title: 'ರೋಗಿಯ ID ಯನ್ನು ನಮೂದಿಸಿ',
     placeholder: 'ರೋಗಿಯ ID',
@@ -13,7 +23,6 @@ module.exports = {
   game1: {
     instructionTitle: 'ಭಾವನೆಯ ಗುರುತಿಸುವಿಕೆ',
     instruction: 'ಮುಖಗಳನ್ನು ನೋಡಿ ಮತ್ತು ಮುಖವು ವ್ಯಕ್ತಪಡಿಸುವ ಭಾವನೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ.',
-    startButtonText: 'ಪ್ರಾರಂಭಿಸಿ',
     joy: 'ಸಂತೋಷ',
     sadness: 'ದುಃಖ',
     anger: 'ಕೋಪ',
@@ -21,15 +30,10 @@ module.exports = {
     disgust: 'ಅಸಹ್ಯ',
     fear: 'ಭಯ',
     surprise: 'ಸುಳಿವು',
-    modalCloseBtn: 'ಮುಚ್ಚಿ',
-    modalContent: 'ನೀವು ಆಟದೊಂದಿಗೆ ಮಾಡಲಾಗುತ್ತದೆ. ನೀವು ಫಲಿತಾಂಶವನ್ನು CSV ಗೆ ರಫ್ತು ಮಾಡಲು ಬಯಸುವಿರಾ?',
-    modalexitbtn: 'ನಿರ್ಗಮನ',
-    exportBtn : 'CSV ಗೆ ರಫ್ತು ಮಾಡಿ',
-    backbtn : 'ಹಿಂದೆ'
   },
   game2: {
-    startbutton : "ಪ್ರಾರಂಭಿಸಿ",
-    continuebutton : 'ಮುಂದುವರೆಯಿರಿ',
+    instructionTitle: 'ಪರಿಣಾಮಕಾರಿ ಗೋ-ಇಲ್ಲ-ಗೋ',
+    inGameExit: 'ನೀನು ನಿಜವಾಗಲೂ ಹೊರಗೆ ಹೂಗಬಯಸುತ್ತೀಯಾ? ಆಟವನ್ನು ಪುನರಾರಂಭಿಸಲಾಗುವುದಿಲ್ಲ.',
     instructions : [
       {
         instruction : 'ಈ ಕೆಲಸದಲ್ಲಿ ನೀವು ಮುಖಗಳ ಸರಣಿಗಳನ್ನು ನೋಡುತ್ತೀರಿ, ನೀವು ಸಂತೋಷದ ಮುಖವನ್ನು ನೋಡಿದಾಗ ಮಾತ್ರ ಸ್ಪೇಸ್ ಬಾರ್ ಅನ್ನು ಒತ್ತಿರಿ, ನೀವು ಕೋಪದ ಮುಖವನ್ನು ನೋಡಿದಾಗ ಪ್ರತಿಕ್ರಿಯಿಸಬೇಡಿ'

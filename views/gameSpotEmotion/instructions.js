@@ -10,9 +10,8 @@ $(document).ready(() => {
     let string = JSON.parse(window.localStorage.getItem('lang'));
     $('.g1-instruction-title').html(string.strings.game1.instructionTitle);
     $('.g1-instructions').html(string.strings.game1.instruction);
-    $('#start-btn').text(string.strings.game1.startButtonText);
-    $('#back-btn').text(string.strings.game1.backbtn);
-    
+    $('#start-btn').text(string.strings.commons.startButton);
+    $('#back-btn').text(string.strings.commons.backButton);
   } catch(err) { };
 });
 
@@ -24,6 +23,6 @@ ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
     window.localStorage.setItem('lang', JSON.stringify(string));
     $('.g1-instruction-title').html(string.strings.game1.instructionTitle);
     $('.g1-instructions').html(string.strings.game1.instruction);
-    $('#start-btn').text(string.strings.game1.startButtonText);
-    $('#back-btn').text(string.strings.game1.backbtn);
+    $('#start-btn').text(string.strings.commons.startButton);
+    $('#back-btn').text(string.strings.commons.backButton);
 });

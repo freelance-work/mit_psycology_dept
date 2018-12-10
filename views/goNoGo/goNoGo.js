@@ -20,10 +20,9 @@ let count = 0;
 $(document).ready(() => {
   let string = JSON.parse(window.localStorage.getItem('lang'));
   $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction);
-  $('#end-game-btn').text(string.strings.game2.exitbtn);
-  $('.modal-content-text').text(string.strings.game1.modalContent);
-  $('.modal-content-text').text(string.strings.game1.modalContent);
-  $('#exit-btn').text(string.strings.game1.modalexitbtn);
+  $('#exit-btn').text(string.strings.commons.modalExitButton);
+  $('#end-game-btn').text(string.strings.commons.modalExitButton);
+  $('#continue-btn').text(string.strings.commons.continueButton);
   
   startGame(setArr[setCount].obj);
 
@@ -58,8 +57,6 @@ startGame = (payloadSet) => {
       if(resp.response == 'noResponse'){
         endRespTime = new Date();
         let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
-        console.log(face.response);
-        console.log(setArr[setCount].emotion)
         if (face.response == setArr[setCount].emotion) {
             resp = { ...resp, response: 'incorrect', reactionTime : reactionTime }
         } else {
@@ -77,6 +74,9 @@ startGame = (payloadSet) => {
       setCount++;
       if (setCount > 5) {
           clearInterval(timer);
+          $('.final-modal-content-text').html(string.strings.commons.modalContent);
+          $('#exit-btn').text(string.strings.commons.modalExitButton);
+          $('#export-btn').text(string.strings.commons.exportButton);
           $('.final-modal-container').show();
       }
       $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction);
@@ -113,7 +113,7 @@ $('#export-btn').on('click', async () => {
   let fields = ['set', 'faceID', 'quadrant', 'response', 'correctResponse', 'emotion', 'reactionTime'];
   csvHelper.write(payload.data, id, 'go-no-go', fields).then((res) => {
     if (res == "success") {
-      $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text('Exported');
+      $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text(string.strings.commons.exported);
       $('#close-modal-btn').hide();
     }
   })
@@ -129,6 +129,10 @@ $('#exit-btn').on('click', () => {
 
 $('#end-game-btn').on('click', () => {
   clearInterval(timer);
+  let string = JSON.parse(window.localStorage.getItem('lang'));
+  $('.final-modal-content-text').html(string.strings.commons.inGameExit);
+  $('#exit-btn').text(string.strings.commons.modalExitButton);
+  $('#export-btn').text(string.strings.commons.exportButton);
   $('#close-modal-btn').show();
   $('.final-modal-container').show();
 })
@@ -142,8 +146,12 @@ $('#close-modal-btn').on('click', () => {
 
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   window.localStorage.setItem('lang', JSON.stringify(string));
-  $('.g1-instruction-title').html(string.strings.game1.instructionTitle);
-  $('.g1-instructions').html(string.strings.game1.instruction);
-  $('#start-btn').text(string.strings.game1.startButtonText);
-  $('#back-btn').text(string.strings.game1.backbtn);
+  $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction);
+  $('#end-game-btn').text(string.strings.commons.modalExitButton);
+  $('#exit-btn').text(string.strings.commons.modalExitButton);
+  $('#start-btn').text(string.strings.commons.startButtonText);
+  $('#back-btn').text(string.strings.commons.backButton);
+  $('#continue-btn').text(string.strings.commons.continueButton);
+  $('#export-btn').text(string.strings.commons.exportButton);
+  $('.final-modal-content-text').html(string.strings.commons.modalContent);
 });
