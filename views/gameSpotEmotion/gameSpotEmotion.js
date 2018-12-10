@@ -91,7 +91,6 @@ $(document).ready(() => {
     let fields = ['faceId', 'answer', 'choice', 'reactionTime'];
     csvHelper.write(outputPayload.data, id, 'emotion_recognition', fields).then((res) => {
       if (res == "success") {
-        console.log(string);
         $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text(string.strings.commons.exported);
         $('#close-modal-btn').hide();
       }

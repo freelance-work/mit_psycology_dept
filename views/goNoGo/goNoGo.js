@@ -111,6 +111,7 @@ startGame = (payloadSet) => {
 $('#export-btn').on('click', async () => {
   let id = window.localStorage.getItem('patientId');
   let fields = ['set', 'faceID', 'quadrant', 'response', 'correctResponse', 'emotion', 'reactionTime'];
+  let string = JSON.parse(window.localStorage.getItem('lang'));
   csvHelper.write(payload.data, id, 'go-no-go', fields).then((res) => {
     if (res == "success") {
       $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text(string.strings.commons.exported);
