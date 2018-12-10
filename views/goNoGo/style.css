@@ -96,6 +96,10 @@ body{
     display: none;
 }
 
+.final-modal-container-info{
+    display: none;
+}
+
 .final-modal-container:after{
     content: '';
     width: 100vw;

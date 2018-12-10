@@ -133,6 +133,19 @@ $('#export-btn').on('click', async () => {
   })
 });
 
+$('#export-btn-info').on('click', async () => {
+  let id = window.localStorage.getItem('patientId');
+  let fields = ['set', 'faceID', 'quadrant', 'response', 'correctResponse', 'emotion', 'reactionTime'];
+  let string = JSON.parse(window.localStorage.getItem('lang'));
+  csvHelper.write(payload.data, id, 'go-no-go', fields).then((res) => {
+    if (res == "success") {
+      $('#export-btn-info').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text(string.strings.commons.exported);
+      $('#close-modal-btn').hide();
+    }
+  })
+});
+
+
 $('#exit-btn').on('click', () => {
   ipcRenderer.send(PUT_GONOGO_DATA, payload);
   if(payload.data.length > 0) {
@@ -140,6 +153,14 @@ $('#exit-btn').on('click', () => {
   }  
   window.location = '../gameMenu/gameMenu.html';
 });
+
+$('#exit-btn-info').on('click', () => {
+  ipcRenderer.send(PUT_GONOGO_DATA, payload);
+  if(payload.data.length > 0) {
+    ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3] });
+  }  
+  window.location = '../gameMenu/gameMenu.html';
+})
 
 $('#end-game-btn').on('click', () => {
   clearInterval(timer);
@@ -151,11 +172,25 @@ $('#end-game-btn').on('click', () => {
   $('.final-modal-container').show();
 })
 
+$('#end-game-btn-info').on('click', () => {
+  let string = JSON.parse(window.localStorage.getItem('lang'));
+  $('.final-modal-content-text').html(string.strings.commons.inGameExit);
+  $('#exit-btn').text(string.strings.commons.modalExitButton);
+  $('#export-btn').text(string.strings.commons.exportButton);
+  $('#close-modal-btn-info').show();
+  $('.final-modal-container-info').show();
+})
+
 $('#close-modal-btn').on('click', () => {
   startRespTime = new Date();
   $('.final-modal-container').hide();
   $('#close-modal-btn').hide();
   startGame(setArr[setCount].obj);
+})
+
+$('#close-modal-btn-info').on('click', () => {
+  $('.final-modal-container-info').hide();
+  $('#close-modal-btn-info').hide();
 })
 
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
