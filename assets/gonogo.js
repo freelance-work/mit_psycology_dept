@@ -249,7 +249,7 @@ module.exports = {
       response: 'JOY'
     },
     {
-      faceID: 'DC_0319',
+      faceID: 'DC_0139',
       response: 'JOY'
     },
     {
