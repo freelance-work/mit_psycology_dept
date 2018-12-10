@@ -85,7 +85,8 @@ $(document).ready(() => {
 
   $('#export-btn').on('click', async () => {
     let id = window.localStorage.getItem('patientId');
-    csvHelper.write(outputPayload.data, id, 'emotion_recognition').then((res) => {
+    let fields = ['faceId', 'answer', 'choice', 'reactionTime'];
+    csvHelper.write(outputPayload.data, id, 'emotion_recognition', fields).then((res) => {
       if (res == "success") {
         $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text('Exported');
         $('#close-modal-btn').hide();

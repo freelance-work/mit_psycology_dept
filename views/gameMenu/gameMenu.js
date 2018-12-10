@@ -40,7 +40,8 @@ $('#gameCSV1').on('click', async (e) => {
   e.stopPropagation();
   let outputPayload = ipcRenderer.sendSync(GET_EMOTION_RECOGNITION_DATA);
   let id = window.localStorage.getItem('patientId');
-  csvHelper.write(outputPayload.data, id, 'emotion_recognition').then((res) => {
+  let fields = ['faceId', 'answer', 'choice', 'reactionTime'];
+  csvHelper.write(outputPayload.data, id, 'emotion_recognition', fields).then((res) => {
     if (res == "success") {
       alert('CSV Exported');
     }
@@ -51,7 +52,8 @@ $('#gameCSV2').on('click', async (e) => {
   e.stopPropagation();
   let outputPayload = ipcRenderer.sendSync(GET_GONOGO_DATA);
   let id = window.localStorage.getItem('patientId');
-  csvHelper.write(outputPayload.data, id, 'go-no-go').then((res) => {
+  let fields = ['set', 'faceID', 'quadrant', 'response', 'correctResponse', 'emotion', 'reactionTime'];
+  csvHelper.write(outputPayload.data, id, 'go-no-go', fields).then((res) => {
     if (res == "success") {
       alert('CSV Exported');
     }

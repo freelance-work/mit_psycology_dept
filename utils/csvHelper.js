@@ -6,9 +6,11 @@ const os = require('os');
 const path = require('path');
 
 
-exports.write = async function (json, id, task) {
+exports.write = async function (json, id, task, fields) {
   try {
-    const csv = json2csv(json);
+    let opts = {fields};
+
+    const csv = json2csv(json, opts);
 
     let patientId = id;
 
