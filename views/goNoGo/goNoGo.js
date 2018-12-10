@@ -75,7 +75,7 @@ startGame = (payloadSet) => {
     $('.quadrant').css({ 'border': '0px solid black'});
     resp = { faceID: '', response: 'noResponse', set: setCount + 1, correctResponse : setArr[setCount].emotion }
 
-    if (++count > 5) {
+    if (++count > 30) {
       count = 0;
       setCount++;
       if (setCount > 5) {
@@ -84,12 +84,13 @@ startGame = (payloadSet) => {
           $('#exit-btn').text(string.strings.commons.modalExitButton);
           $('#export-btn').text(string.strings.commons.exportButton);
           $('.final-modal-container').show();
+      } else {
+        $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction);
+        $('.quadrant').css({ 'background-image': 'url()' });
+        $('.quadrant').css({ 'border': '0px solid black'});
+        clearInterval(timer);
+        $('.modal-container').show();
       }
-      $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction);
-      $('.quadrant').css({ 'background-image': 'url()' });
-      $('.quadrant').css({ 'border': '0px solid black'});
-      clearInterval(timer);
-      $('.modal-container').show();
     }
     
     setTimeout(function () {
