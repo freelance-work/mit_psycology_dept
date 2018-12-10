@@ -30,7 +30,7 @@ $(document).ready(() => {
   $(window).keypress(function (e) {
     if (e.which === 32) {
       endRespTime = new Date();
-      let reactionTime = (endRespTime.getTime() - startRespTime.getTime()) / 1000;
+      let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
       if (resp.response == 'noResponse' && reactionTime < 1.00) {
         if (face.response == setArr[setCount].emotion) {
             resp = { ...resp, response: 'correct', reactionTime : reactionTime }
@@ -57,7 +57,7 @@ startGame = (payloadSet) => {
     if (count != 0) {
       if(resp.response == 'noResponse'){
         endRespTime = new Date();
-        let reactionTime = (endRespTime.getTime() - startRespTime.getTime()) / 1000;
+        let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
         console.log(face.response);
         console.log(setArr[setCount].emotion)
         if (face.response == setArr[setCount].emotion) {
