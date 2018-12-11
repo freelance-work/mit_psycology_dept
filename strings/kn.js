@@ -57,5 +57,31 @@ module.exports = {
         instruction : 'ಹೊಂದಿಸಿ 6, ಕೋಪದ ಮುಖವನ್ನು ನೀವು ನೋಡಿದಾಗ ಸ್ಪೇಸ್ ಬಾರ್ ಒತ್ತಿರಿ, ನೀವು ತಟಸ್ಥ ಮುಖವನ್ನು ನೋಡಿದಾಗ ಏನೂ ಮಾಡಬೇಡಿ'
       }
     ]
+  },
+  game3: {
+    instructionTitle: 'Word Affective Go-No-Go',
+    instructions : [
+      {
+        instruction :  'ವಿಚಾರಣೆ, ನೀವು ಸಂತೋಷದ ಪದವನ್ನು ನೋಡಿದಾಗ ಸ್ಪೇಸ್ ಬಾರ್ ಅನ್ನು ಒತ್ತಿ, ನೀವು ದುಃಖದ ಪದವನ್ನು ನೋಡಿದಾಗ ಏನೂ ಮಾಡಬೇಡಿ.'
+      },
+      {
+        instruction : 'ಹೊಂದಿಸಿ 1, ನೀವು ಸಂತೋಷದ ಪದವನ್ನು ನೋಡಿದಾಗ ಸ್ಪೇಸ್ ಬಾರ್ ಅನ್ನು ಒತ್ತಿ, ನೀವು ದುಃಖದ ಪದವನ್ನು ನೋಡಿದಾಗ ಏನೂ ಮಾಡಬೇಡಿ.'
+      },
+      {
+        instruction : 'ಹೊಂದಿಸಿ 2, Press space bar when you see a happy word, do nothing when you see a neutral word'
+      },
+      {
+        instruction : 'ಹೊಂದಿಸಿ 3, Press space bar when you see a neutral word, do nothing when you see a happy word'
+      },
+      {
+        instruction : 'ಹೊಂದಿಸಿ 4, Press space bar when you see a neutral word, do nothing when you see an sad word'
+      },
+      {
+        instruction : 'ಹೊಂದಿಸಿ 5, Press space bar when you see a sad word, do nothing when you see a happy word'
+      },
+      {
+        instruction : 'ಹೊಂದಿಸಿ 6, Press space bar when you see a sad word, do nothing when you see a neutral word'
+      }
+    ]
   }
 }

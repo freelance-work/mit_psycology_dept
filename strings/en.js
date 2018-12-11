@@ -57,5 +57,31 @@ module.exports = {
         instruction : 'Set 6, Press space bar when you see a angry face, do nothing when you see a neutral face'
       }
     ]
+  },
+  game3: {
+    instructionTitle: 'Word Affective Go-No-Go',
+    instructions : [
+      {
+        instruction :  'Trial, Press space bar when you see a happy word, do nothing when you see a sad word.'
+      },
+      {
+        instruction : 'Set 1, Press space bar when you see a happy word, do nothing when you see a sad word.'
+      },
+      {
+        instruction : 'Set 2, Press space bar when you see a happy word, do nothing when you see a neutral word'
+      },
+      {
+        instruction : 'Set 3, Press space bar when you see a neutral word, do nothing when you see a happy word'
+      },
+      {
+        instruction : 'Set 4, Press space bar when you see a neutral word, do nothing when you see an sad word'
+      },
+      {
+        instruction : 'Set 5, Press space bar when you see a sad word, do nothing when you see a happy word'
+      },
+      {
+        instruction : 'Set 6, Press space bar when you see a sad word, do nothing when you see a neutral word'
+      }
+    ]
   }
 }
