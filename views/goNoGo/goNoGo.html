@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../../assets/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+    <script>window.$ = window.jQuery = require('../../assets/jquery.min.js');</script>
+    <script src="../../assets/bootstrap/bootstrap.js"></script>
+</head>
+
+<body>
+
+    <div class="modal-container">
+        <div class="f-modal">
+            <div class="modal-cont">
+                <p class="modal-content-text">You are done with this set, press the spacebar only when you see a happy face, do not respond when you see any other emotion.</p>
+            </div>
+            <div class="modal-btns">
+                    <button type="button" id="end-game-btn-info" class="btn btn-secondary">Exit</button>
+                <button id="continue-btn" type="button" class="btn btn-primary modal-btn continue-btn">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="final-modal-container">
+        <div class="finish-modal">
+            <button id="close-modal-btn" type="button" class="btn btn-secondary btn-sm">close</button>
+            <div class="modal-cont">
+                <p class="final-modal-content-text">You are done with the game. Do you want to export the result to CSV ?</p>
+            </div>
+            <div class="modal-btns">
+                <button id="exit-btn" type="button" class="btn btn-primary modal-btn col-md-4">Exit</button>
+                <button id="export-btn" type="button" class="btn btn-primary modal-btn export-btn">Export to CSV</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="final-modal-container-info">
+            <div class="finish-modal">
+                <button id="close-modal-btn-info" type="button" class="btn btn-secondary btn-sm">close</button>
+                <div class="modal-cont">
+                    <p class="final-modal-content-text">You are done with the game. Do you want to export the result to CSV ?</p>
+                </div>
+                <div class="modal-btns">
+                    <button id="exit-btn-info" type="button" class="btn btn-primary modal-btn col-md-4">Exit</button>
+                    <button id="export-btn-info" type="button" class="btn btn-primary modal-btn export-btn">Export to CSV</button>
+                </div>
+            </div>
+        </div>
+
+    <div class="container">
+            <div class="end-game-btn-container">
+                    <button type="button" id="end-game-btn" class="btn btn-secondary">Exit</button>
+                </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="quadrant quadrant1">
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="quadrant quadrant2">
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="quadrant quadrant3">
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="quadrant quadrant4">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="goNoGo.js"></script>
+</body>
+
+</html>

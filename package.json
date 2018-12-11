@@ -1,10 +1,39 @@
 {
-  "name": "mit_psycology_dept",
+  "name": "AFCO",
   "version": "1.0.0",
-  "description": "",
+  "description": "afco",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "build": {
+    "appId": "com.freelance.afco",
+    "dmg": {
+      "contents": [
+        {
+          "x": 150,
+          "y": 180
+        },
+        {
+          "x": 380,
+          "y": 180,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    }
   },
   "repository": {
     "type": "git",
@@ -17,6 +46,14 @@
   },
   "homepage": "https://github.com/freelance-work/mit_psycology_dept#readme",
   "dependencies": {
-    "electron": "^3.0.9"
+    "async-mkdirp": "^1.2.7",
+    "electron-store": "^2.0.0",
+    "json2csv": "^4.3.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "electron": "^3.0.9",
+    "electron-builder": "^20.38.2",
+    "fs": "0.0.1-security"
   }
 }

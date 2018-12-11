@@ -1,0 +1,131 @@
+body{
+    user-select: none;
+}
+
+.g2-instruction-container{
+    width: auto;
+    height: auto;
+    background-color: #f5f5f5;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
+#back-btn{
+    margin-top: 32px;
+}
+
+.g2-instruction-title-container{
+    text-align: center;
+    margin: 32px;
+}
+
+.g2-instructions-content{
+    text-align: center;
+    margin: 32px;
+}
+
+.start-g2-btn{
+    margin-top: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.quadrant{
+    height: 40vh;
+    margin-left: 2vh;
+    margin-right: 2vh;
+    /* max-width: 100vh; */
+    background-color: #f5f5f5;
+    margin-top: 3vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1);
+    background-position: center;
+}
+
+.modal-container{
+    display: none;
+}
+
+#close-modal-btn{
+    margin-bottom: 16px;
+    display: none;
+}
+
+.end-game-btn-container {
+    padding-top: 16px;
+}
+
+.modal-container:after{
+    content: '';
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    opacity: 1;
+    position: absolute;
+    z-index: 9;
+}
+
+.f-modal{
+    width: auto;
+    height: auto;
+    background-color: #f5f5f5;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* border-radius: 5px; */
+    z-index: 10;
+    padding: 16px;
+}
+
+.modal-cont{
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+.modal-btns{
+    text-align: center;
+}
+
+.final-modal-container{
+    display: none;
+}
+
+.final-modal-container-info{
+    display: none;
+}
+
+.final-modal-container:after{
+    content: '';
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.3;
+    position: absolute;
+    z-index: 9;
+}
+
+.finish-modal{
+    width: auto;
+    height: auto;
+    background-color: #f5f5f5;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* border-radius: 5px; */
+    z-index: 10;
+    padding: 16px;
+}
+
+@media all and (max-width: 992px) {
+    .quadrant{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
