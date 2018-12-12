@@ -123,9 +123,11 @@ startGame = (payloadSet) => {
 
 $('#export-btn').on('click', async () => {
   let id = window.localStorage.getItem('patientId');
-  csvHelper.write(payload.data, id, 'word-go-no-go').then((res) => {
+  let fields = ['set', 'word', 'quadrant', 'response', 'correctResponse', 'emotion', 'reactionTime'];
+  let string = JSON.parse(window.localStorage.getItem('lang'));
+  csvHelper.write(payload.data, id, 'word-go-no-go', fields).then((res) => {
     if (res == "success") {
-      $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text('Exported');
+      $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text(string.strings.commons.exported);
       $('#close-modal-btn').hide();
     }
   })
@@ -165,6 +167,26 @@ $('#close-modal-btn-info').on('click', () => {
   $('.final-modal-container-info').hide();
   $('#close-modal-btn-info').hide();
 })
+
+$('#exit-btn-info').on('click', () => {
+  ipcRenderer.send(PUT_DATA, 'gonogo', payload);
+  if(payload.data.length > 0) {
+    ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3] });
+  }  
+  window.location = '../gameMenu/gameMenu.html';
+})
+
+$('#export-btn-info').on('click', async () => {
+  let id = window.localStorage.getItem('patientId');
+  let fields = ['set', 'word', 'quadrant', 'response', 'correctResponse', 'emotion', 'reactionTime'];
+  let string = JSON.parse(window.localStorage.getItem('lang'));
+  csvHelper.write(payload.data, id, 'word-go-no-go', fields).then((res) => {
+    if (res == "success") {
+      $('#export-btn-info').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text(string.strings.commons.exported);
+      $('#close-modal-btn').hide();
+    }
+  })
+});
 
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   window.localStorage.setItem('lang', JSON.stringify(string));
