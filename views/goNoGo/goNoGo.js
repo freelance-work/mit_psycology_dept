@@ -139,7 +139,7 @@ $('#export-btn-info').on('click', async () => {
   csvHelper.write(payload.data, id, 'go-no-go', fields).then((res) => {
     if (res == "success") {
       $('#export-btn-info').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text(string.strings.commons.exported);
-      $('#close-modal-btn').hide();
+      $('#close-modal-btn-info').hide();
     }
   })
 });
