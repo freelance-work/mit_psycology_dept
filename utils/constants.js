@@ -10,5 +10,8 @@ module.exports = {
   HANDLE_PUT_GONOGO_DATA: 'handle_put_gonogo_data',
   GET_GONOGO_DATA: 'get_gonogo_data',
   PUT_TASK_STATE: 'put_task_state',
-  GET_TASK_STATE: 'get_task_state'
+  GET_TASK_STATE: 'get_task_state',
+  PUT_WORD_GONOGO_DATA: 'put_word_gonogo_data',
+  HANDLE_PUT_WORD_GONOGO_DATA: 'handle_put_word_gonogo_data',
+  GET_WORD_GONOGO_DATA: 'get_word_gonogo_data'
 };

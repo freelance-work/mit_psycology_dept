@@ -29,7 +29,10 @@ const {
  GET_EMOTION_RECOGNITION_DATA,
  PUT_GONOGO_DATA,
  HANDLE_PUT_GONOGO_DATA,
- GET_GONOGO_DATA
+ GET_GONOGO_DATA,
+ PUT_WORD_GONOGO_DATA,
+ HANDLE_PUT_WORD_GONOGO_DATA,
+ GET_WORD_GONOGO_DATA
 } = require('./utils/constants');
 
 let mainWindow;
@@ -81,6 +84,21 @@ ipcMain.on(PUT_GONOGO_DATA, (e, data) => {
 });
 
 ipcMain.on(GET_GONOGO_DATA, (e) => {
+  let data = store.get('gonogo');
+  e.returnValue = data;
+})
+
+ipcMain.on(PUT_WORD_GONOGO_DATA, (e, data) => {
+  if(data) {
+    store.set('gonogo', data);
+  }
+  mainWindow.send(HANDLE_PUT_WORD_GONOGO_DATA, {
+    success: true,
+    message: 'affective go-no-go data stored'
+  });
+});
+
+ipcMain.on(GET_WORD_GONOGO_DATA, (e) => {
   let data = store.get('gonogo');
   e.returnValue = data;
 })

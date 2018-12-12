@@ -7,6 +7,7 @@ const {
     HANDLE_LANGUAGE_CHANGE,
     GET_EMOTION_RECOGNITION_DATA,
     GET_GONOGO_DATA,
+    GET_WORD_GONOGO_DATA,
     GET_TASK_STATE
 } = require('../../utils/constants');
 
@@ -54,6 +55,18 @@ $('#gameCSV2').on('click', async (e) => {
   let id = window.localStorage.getItem('patientId');
   let fields = ['set', 'faceID', 'quadrant', 'response', 'correctResponse', 'emotion', 'reactionTime'];
   csvHelper.write(outputPayload.data, id, 'go-no-go', fields).then((res) => {
+    if (res == "success") {
+      alert('CSV Exported');
+    }
+  })
+});
+
+$('#gameCSV3').on('click', async (e) => {
+  e.stopPropagation();
+  let outputPayload = ipcRenderer.sendSync(GET_WORD_GONOGO_DATA);
+  let id = window.localStorage.getItem('patientId');
+  let fields = ['set', 'word', 'quadrant', 'response', 'correctResponse', 'emotion', 'reactionTime'];
+  csvHelper.write(outputPayload.data, id, 'word-go-no-go', fields).then((res) => {
     if (res == "success") {
       alert('CSV Exported');
     }
