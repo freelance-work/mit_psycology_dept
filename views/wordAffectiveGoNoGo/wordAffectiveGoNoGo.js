@@ -4,8 +4,7 @@ const csvHelper = require('../../utils/csvHelper');
 const gamePayload = require('../../assets/word_gonogo');
 const {
   HANDLE_LANGUAGE_CHANGE,
-  PUT_GONOGO_DATA,
-  PUT_WORD_GONOGO_DATA,
+  PUT_DATA,
   PUT_TASK_STATE,
 } = require('../../utils/constants');
 let face;
@@ -133,7 +132,7 @@ $('#export-btn').on('click', async () => {
 });
 
 $('#exit-btn').on('click', () => {
-  ipcRenderer.send(PUT_WORD_GONOGO_DATA, payload);
+  ipcRenderer.send(PUT_DATA, 'word_gonogo', payload);
   if (payload.data.length > 0) {
     ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3, 4] });
   }

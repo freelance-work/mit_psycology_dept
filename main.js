@@ -24,15 +24,9 @@ const {
  GET_STRINGS,
  PUT_TASK_STATE,
  GET_TASK_STATE,
- PUT_EMOTION_RECOGNITION_DATA,
- HANDLE_PUT_EMOTION_RECOGNITION_DATA,
- GET_EMOTION_RECOGNITION_DATA,
- PUT_GONOGO_DATA,
- HANDLE_PUT_GONOGO_DATA,
- GET_GONOGO_DATA,
- PUT_WORD_GONOGO_DATA,
- HANDLE_PUT_WORD_GONOGO_DATA,
- GET_WORD_GONOGO_DATA
+ PUT_DATA,
+ HANDLE_PUT_DATA,
+ GET_DATA
 } = require('./utils/constants');
 
 let mainWindow;
@@ -58,50 +52,21 @@ ipcMain.on(GET_STRINGS, (e) => {
   e.returnValue = data;
 });
 
-ipcMain.on(PUT_EMOTION_RECOGNITION_DATA, (e, data) => {
+ipcMain.on(PUT_DATA, (e, storeName, data) => {
   if(data) {
-    store.set('emotion_recognition', data);
+    store.set(storeName, data);
   }
-  mainWindow.send(HANDLE_PUT_EMOTION_RECOGNITION_DATA, {
+  mainWindow.send(HANDLE_PUT_DATA, {
     success: true,
-    message: 'emotion recognition data stored'
-  });
+    message: 'data stored in '+storeName
+  })
 });
 
-ipcMain.on(GET_EMOTION_RECOGNITION_DATA, (e) => {
-  let data = store.get('emotion_recognition');
+ipcMain.on(GET_DATA, (e, storeName) => {
+  let data = store.get(storeName);
   e.returnValue = data;
-})
-
-ipcMain.on(PUT_GONOGO_DATA, (e, data) => {
-  if(data) {
-    store.set('gonogo', data);
-  }
-  mainWindow.send(HANDLE_PUT_GONOGO_DATA, {
-    success: true,
-    message: 'affective go-no-go data stored'
-  });
 });
 
-ipcMain.on(GET_GONOGO_DATA, (e) => {
-  let data = store.get('gonogo');
-  e.returnValue = data;
-})
-
-ipcMain.on(PUT_WORD_GONOGO_DATA, (e, data) => {
-  if(data) {
-    store.set('gonogo', data);
-  }
-  mainWindow.send(HANDLE_PUT_WORD_GONOGO_DATA, {
-    success: true,
-    message: 'affective go-no-go data stored'
-  });
-});
-
-ipcMain.on(GET_WORD_GONOGO_DATA, (e) => {
-  let data = store.get('gonogo');
-  e.returnValue = data;
-})
 
 ipcMain.on(CLEAR_STORAGE, () => {
   store.clear();
