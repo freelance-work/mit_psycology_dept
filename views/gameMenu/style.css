@@ -76,7 +76,11 @@ body{
 #gameCSV2 {
     background: darkseagreen;
     box-shadow: -3px -3px 1px green inset;
-    
+}
+
+#gameCSV3 {
+    background: lightskyblue;
+    box-shadow: -3px -3px 1px cornflowerblue inset;
 }
 
 #exp-icon {

@@ -5,9 +5,8 @@ const csvHelper = require('../../utils/csvHelper');
 
 const {
     HANDLE_LANGUAGE_CHANGE,
-    GET_EMOTION_RECOGNITION_DATA,
-    GET_GONOGO_DATA,
-    GET_TASK_STATE
+    GET_TASK_STATE,
+    GET_DATA
 } = require('../../utils/constants');
 
 $(document).ready(() => {
@@ -38,7 +37,7 @@ $(window).on('resize', () => {
 
 $('#gameCSV1').on('click', async (e) => {
   e.stopPropagation();
-  let outputPayload = ipcRenderer.sendSync(GET_EMOTION_RECOGNITION_DATA);
+  let outputPayload = ipcRenderer.sendSync(GET_DATA, 'emotion_recognition');
   let id = window.localStorage.getItem('patientId');
   let fields = ['faceId', 'answer', 'choice', 'reactionTime'];
   csvHelper.write(outputPayload.data, id, 'emotion_recognition', fields).then((res) => {
@@ -50,10 +49,22 @@ $('#gameCSV1').on('click', async (e) => {
 
 $('#gameCSV2').on('click', async (e) => {
   e.stopPropagation();
-  let outputPayload = ipcRenderer.sendSync(GET_GONOGO_DATA);
+  let outputPayload = ipcRenderer.sendSync(GET_DATA, 'gonogo');
   let id = window.localStorage.getItem('patientId');
   let fields = ['set', 'faceID', 'quadrant', 'response', 'correctResponse', 'emotion', 'reactionTime'];
   csvHelper.write(outputPayload.data, id, 'go-no-go', fields).then((res) => {
+    if (res == "success") {
+      alert('CSV Exported');
+    }
+  })
+});
+
+$('#gameCSV3').on('click', async (e) => {
+  e.stopPropagation();
+  let outputPayload = ipcRenderer.sendSync(GET_DATA, 'word_gonogo');
+  let id = window.localStorage.getItem('patientId');
+  let fields = ['set', 'word', 'quadrant', 'response', 'correctResponse', 'emotion', 'reactionTime'];
+  csvHelper.write(outputPayload.data, id, 'word-go-no-go', fields).then((res) => {
     if (res == "success") {
       alert('CSV Exported');
     }

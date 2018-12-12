@@ -3,9 +3,9 @@ const { ipcRenderer } = electron;
 const csvHelper = require('../../utils/csvHelper');
 const gamePayload = require('../../assets/gonogo');
 const {
-    HANDLE_LANGUAGE_CHANGE,
-    PUT_GONOGO_DATA,
-    PUT_TASK_STATE,
+  HANDLE_LANGUAGE_CHANGE,
+  PUT_DATA,
+  PUT_TASK_STATE,
 } = require('../../utils/constants');
 let face;
 let resp = { faceID: '', response: 'noResponse' };
@@ -146,7 +146,7 @@ $('#export-btn-info').on('click', async () => {
 
 
 $('#exit-btn').on('click', () => {
-  ipcRenderer.send(PUT_GONOGO_DATA, payload);
+  ipcRenderer.send(PUT_DATA, 'gonogo', payload);
   if(payload.data.length > 0) {
     ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3] });
   }  
@@ -154,7 +154,7 @@ $('#exit-btn').on('click', () => {
 });
 
 $('#exit-btn-info').on('click', () => {
-  ipcRenderer.send(PUT_GONOGO_DATA, payload);
+  ipcRenderer.send(PUT_DATA, 'gonogo', payload);
   if(payload.data.length > 0) {
     ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3] });
   }  
