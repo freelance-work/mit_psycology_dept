@@ -24,7 +24,6 @@ $(document).ready(() => {
   $('#exit-btn').text(string.strings.commons.modalExitButton);
   $('#end-game-btn').text(string.strings.commons.modalExitButton);
   $('#continue-btn').text(string.strings.commons.continueButton);
-  
   startGame(setArr[setCount].obj);
 
   $(window).keypress(function (e) {

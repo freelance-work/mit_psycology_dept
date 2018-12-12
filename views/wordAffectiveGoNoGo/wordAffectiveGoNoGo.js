@@ -152,6 +152,20 @@ $('#close-modal-btn').on('click', () => {
   startGame(setArr[setCount].obj);
 })
 
+$('#end-game-btn-info').on('click', () => {
+  let string = JSON.parse(window.localStorage.getItem('lang'));
+  $('.final-modal-content-text').html(string.strings.commons.inGameExit);
+  $('#exit-btn').text(string.strings.commons.modalExitButton);
+  $('#export-btn').text(string.strings.commons.exportButton);
+  $('#close-modal-btn-info').show();
+  $('.final-modal-container-info').show();
+})
+
+$('#close-modal-btn-info').on('click', () => {
+  $('.final-modal-container-info').hide();
+  $('#close-modal-btn-info').hide();
+})
+
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   window.localStorage.setItem('lang', JSON.stringify(string));
   $('.modal-content-text').html(string.strings.game3.instructions[setCount].instruction);
