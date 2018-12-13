@@ -68,19 +68,19 @@ module.exports = {
         instruction : 'ಹೊಂದಿಸಿ 1, ನೀವು ಸಂತೋಷದ ಪದವನ್ನು ನೋಡಿದಾಗ ಸ್ಪೇಸ್ ಬಾರ್ ಅನ್ನು ಒತ್ತಿ, ನೀವು ದುಃಖದ ಪದವನ್ನು ನೋಡಿದಾಗ ಏನೂ ಮಾಡಬೇಡಿ.'
       },
       {
-        instruction : 'ಹೊಂದಿಸಿ 2, Press space bar when you see a happy word, do nothing when you see a neutral word'
+        instruction : 'ಹೊಂದಿಸಿ 2, ನೀವು ಸಂತೋಷದ ಪದವನ್ನು ನೋಡಿದಾಗ ಸ್ಪೇಸ್ ಬಾರ್ ಅನ್ನು ಒತ್ತಿ, ನೀವು ತಟಸ್ಥ ಪದವನ್ನು ನೋಡಿದಾಗ ಏನನ್ನೂ ಮಾಡಬೇಡಿ'
       },
       {
-        instruction : 'ಹೊಂದಿಸಿ 3, Press space bar when you see a neutral word, do nothing when you see a happy word'
+        instruction : 'ಹೊಂದಿಸಿ 3, ನೀವು ತಟಸ್ಥ ಪದವನ್ನು ನೋಡಿದಾಗ ಸ್ಪೇಸ್ ಬಾರ್ ಅನ್ನು ಒತ್ತಿರಿ, ನೀವು ಸಂತೋಷದ'
       },
       {
-        instruction : 'ಹೊಂದಿಸಿ 4, Press space bar when you see a neutral word, do nothing when you see an sad word'
+        instruction : 'ಹೊಂದಿಸಿ 4, ನೀವು ತಟಸ್ಥ ಪದವನ್ನು ನೋಡಿದಾಗ ಸ್ಪೇಸ್ ಬಾರ್ ಅನ್ನು ಒತ್ತಿರಿ, ನೀವು ಸಂತೋಷದ ಪದವನ್ನು ನೋಡಿದಾಗ ಏನೂ ಮಾಡಬೇಡಿ'
       },
       {
-        instruction : 'ಹೊಂದಿಸಿ 5, Press space bar when you see a sad word, do nothing when you see a happy word'
+        instruction : 'ಹೊಂದಿಸಿ 5, ನೀವು ದುಃಖ ಪದವನ್ನು ನೋಡಿದಾಗ ಸ್ಪೇಸ್ ಬಾರ್ ಅನ್ನು ಒತ್ತಿರಿ, ನೀವು ಸಂತೋಷದ ಪದವನ್ನು ನೋಡಿದಾಗ ಏನೂ ಮಾಡಬೇಡಿ'
       },
       {
-        instruction : 'ಹೊಂದಿಸಿ 6, Press space bar when you see a sad word, do nothing when you see a neutral word'
+        instruction : 'ಹೊಂದಿಸಿ 6, ನೀವು ದುಃಖ ಪದವನ್ನು ನೋಡಿದಾಗ ಸ್ಪೇಸ್ ಬಾರ್ ಅನ್ನು ಒತ್ತಿರಿ, ನೀವು ತಟಸ್ಥ ಪದವನ್ನು ನೋಡಿದಾಗ ಏನೂ ಮಾಡಬೇಡಿ'
       }
     ]
   }
