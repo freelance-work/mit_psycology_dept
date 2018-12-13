@@ -1,7 +1,8 @@
 const electron = require('electron');
 const { ipcRenderer } = electron;
 const csvHelper = require('../../utils/csvHelper');
-const gamePayload = require('../../assets/word_gonogo');
+const gamePayloadRaw = require('../../assets/word_gonogo');
+const gamePayload = (JSON.parse(window.localStorage.getItem('lang')).language == 'en') ? gamePayloadRaw.en : gamePayloadRaw.kn;
 const {
   HANDLE_LANGUAGE_CHANGE,
   PUT_DATA,
@@ -21,9 +22,13 @@ let quad;
 $(document).ready(() => {
   let string = JSON.parse(window.localStorage.getItem('lang'));
   $('.modal-content-text').html(string.strings.game3.instructions[setCount].instruction);
-  $('#exit-btn').text(string.strings.commons.modalExitButton);
-  $('#end-game-btn').text(string.strings.commons.modalExitButton);
+  $('#exit-btn, #exit-btn-info, #end-game-btn , #end-game-btn-info').text(string.strings.commons.modalExitButton);
+  $('#start-btn').text(string.strings.commons.startButtonText);
+  $('#back-btn').text(string.strings.commons.backButton);
   $('#continue-btn').text(string.strings.commons.continueButton);
+  $('#export-btn, #export-btn-info').text(string.strings.commons.exportButton);
+  $('#close-modal-btn, #close-modal-btn-info').text(string.strings.commons.modalCloseButton);
+  $('.final-modal-content-text').html(string.strings.commons.modalContent);
   startGame(setArr[setCount].obj);
 
   $(window).keypress(function (e) {
@@ -191,7 +196,11 @@ $('#export-btn-info').on('click', async () => {
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   window.localStorage.setItem('lang', JSON.stringify(string));
   $('.modal-content-text').html(string.strings.game3.instructions[setCount].instruction);
-  $('#exit-btn').text(string.strings.commons.modalExitButton);
-  $('#end-game-btn').text(string.strings.commons.modalExitButton);
+  $('#exit-btn, #exit-btn-info, #end-game-btn , #end-game-btn-info').text(string.strings.commons.modalExitButton);
+  $('#start-btn').text(string.strings.commons.startButtonText);
+  $('#back-btn').text(string.strings.commons.backButton);
   $('#continue-btn').text(string.strings.commons.continueButton);
+  $('#export-btn, #export-btn-info').text(string.strings.commons.exportButton);
+  $('#close-modal-btn, #close-modal-btn-info').text(string.strings.commons.modalCloseButton);
+  $('.final-modal-content-text').html(string.strings.commons.modalContent);
 });

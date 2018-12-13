@@ -21,9 +21,13 @@ let quad;
 $(document).ready(() => {
   let string = JSON.parse(window.localStorage.getItem('lang'));
   $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction);
-  $('#exit-btn').text(string.strings.commons.modalExitButton);
-  $('#end-game-btn').text(string.strings.commons.modalExitButton);
+  $('#exit-btn, #exit-btn-info, #end-game-btn , #end-game-btn-info').text(string.strings.commons.modalExitButton);
+  $('#start-btn').text(string.strings.commons.startButtonText);
+  $('#back-btn').text(string.strings.commons.backButton);
   $('#continue-btn').text(string.strings.commons.continueButton);
+  $('#export-btn, #export-btn-info').text(string.strings.commons.exportButton);
+  $('#close-modal-btn, #close-modal-btn-info').text(string.strings.commons.modalCloseButton);
+  $('.final-modal-content-text').html(string.strings.commons.modalContent);
   startGame(setArr[setCount].obj);
 
   $(window).keypress(function (e) {
@@ -195,11 +199,11 @@ $('#close-modal-btn-info').on('click', () => {
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   window.localStorage.setItem('lang', JSON.stringify(string));
   $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction);
-  $('#end-game-btn').text(string.strings.commons.modalExitButton);
-  $('#exit-btn').text(string.strings.commons.modalExitButton);
+  $('#exit-btn, #exit-btn-info, #end-game-btn , #end-game-btn-info').text(string.strings.commons.modalExitButton);
   $('#start-btn').text(string.strings.commons.startButtonText);
   $('#back-btn').text(string.strings.commons.backButton);
   $('#continue-btn').text(string.strings.commons.continueButton);
-  $('#export-btn').text(string.strings.commons.exportButton);
+  $('#export-btn, #export-btn-info').text(string.strings.commons.exportButton);
+  $('#close-modal-btn, #close-modal-btn-info').text(string.strings.commons.modalCloseButton);
   $('.final-modal-content-text').html(string.strings.commons.modalContent);
 });
