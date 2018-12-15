@@ -89,7 +89,7 @@ $('#game3').on('click', () => {
 
 $('#game4').on('click', () => {
   if(ipcRenderer.sendSync(GET_TASK_STATE).data.length >= 4) {
-    window.location = "../IOWAgambling/instruction.html";
+    window.location = "../IOWAGambling/instruction.html";
   }
 });
 
