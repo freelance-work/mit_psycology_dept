@@ -37,10 +37,11 @@ $(document).ready(() => {
       let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
       if (resp.response == 'noResponse' && reactionTime < 1.00) {
         $('.quadrant').css({ 'border': '0px solid black'});
-        setTimeout(function(){$('.quadrant' + quad).css({ 'border': '1px solid black'})},150)
         if (face.type == setArr[setCount].emotion) {
+          setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid green'})},150)
           resp = { ...resp, response: 'correct', reactionTime: reactionTime }
         } else {
+          setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid red'})},150)
           resp = { ...resp, response: 'incorrect', reactionTime: reactionTime }
         }
       }
@@ -120,7 +121,7 @@ startGame = (payloadSet) => {
       };
 
       $('.quadrant' + quad + 'Text').html(face.word);
-      $('.quadrant' + quad).css({ 'border': '1px solid black'});
+      $('.quadrant' + quad).css({ 'border': '2px solid black'});
       startRespTime = new Date();
     }, 500);
   }, 1500);
