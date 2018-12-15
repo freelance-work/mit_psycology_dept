@@ -12,9 +12,10 @@ const {
 $(document).ready(() => {
   
   let trialCount = 1;
-  let bal = 2000;
+  let bal = 2000; //use this variable for cash-left class in your html, set it in putDataInPayload function
   let outputPayload = { "data": [] };
   let string = JSON.parse(window.localStorage.getItem('lang'));
+  //the language code is pending, waiting on you to finish UI
 
   $('#card1').on('click', () => {
     processCardAB('A');
@@ -65,10 +66,6 @@ $(document).ready(() => {
     window.location = '../gameMenu/gameMenu.html';
   });
 
-  const showFinalModal = () => {
-    $('.final-modal-container').show();
-  }
-
   const processCardAB = (card) => {
     lockCards();
     let lost = 0;
@@ -77,7 +74,7 @@ $(document).ready(() => {
     if (random_idx <= 0.50) {
       //show won face with amount 100
     } else {
-        //show won face with amount 100 and lost amount 250
+        //show won face with amount 100 and lost face with amount 250
         lost = 250;
     }
     putDataInPayload(card, won, lost);
@@ -95,7 +92,7 @@ $(document).ready(() => {
     if (random_idx <= 0.50) {
       //show won face with amount 50
     } else {
-        //show won face with amount 50 and lost amount 50
+        //show won face with amount 50 and lost face with amount 50
         lost = 50;
     }
     putDataInPayload(card, won, lost);
@@ -106,11 +103,16 @@ $(document).ready(() => {
   }
 
   const lockCards = () => {
+    //maybe you can add some css to make it more obvious that the cards are locked
     $('.iowa-card').css({ 'pointer-events': 'none'})
   }
 
   const unlockCards = () => {
+    //when the cards are unlocked make the hovering transition different
     $('.iowa-card').css({ 'pointer-events': 'auto'}) 
+    if(trialCount == 100) {
+      $('.final-modal-container').show();
+    }
   }
 
   const putDataInPayload = (card, won, lost) => {
@@ -134,5 +136,5 @@ $(window).on('resize', () => {
 
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   window.localStorage.setItem('lang', JSON.stringify(string));
-  
+  //the language code is pending, waiting on you to finish UI
 });
