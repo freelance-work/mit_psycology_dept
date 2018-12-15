@@ -185,7 +185,7 @@ $('#close-modal-btn-info').on('click', () => {
 $('#exit-btn-info').on('click', () => {
   ipcRenderer.send(PUT_DATA, 'gonogo', payload);
   if(payload.data.length > 0) {
-    ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3] });
+    ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3, 4] });
   }  
   window.location = '../gameMenu/gameMenu.html';
 })
