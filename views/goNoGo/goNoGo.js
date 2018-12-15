@@ -38,10 +38,18 @@ $(document).ready(() => {
         $('.quadrant').css({ 'border': '0px solid black'});
         
         if (face.response == setArr[setCount].emotion) {
-          setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid green'})},150)
-            resp = { ...resp, response: 'correct', reactionTime : reactionTime }
+          if(setCount == 0){
+            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid green'})},150)
+          } else {
+            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid black'})},150)
+          }
+          resp = { ...resp, response: 'correct', reactionTime : reactionTime }
         } else {
-          setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid red'})},150)
+          if(setCount == 0){
+            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid red'})},150)
+          } else {
+            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid black'})},150)
+          }
             resp = { ...resp, response: 'incorrect', reactionTime : reactionTime}
         }
       }
