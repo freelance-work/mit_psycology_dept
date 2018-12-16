@@ -15,7 +15,14 @@ $(document).ready(() => {
   let bal = 2000; //use this variable for cash-left class in your html, set it in putDataInPayload function
   let outputPayload = { "data": [] };
   let string = JSON.parse(window.localStorage.getItem('lang'));
-  //the language code is pending, waiting on you to finish UI
+
+  $('#close-modal-btn').text(string.strings.commons.modalCloseButton);
+  $('.modal-content-text').text(string.strings.commons.modalContent);
+  $('#exit-btn').text(string.strings.commons.modalExitButton);
+  $('#export-btn').text(string.strings.commons.exportButton);
+  $('#end-game-btn').text(string.strings.commons.modalExitButton);
+  $('#cash-left-text').text(string.strings.game4.cashLeft);
+  
   $('.cash').html(bal);
   $('#card1').on('click', () => {
     processCardAB('A');
@@ -158,5 +165,10 @@ $(window).on('resize', () => {
 
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   window.localStorage.setItem('lang', JSON.stringify(string));
-  //the language code is pending, waiting on you to finish UI
+  $('#close-modal-btn').text(string.strings.commons.modalCloseButton);
+  $('.modal-content-text').text(string.strings.commons.modalContent);
+  $('#exit-btn').text(string.strings.commons.modalExitButton);
+  $('#export-btn').text(string.strings.commons.exportButton);
+  $('#end-game-btn').text(string.strings.commons.modalExitButton);
+  $('#cash-left-text').text(string.strings.game4.cashLeft);
 });
