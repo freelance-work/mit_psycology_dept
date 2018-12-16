@@ -16,7 +16,7 @@ $(document).ready(() => {
   let outputPayload = { "data": [] };
   let string = JSON.parse(window.localStorage.getItem('lang'));
   //the language code is pending, waiting on you to finish UI
-
+  $('.cash').html(bal);
   $('#card1').on('click', () => {
     processCardAB('A');
   })
@@ -73,13 +73,17 @@ $(document).ready(() => {
     let random_idx = Math.random();
     if (random_idx <= 0.50) {
       //show won face with amount 100
+      dispayEmoji(true, 100);
     } else {
         //show won face with amount 100 and lost face with amount 250
+        dispayEmoji(true, 100);
+        dispayEmoji(false, 250);
         lost = 250;
     }
     putDataInPayload(card, won, lost);
     trialCount++;
     setTimeout( () => {
+      $('.emoji-container').hide();
       unlockCards();
     }, 1000);
   }
@@ -90,25 +94,42 @@ $(document).ready(() => {
     let won = 50;
     let random_idx = Math.random();
     if (random_idx <= 0.50) {
-      //show won face with amount 50
+      dispayEmoji(true, 50);
     } else {
-        //show won face with amount 50 and lost face with amount 50
+        dispayEmoji(true, 50);
+        dispayEmoji(false, 50);
         lost = 50;
     }
     putDataInPayload(card, won, lost);
     trialCount++;
     setTimeout( () => {
+      $('.emoji-container').hide();
       unlockCards();
     }, 1000);
   }
 
+  const dispayEmoji = (isProfit, amount ) => {
+    if(isProfit){
+      $('.emoji-container1').css('background-image', 'url(../../assets/profit.png)');
+      $('.emoji-container1').find('.amount-gain-loss').html(amount);
+      $('.emoji-container1').show();
+    } else {
+      $('.emoji-container2').css('background-image', 'url(../../assets/loss.png)');
+      $('.emoji-container2').find('.amount-gain-loss').html(amount);
+      $('.emoji-container2').show();
+    }
+  }
+
+
   const lockCards = () => {
-    //maybe you can add some css to make it more obvious that the cards are locked
+    $(".iowa-card").prop('disabled',true);
+    $('.iowa-card').css({ 'opacity': '0.3'}) 
     $('.iowa-card').css({ 'pointer-events': 'none'})
   }
 
   const unlockCards = () => {
-    //when the cards are unlocked make the hovering transition different
+    $(".iowa-card").prop('disabled',false);
+    $('.iowa-card').css({ 'opacity': '1'});
     $('.iowa-card').css({ 'pointer-events': 'auto'}) 
     if(trialCount == 100) {
       $('.final-modal-container').show();
@@ -117,6 +138,7 @@ $(document).ready(() => {
 
   const putDataInPayload = (card, won, lost) => {
     bal = (bal+won)-lost;
+    $('.cash').html(bal);
     let res = {
       Trial: trialCount,
       Card: card,
