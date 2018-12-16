@@ -56,9 +56,12 @@ html, body{
 }
 
 .cash-left{
-    margin-top: 32px;
+    margin-top: 16px;
     font-size: 32px;
     color: #ffffff;
+    position: absolute;
+    display: inline-block;
+    right: 0;
 }
 
 .iowa-card{
@@ -87,6 +90,9 @@ html, body{
 }
 .end-game-btn-container {
     padding-top: 16px;
+    width: 100%;
+    position: relative;
+    display: inline-block;
 }
 
 .iowa-card-text{
@@ -119,7 +125,7 @@ html, body{
 }
 
 .emoji-symbol{
-    font-size: 4em;
+    font-size: 3em;
     position: absolute;
     left: 70%;
     bottom: -10%;

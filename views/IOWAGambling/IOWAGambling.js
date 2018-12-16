@@ -12,7 +12,7 @@ const {
 $(document).ready(() => {
   
   let trialCount = 1;
-  let bal = 2000; //use this variable for cash-left class in your html, set it in putDataInPayload function
+  let bal = 2000;
   let outputPayload = { "data": [] };
   let string = JSON.parse(window.localStorage.getItem('lang'));
 
@@ -79,12 +79,10 @@ $(document).ready(() => {
     let won = 100;
     let random_idx = Math.random();
     if (random_idx <= 0.50) {
-      //show won face with amount 100
-      dispayEmoji(true, 100);
+      displayEmoji(true, 100);
     } else {
-        //show won face with amount 100 and lost face with amount 250
-        dispayEmoji(true, 100);
-        dispayEmoji(false, 250);
+        displayEmoji(true, 100);
+        displayEmoji(false, 250);
         lost = 250;
     }
     putDataInPayload(card, won, lost);
@@ -101,10 +99,10 @@ $(document).ready(() => {
     let won = 50;
     let random_idx = Math.random();
     if (random_idx <= 0.50) {
-      dispayEmoji(true, 50);
+      displayEmoji(true, 50);
     } else {
-        dispayEmoji(true, 50);
-        dispayEmoji(false, 50);
+        displayEmoji(true, 50);
+        displayEmoji(false, 50);
         lost = 50;
     }
     putDataInPayload(card, won, lost);
@@ -115,7 +113,7 @@ $(document).ready(() => {
     }, 1000);
   }
 
-  const dispayEmoji = (isProfit, amount ) => {
+  const displayEmoji = (isProfit, amount ) => {
     if(isProfit){
       $('.emoji-container1').css('background-image', 'url(../../assets/profit.png)');
       $('.emoji-container1').find('.amount-gain-loss').html(amount);
