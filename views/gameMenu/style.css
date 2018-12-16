@@ -83,6 +83,11 @@ body{
     box-shadow: -3px -3px 1px cornflowerblue inset;
 }
 
+#gameCSV4 {
+    background: #3F7D9F;
+    box-shadow: -3px -3px 1px #054567 inset;
+}
+
 #exp-icon {
     position: relative;
     left: 40%;

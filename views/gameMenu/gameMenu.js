@@ -16,6 +16,7 @@ $(document).ready(() => {
 
     taskState.data.map(state => {
       if(taskState.data.length - 1 >= state) {
+        console.log(state);
         $('#gameCSV' + state).css('display', 'unset');
       }
       $('#game'+ state).css('filter', 'none');
@@ -65,6 +66,18 @@ $('#gameCSV3').on('click', async (e) => {
   let id = window.localStorage.getItem('patientId');
   let fields = ['set', 'word', 'quadrant', 'response', 'correctResponse', 'emotion', 'reactionTime'];
   csvHelper.write(outputPayload.data, id, 'word-go-no-go', fields).then((res) => {
+    if (res == "success") {
+      alert('CSV Exported');
+    }
+  })
+});
+
+$('#gameCSV4').on('click', async (e) => {
+  e.stopPropagation();
+  let outputPayload = ipcRenderer.sendSync(GET_DATA, 'iowa_gambling');
+  let id = window.localStorage.getItem('patientId');
+  let fields = ['Trial', 'Card', 'Won', 'Lost', 'Total'];
+  csvHelper.write(outputPayload.data, id, 'iowa_gambling', fields).then((res) => {
     if (res == "success") {
       alert('CSV Exported');
     }
