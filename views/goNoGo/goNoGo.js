@@ -36,20 +36,18 @@ $(document).ready(() => {
       let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
       if (resp.response == 'noResponse' && reactionTime < 1.00) {
         $('.quadrant').css({ 'border': '0px solid black'});
-        
+        $('.res-img').css({ 'background-image': 'url()'});
         if (face.response == setArr[setCount].emotion) {
           if(setCount == 0){
-            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid green'})},150)
-          } else {
-            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid black'})},150)
+            $('.quadrant' + quad).find('.res-img').css({ 'background-image': 'url(../../assets/Green_tick.png)'});
           }
+          setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid black'})},150)
           resp = { ...resp, response: 'correct', reactionTime : reactionTime }
         } else {
           if(setCount == 0){
-            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid red'})},150)
-          } else {
-            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid black'})},150)
+            $('.quadrant' + quad).find('.res-img').css({ 'background-image': 'url(../../assets/Red_X.png)'});
           }
+            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid black'})},150)
             resp = { ...resp, response: 'incorrect', reactionTime : reactionTime}
         }
       }
@@ -85,6 +83,7 @@ startGame = (payloadSet) => {
     }
 
     $('.quadrant').css({ 'background-image': 'url()' });
+    $('.res-img').css({ 'background-image': 'url()'});
     $('.quadrant').css({ 'border': '0px solid black'});
     resp = { faceID: '', response: 'noResponse', set: setCount, correctResponse : setArr[setCount].emotion }
     if (setCount == 0){
@@ -104,6 +103,7 @@ startGame = (payloadSet) => {
       } else {
         $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction);
         $('.quadrant').css({ 'background-image': 'url()' });
+        $('.res-img').css({ 'background-image': 'url()'});
         $('.quadrant').css({ 'border': '0px solid black'});
         clearInterval(timer);
         $('.modal-container').show();
