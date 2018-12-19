@@ -1,0 +1,174 @@
+html, body{
+    user-select: none;
+    height: 100%;
+    padding: 0;
+    margin: 0; 
+}
+
+.g4-instruction-container{
+    width: auto;
+    height: auto;
+    background-color: #f5f5f5;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
+#back-btn{
+    margin-top: 32px;
+}
+
+.g4-instruction-title-container{
+    text-align: center;
+    margin: 32px;
+}
+
+.g4-instructions-content{
+    text-align: center;
+    margin: 32px;
+}
+
+.start-g4-btn{
+    margin-top: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+ 
+.board {
+    background-color: #07512a;
+    height: 100vh;
+    border: 15px #9e5a15 solid;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+#end-game-btn {
+    background-color: #9e5a15;
+    border: 1px solid #232323;
+}
+
+#end-game-btn:hover {
+    opacity: 0.9;
+}
+
+.cash-left{
+    margin-top: 16px;
+    font-size: 32px;
+    color: #ffffff;
+    position: absolute;
+    display: inline-block;
+    right: 0;
+}
+
+.iowa-card{
+    background-image: url('../../assets/card.svg');
+    background-position: center center;
+    height: 20vw;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    font-size : 3em;
+    cursor: pointer;
+}
+
+.iowa-cards{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.iowa-card:hover{
+    opacity: 0.7;
+}
+
+.con{
+    height: 96%;
+    position: relative;
+}
+.end-game-btn-container {
+    padding-top: 16px;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.iowa-card-text{
+    position: absolute;
+    left: 47%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+}
+
+.emoji-container{
+    width: 10vw;
+    height: 10vw;
+    max-width: 150px;
+    max-height: 150px;
+    position: absolute;
+    background-image: url(../../assets/profit.png);
+    background-size: cover;
+    display: none;
+    top: 40%;
+}
+
+.emoji-container1{
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.emoji-container2{
+    left: 75%;
+    transform: translate(-50%, -50%);
+}
+
+.emoji-symbol{
+    font-size: 3em;
+    position: absolute;
+    left: 70%;
+    bottom: -10%;
+    color: #ffffff;
+    display: inline-block;
+}
+
+.modal-cont{
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+.modal-btns{
+    text-align: center;
+}
+
+.final-modal-container{
+    display: none;
+}
+
+.final-modal-container-info{
+    display: none;
+}
+
+.final-modal-container:after{
+    content: '';
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.3;
+    position: absolute;
+    z-index: 9;
+}
+
+.finish-modal{
+    width: auto;
+    height: auto;
+    background-color: #f5f5f5;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* border-radius: 5px; */
+    z-index: 10;
+    padding: 16px;
+}

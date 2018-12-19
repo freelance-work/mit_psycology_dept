@@ -47,6 +47,16 @@ body{
     background-position: center;
 }
 
+.res-img{
+    position: absolute;
+    height: 10vh;
+    width: 10vh;
+    /* background-image: url('../../assets/Red_X.png'); */
+    background-size: cover;
+    right: 0%;
+    margin: 2vh 6vh 2vh 6vh;
+}
+
 .modal-container{
     display: none;
 }

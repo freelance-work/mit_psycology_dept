@@ -37,19 +37,18 @@ $(document).ready(() => {
       let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
       if (resp.response == 'noResponse' && reactionTime < 1.00) {
         $('.quadrant').css({ 'border': '0px solid black'});
+        $('.res-img').css({ 'background-image': 'url()'});
         if (face.type == setArr[setCount].emotion) {
           if(setCount == 0){
-            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid green'})},150);
-          } else {
-            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid black'})},150);
+            $('.quadrant' + quad).find('.res-img').css({ 'background-image': 'url(../../assets/Green_tick.png)'});
           }
+          setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid black'})},150);
           resp = { ...resp, response: 'correct', reactionTime: reactionTime }
         } else {
           if(setCount == 0){
-            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid red'})},150);
-          } else {
-            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid black'})},150);
+            $('.quadrant' + quad).find('.res-img').css({ 'background-image': 'url(../../assets/Red_X.png)'});
           }
+          setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid black'})},150);
           resp = { ...resp, response: 'incorrect', reactionTime: reactionTime }
         }
       }
@@ -61,6 +60,7 @@ $('.continue-btn').on('click', () => {
   $('.modal-container').hide();
   $('.quadrantText').html('');
   $('.quadrant').css({ 'border': '0px solid black'});
+  $('.res-img').css({ 'background-image': 'url()'});
   startGame(setArr[setCount].obj);
 })
 
@@ -86,6 +86,7 @@ startGame = (payloadSet) => {
 
     $('.quadrantText').html('');
     $('.quadrant').css({ 'border': '0px solid black'});
+    $('.res-img').css({ 'background-image': 'url()'});
     resp = { word: '', response: 'noResponse', set: setCount, correctResponse: setArr[setCount].emotion }
     if (setCount == 0){
       trial = 10;
@@ -105,6 +106,7 @@ startGame = (payloadSet) => {
         $('.modal-content-text').html(string.strings.game3.instructions[setCount].instruction);
         $('.quadrantText').html('');
         $('.quadrant').css({ 'border': '0px solid black'});
+        $('.res-img').css({ 'background-image': 'url()'});
         clearInterval(timer);
         $('.modal-container').show();
       }

@@ -16,6 +16,7 @@ $(document).ready(() => {
 
     taskState.data.map(state => {
       if(taskState.data.length - 1 >= state) {
+        console.log(state);
         $('#gameCSV' + state).css('display', 'unset');
       }
       $('#game'+ state).css('filter', 'none');
@@ -71,6 +72,18 @@ $('#gameCSV3').on('click', async (e) => {
   })
 });
 
+$('#gameCSV4').on('click', async (e) => {
+  e.stopPropagation();
+  let outputPayload = ipcRenderer.sendSync(GET_DATA, 'iowa_gambling');
+  let id = window.localStorage.getItem('patientId');
+  let fields = ['Trial', 'Card', 'Won', 'Lost', 'Total'];
+  csvHelper.write(outputPayload.data, id, 'iowa_gambling', fields).then((res) => {
+    if (res == "success") {
+      alert('CSV Exported');
+    }
+  })
+});
+
 $('#game1').on('click', () => {
   window.location = "../gameSpotEmotion/instructions.html";
 });
@@ -84,6 +97,12 @@ $('#game2').on('click', () => {
 $('#game3').on('click', () => {
   if(ipcRenderer.sendSync(GET_TASK_STATE).data.length >= 3) {
     window.location = "../wordAffectiveGoNoGo/instruction.html";
+  }
+});
+
+$('#game4').on('click', () => {
+  if(ipcRenderer.sendSync(GET_TASK_STATE).data.length >= 4) {
+    window.location = "../IOWAGambling/instruction.html";
   }
 });
 
