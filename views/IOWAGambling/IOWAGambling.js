@@ -116,11 +116,11 @@ $(document).ready(() => {
   const displayEmoji = (isProfit, amount ) => {
     if(isProfit){
       $('.emoji-container1').css('background-image', 'url(../../assets/profit.png)');
-      $('.emoji-container1').find('.amount-gain-loss').html(amount);
+      $('.emoji-container1').find('.amount-gain-loss').html('₹'+amount);
       $('.emoji-container1').show();
     } else {
       $('.emoji-container2').css('background-image', 'url(../../assets/loss.png)');
-      $('.emoji-container2').find('.amount-gain-loss').html(amount);
+      $('.emoji-container2').find('.amount-gain-loss').html('₹'+amount);
       $('.emoji-container2').show();
     }
   }
