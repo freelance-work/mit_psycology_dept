@@ -1,16 +1,17 @@
 const electron = require('electron');
 const { ipcRenderer } = electron;
 const csvHelper = require('../../utils/csvHelper');
-const gamePayload = require('../../assets/gonogo');
+const gamePayloadRaw = require('../../assets/word_gonogo');
+const gamePayload = (JSON.parse(window.localStorage.getItem('lang')).language == 'en') ? gamePayloadRaw.en : gamePayloadRaw.kn;
 const {
   HANDLE_LANGUAGE_CHANGE,
   PUT_DATA,
   PUT_TASK_STATE,
 } = require('../../utils/constants');
 let face;
-let resp = { faceID: '', response: 'noResponse' };
+let resp = { word: '', response: 'noResponse' };
 let setCount = 0;
-let setArr = [{ emotion: 'JOY', obj: gamePayload.joyAnger }, { emotion: 'JOY', obj: gamePayload.joyAnger }, { emotion: 'JOY', obj: gamePayload.joyNeutral }, { emotion: 'NEUTRAL', obj: gamePayload.neutralJoy }, { emotion: 'NEUTRAL', obj: gamePayload.neutralAngry }, { emotion: 'ANGER', obj: gamePayload.angerJoy }, { emotion: 'ANGER', obj: gamePayload.angerNeutral }];
+let setArr = [{ emotion: 'Happy', obj: gamePayload.happySad }, { emotion: 'Happy', obj: gamePayload.happySad }, { emotion: 'Happy', obj: gamePayload.happyNeutral }, { emotion: 'Neutral', obj: gamePayload.neutralhappy }, { emotion: 'Neutral', obj: gamePayload.neutralSad }, { emotion: 'Sad', obj: gamePayload.sadHappy }, { emotion: 'Sad', obj: gamePayload.sadNeutral }];
 let payload = { "data": [] }
 let timer;
 let startRespTime = new Date();
@@ -20,7 +21,7 @@ let quad;
 
 $(document).ready(() => {
   let string = JSON.parse(window.localStorage.getItem('lang'));
-  $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction);
+  $('.modal-content-text').html(string.strings.game3.instructions[setCount].instruction);
   $('#exit-btn, #exit-btn-info, #end-game-btn , #end-game-btn-info').text(string.strings.commons.modalExitButton);
   $('#start-btn').text(string.strings.commons.startButtonText);
   $('#back-btn').text(string.strings.commons.backButton);
@@ -36,21 +37,20 @@ $(document).ready(() => {
       let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
       if (resp.response == 'noResponse' && reactionTime < 1.00) {
         $('.quadrant').css({ 'border': '0px solid black'});
-        
-        if (face.response == setArr[setCount].emotion) {
+        if (face.type == setArr[setCount].emotion) {
           if(setCount == 0){
-            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid green'})},150)
+            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid green'})},150);
           } else {
-            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid black'})},150)
+            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid black'})},150);
           }
-          resp = { ...resp, response: 'correct', reactionTime : reactionTime }
+          resp = { ...resp, response: 'correct', reactionTime: reactionTime }
         } else {
           if(setCount == 0){
-            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid red'})},150)
+            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid red'})},150);
           } else {
-            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid black'})},150)
+            setTimeout(function(){$('.quadrant' + quad).css({ 'border': '2px solid black'})},150);
           }
-            resp = { ...resp, response: 'incorrect', reactionTime : reactionTime}
+          resp = { ...resp, response: 'incorrect', reactionTime: reactionTime }
         }
       }
     }
@@ -59,7 +59,7 @@ $(document).ready(() => {
 
 $('.continue-btn').on('click', () => {
   $('.modal-container').hide();
-  $('.quadrant').css({ 'background-image': 'url()' });
+  $('.quadrantText').html('');
   $('.quadrant').css({ 'border': '0px solid black'});
   startGame(setArr[setCount].obj);
 })
@@ -71,7 +71,7 @@ startGame = (payloadSet) => {
 
   timer = setInterval(function () {
     if (count != 0) {
-      if(resp.response == 'noResponse'){
+      if (resp.response == 'noResponse') {
         endRespTime = new Date();
         let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
         if(reactionTime > 1.00) { reactionTime = 1.00 }
@@ -84,9 +84,9 @@ startGame = (payloadSet) => {
       payload.data.push(resp);
     }
 
-    $('.quadrant').css({ 'background-image': 'url()' });
+    $('.quadrantText').html('');
     $('.quadrant').css({ 'border': '0px solid black'});
-    resp = { faceID: '', response: 'noResponse', set: setCount, correctResponse : setArr[setCount].emotion }
+    resp = { word: '', response: 'noResponse', set: setCount, correctResponse: setArr[setCount].emotion }
     if (setCount == 0){
       trial = 10;
     } else {
@@ -96,38 +96,39 @@ startGame = (payloadSet) => {
       count = 0;
       setCount++;
       if (setCount > 6) {
-          clearInterval(timer);
-          $('.final-modal-content-text').html(string.strings.commons.modalContent);
+        clearInterval(timer);
+        $('.final-modal-content-text').html(string.strings.commons.modalContent);
           $('#exit-btn').text(string.strings.commons.modalExitButton);
           $('#export-btn').text(string.strings.commons.exportButton);
           $('.final-modal-container').show();
       } else {
-        $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction);
-        $('.quadrant').css({ 'background-image': 'url()' });
+        $('.modal-content-text').html(string.strings.game3.instructions[setCount].instruction);
+        $('.quadrantText').html('');
         $('.quadrant').css({ 'border': '0px solid black'});
         clearInterval(timer);
         $('.modal-container').show();
       }
     }
-    
+
     setTimeout(function () {
       quad = Math.floor(Math.random() * 4) + 1;
       random_idx = Math.random();
       if (random_idx <= 0.75) {
-          face = payloadSet[Math.floor(Math.random() * 30)];
-      } else {
-          face = payloadSet[Math.floor(Math.random() * 30) + 30];
-      }
+        face = payloadSet[Math.floor(Math.random() * 30)];
 
-      resp.correctResponse = resp.correctResponse == face.response ? "Press" : "Don't Press";
+      } else {
+        face = payloadSet[Math.floor(Math.random() * 30) + 30];
+      }
+      resp.correctResponse = resp.correctResponse == face.type ? "Press" : "Don't Press";
 
       resp = {
-          ...resp,
-          faceID: face.faceID,
-          quadrant: quad,
-          emotion: face.response,
+        ...resp,
+        word: face.word,
+        quadrant: quad,
+        emotion: face.type,
       };
-      $('.quadrant' + quad).css({ 'background-image': 'url(../../assets/faces/' + face.faceID + '.jpg)' });
+
+      $('.quadrant' + quad + 'Text').html(face.word);
       $('.quadrant' + quad).css({ 'border': '2px solid black'});
       startRespTime = new Date();
     }, 500);
@@ -136,9 +137,9 @@ startGame = (payloadSet) => {
 
 $('#export-btn').on('click', async () => {
   let id = window.localStorage.getItem('patientId');
-  let fields = ['set', 'faceID', 'quadrant', 'response', 'correctResponse', 'emotion', 'reactionTime'];
+  let fields = ['set', 'word', 'quadrant', 'response', 'correctResponse', 'emotion', 'reactionTime'];
   let string = JSON.parse(window.localStorage.getItem('lang'));
-  csvHelper.write(payload.data, id, 'go-no-go', fields).then((res) => {
+  csvHelper.write(payload.data, id, 'word-go-no-go', fields).then((res) => {
     if (res == "success") {
       $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text(string.strings.commons.exported);
       $('#close-modal-btn').hide();
@@ -146,43 +147,25 @@ $('#export-btn').on('click', async () => {
   })
 });
 
-$('#export-btn-info').on('click', async () => {
-  let id = window.localStorage.getItem('patientId');
-  let fields = ['set', 'faceID', 'quadrant', 'response', 'correctResponse', 'emotion', 'reactionTime'];
-  let string = JSON.parse(window.localStorage.getItem('lang'));
-  csvHelper.write(payload.data, id, 'go-no-go', fields).then((res) => {
-    if (res == "success") {
-      $('#export-btn-info').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text(string.strings.commons.exported);
-      $('#close-modal-btn-info').hide();
-    }
-  })
-});
-
-
 $('#exit-btn').on('click', () => {
-  ipcRenderer.send(PUT_DATA, 'gonogo', payload);
-  if(payload.data.length > 0) {
-    ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3] });
-  }  
+  ipcRenderer.send(PUT_DATA, 'word_gonogo', payload);
+  if (payload.data.length > 0) {
+    ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3, 4] });
+  }
   window.location = '../gameMenu/gameMenu.html';
 });
-
-$('#exit-btn-info').on('click', () => {
-  ipcRenderer.send(PUT_DATA, 'gonogo', payload);
-  if(payload.data.length > 0) {
-    ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3] });
-  }  
-  window.location = '../gameMenu/gameMenu.html';
-})
 
 $('#end-game-btn').on('click', () => {
   clearInterval(timer);
-  let string = JSON.parse(window.localStorage.getItem('lang'));
-  $('.final-modal-content-text').html(string.strings.commons.inGameExit);
-  $('#exit-btn').text(string.strings.commons.modalExitButton);
-  $('#export-btn').text(string.strings.commons.exportButton);
   $('#close-modal-btn').show();
   $('.final-modal-container').show();
+})
+
+$('#close-modal-btn').on('click', () => {
+  startRespTime = new Date()
+  $('.final-modal-container').hide();
+  $('#close-modal-btn').hide();
+  startGame(setArr[setCount].obj);
 })
 
 $('#end-game-btn-info').on('click', () => {
@@ -194,21 +177,34 @@ $('#end-game-btn-info').on('click', () => {
   $('.final-modal-container-info').show();
 })
 
-$('#close-modal-btn').on('click', () => {
-  startRespTime = new Date();
-  $('.final-modal-container').hide();
-  $('#close-modal-btn').hide();
-  startGame(setArr[setCount].obj);
-})
-
 $('#close-modal-btn-info').on('click', () => {
   $('.final-modal-container-info').hide();
   $('#close-modal-btn-info').hide();
 })
 
+$('#exit-btn-info').on('click', () => {
+  ipcRenderer.send(PUT_DATA, 'gonogo', payload);
+  if(payload.data.length > 0) {
+    ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3, 4] });
+  }  
+  window.location = '../gameMenu/gameMenu.html';
+})
+
+$('#export-btn-info').on('click', async () => {
+  let id = window.localStorage.getItem('patientId');
+  let fields = ['set', 'word', 'quadrant', 'response', 'correctResponse', 'emotion', 'reactionTime'];
+  let string = JSON.parse(window.localStorage.getItem('lang'));
+  csvHelper.write(payload.data, id, 'word-go-no-go', fields).then((res) => {
+    if (res == "success") {
+      $('#export-btn-info').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text(string.strings.commons.exported);
+      $('#close-modal-btn-info').hide();
+    }
+  })
+});
+
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   window.localStorage.setItem('lang', JSON.stringify(string));
-  $('.modal-content-text').html(string.strings.game2.instructions[setCount].instruction);
+  $('.modal-content-text').html(string.strings.game3.instructions[setCount].instruction);
   $('#exit-btn, #exit-btn-info, #end-game-btn , #end-game-btn-info').text(string.strings.commons.modalExitButton);
   $('#start-btn').text(string.strings.commons.startButtonText);
   $('#back-btn').text(string.strings.commons.backButton);
