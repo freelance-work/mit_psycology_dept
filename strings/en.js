@@ -19,7 +19,8 @@ module.exports = {
     game1: 'Emotion Recognition',
     game2: 'Affective Go-No-Go',
     game3: 'Word Affective Go–No-Go',
-    game4: 'IOWA Gambling'
+    game4: 'IOWA Gambling',
+    game5: '5-Trial Adjusting Delay Discounting Task'
   },
   game1: {
     instructionTitle: 'Emotion recognition',
@@ -88,5 +89,14 @@ module.exports = {
     instructionTitle: 'IOWA Gambling',
     instruction: 'In front of you, on the screen, there will be 4 decks of cards: A, B, C, D. When we begin the game, I want you to select one card at a time by clicking on a card from any deck you choose. Each time you select a card, the computer will tell you that you won some money, but then it will say that you lost some money as well. You will start with Rs 2000 initially. The aim of the task is to win as much money as you can.',
     cashLeft: '₹'
+  },
+  game5: {
+    instructionTitle: '5-Trial Adjusting Delay Discounting Task',
+    instruction: 'In this game, you will be asked to make choices between having Rs 500 right now or getting Rs 1000 sometime in the future. Select the option you would prefer. This game takes about 1 minute to play. There is no right or wrong answers.',
+    question: 'Would you rather have?',
+    buttonNow: '₹500 now',
+    or: 'or',
+    buttonLater: '₹1000 in 3 weeks',
+    subText: 'Click on the answer of your choice'
   }
 }

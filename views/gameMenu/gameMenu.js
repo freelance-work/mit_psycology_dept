@@ -16,7 +16,6 @@ $(document).ready(() => {
 
     taskState.data.map(state => {
       if(taskState.data.length - 1 >= state) {
-        console.log(state);
         $('#gameCSV' + state).css('display', 'unset');
       }
       $('#game'+ state).css('filter', 'none');
@@ -29,6 +28,7 @@ $(document).ready(() => {
         $('.game-text2').html(string.strings.gamePage.game2);
         $('.game-text3').html(string.strings.gamePage.game3);
         $('.game-text4').html(string.strings.gamePage.game4);
+        $('.game-text5').html(string.strings.gamePage.game5);
     } catch (err) { };
 });
 
@@ -84,6 +84,18 @@ $('#gameCSV4').on('click', async (e) => {
   })
 });
 
+$('#gameCSV5').on('click', async (e) => {
+  e.stopPropagation();
+  let outputPayload = ipcRenderer.sendSync(GET_DATA, 'delay_dicounting');
+  let id = window.localStorage.getItem('patientId');
+  //let fields = ['Trial', 'Card', 'Won', 'Lost', 'Total'];
+  csvHelper.write(outputPayload.data, id, 'delay_dicounting', fields).then((res) => {
+    if (res == "success") {
+      alert('CSV Exported');
+    }
+  })
+});
+
 $('#game1').on('click', () => {
   window.location = "../gameSpotEmotion/instructions.html";
 });
@@ -106,6 +118,12 @@ $('#game4').on('click', () => {
   }
 });
 
+$('#game5').on('click', () => {
+  if(ipcRenderer.sendSync(GET_TASK_STATE).data.length >= 5) {
+    window.location = "../delayDiscounting/instruction.html";
+  }
+});
+
 
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
     window.localStorage.setItem('lang', JSON.stringify(string));
@@ -113,4 +131,5 @@ ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
     $('.game-text2').html(string.strings.gamePage.game2);
     $('.game-text3').html(string.strings.gamePage.game3);
     $('.game-text4').html(string.strings.gamePage.game4);
+    $('.game-text5').html(string.strings.gamePage.game5);
 });

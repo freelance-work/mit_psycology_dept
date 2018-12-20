@@ -2,16 +2,17 @@ const electron = require('electron');
 const { ipcRenderer } = electron;
 const csvHelper = require('../../utils/csvHelper');
 const gamePayloadRaw = require('../../assets/word_gonogo');
-const gamePayload = (JSON.parse(window.localStorage.getItem('lang')).language == 'en') ? gamePayloadRaw.en : gamePayloadRaw.kn;
+let gamePayload = (JSON.parse(window.localStorage.getItem('lang')).language == 'en') ? gamePayloadRaw.en : gamePayloadRaw.kn;
 const {
   HANDLE_LANGUAGE_CHANGE,
   PUT_DATA,
   PUT_TASK_STATE,
+  GET_TASK_STATE
 } = require('../../utils/constants');
 let face;
 let resp = { word: '', response: 'noResponse' };
 let setCount = 0;
-let setArr = [{ emotion: 'Happy', obj: gamePayload.happySad }, { emotion: 'Happy', obj: gamePayload.happySad }, { emotion: 'Happy', obj: gamePayload.happyNeutral }, { emotion: 'Neutral', obj: gamePayload.neutralhappy }, { emotion: 'Neutral', obj: gamePayload.neutralSad }, { emotion: 'Sad', obj: gamePayload.sadHappy }, { emotion: 'Sad', obj: gamePayload.sadNeutral }];
+let setArr;
 let payload = { "data": [] }
 let timer;
 let startRespTime = new Date();
@@ -29,6 +30,8 @@ $(document).ready(() => {
   $('#export-btn, #export-btn-info').text(string.strings.commons.exportButton);
   $('#close-modal-btn, #close-modal-btn-info').text(string.strings.commons.modalCloseButton);
   $('.final-modal-content-text').html(string.strings.commons.modalContent);
+  gamePayload = (JSON.parse(window.localStorage.getItem('lang')).language == 'en') ? gamePayloadRaw.en : gamePayloadRaw.kn;
+  setArr = [{ emotion: 'Happy', obj: gamePayload.happySad }, { emotion: 'Happy', obj: gamePayload.happySad }, { emotion: 'Happy', obj: gamePayload.happyNeutral }, { emotion: 'Neutral', obj: gamePayload.neutralhappy }, { emotion: 'Neutral', obj: gamePayload.neutralSad }, { emotion: 'Sad', obj: gamePayload.sadHappy }, { emotion: 'Sad', obj: gamePayload.sadNeutral }];
   startGame(setArr[setCount].obj);
 
   $(window).keypress(function (e) {
@@ -150,11 +153,7 @@ $('#export-btn').on('click', async () => {
 });
 
 $('#exit-btn').on('click', () => {
-  ipcRenderer.send(PUT_DATA, 'word_gonogo', payload);
-  if (payload.data.length > 0) {
-    ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3, 4] });
-  }
-  window.location = '../gameMenu/gameMenu.html';
+  exitToMenu();
 });
 
 $('#end-game-btn').on('click', () => {
@@ -185,12 +184,17 @@ $('#close-modal-btn-info').on('click', () => {
 })
 
 $('#exit-btn-info').on('click', () => {
+  exitToMenu();
+})
+
+const exitToMenu = () => {
   ipcRenderer.send(PUT_DATA, 'gonogo', payload);
-  if(payload.data.length > 0) {
-    ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3, 4] });
+  let taskData = [1, 2, 3, 4];
+  if(payload.data.length > 0 && ipcRenderer.sendSync(GET_TASK_STATE).data.length < taskData.length) {
+    ipcRenderer.send(PUT_TASK_STATE, { data: taskData });
   }  
   window.location = '../gameMenu/gameMenu.html';
-})
+}
 
 $('#export-btn-info').on('click', async () => {
   let id = window.localStorage.getItem('patientId');
@@ -214,4 +218,6 @@ ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   $('#export-btn, #export-btn-info').text(string.strings.commons.exportButton);
   $('#close-modal-btn, #close-modal-btn-info').text(string.strings.commons.modalCloseButton);
   $('.final-modal-content-text').html(string.strings.commons.modalContent);
+  gamePayload = (JSON.parse(window.localStorage.getItem('lang')).language == 'en') ? gamePayloadRaw.en : gamePayloadRaw.kn;
+  setArr = [{ emotion: 'Happy', obj: gamePayload.happySad }, { emotion: 'Happy', obj: gamePayload.happySad }, { emotion: 'Happy', obj: gamePayload.happyNeutral }, { emotion: 'Neutral', obj: gamePayload.neutralhappy }, { emotion: 'Neutral', obj: gamePayload.neutralSad }, { emotion: 'Sad', obj: gamePayload.sadHappy }, { emotion: 'Sad', obj: gamePayload.sadNeutral }];
 });

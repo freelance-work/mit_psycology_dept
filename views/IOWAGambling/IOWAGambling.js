@@ -6,7 +6,8 @@ const app = remote.app;
 const {
   HANDLE_LANGUAGE_CHANGE,
   PUT_DATA,
-  PUT_TASK_STATE
+  PUT_TASK_STATE,
+  GET_TASK_STATE
 } = require('../../utils/constants');
 
 $(document).ready(() => {
@@ -17,7 +18,7 @@ $(document).ready(() => {
   let string = JSON.parse(window.localStorage.getItem('lang'));
 
   $('#close-modal-btn').text(string.strings.commons.modalCloseButton);
-  $('.modal-content-text').text(string.strings.commons.modalContent);
+  $('.modal-content-text').html(string.strings.commons.modalContent);
   $('#exit-btn').text(string.strings.commons.modalExitButton);
   $('#export-btn').text(string.strings.commons.exportButton);
   $('#end-game-btn').text(string.strings.commons.modalExitButton);
@@ -67,8 +68,9 @@ $(document).ready(() => {
 
   $('#exit-btn').on('click', () => {
     ipcRenderer.send(PUT_DATA, 'iowa_gambling', outputPayload);
-    if (outputPayload.data.length > 0) {
-      ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3, 4, 5] });
+    let taskData = [1, 2, 3, 4, 5];
+    if (outputPayload.data.length > 0 && ipcRenderer.sendSync(GET_TASK_STATE).data.length < taskData.length) {
+      ipcRenderer.send(PUT_TASK_STATE, { data: taskData });
     }
     window.location = '../gameMenu/gameMenu.html';
   });
@@ -133,12 +135,13 @@ $(document).ready(() => {
   }
 
   const unlockCards = () => {
+    if(trialCount == 101) {
+      $('.final-modal-container').show();
+      $('#close-modal-btn').hide();
+    }
     $(".iowa-card").prop('disabled',false);
     $('.iowa-card').css({ 'opacity': '1'});
     $('.iowa-card').css({ 'pointer-events': 'auto'}) 
-    if(trialCount == 100) {
-      $('.final-modal-container').show();
-    }
   }
 
   const putDataInPayload = (card, won, lost) => {
@@ -164,7 +167,7 @@ $(window).on('resize', () => {
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   window.localStorage.setItem('lang', JSON.stringify(string));
   $('#close-modal-btn').text(string.strings.commons.modalCloseButton);
-  $('.modal-content-text').text(string.strings.commons.modalContent);
+  $('.modal-content-text').html(string.strings.commons.modalContent);
   $('#exit-btn').text(string.strings.commons.modalExitButton);
   $('#export-btn').text(string.strings.commons.exportButton);
   $('#end-game-btn').text(string.strings.commons.modalExitButton);
