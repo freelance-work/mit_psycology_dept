@@ -1,7 +1,8 @@
 module.exports = {
   en: [
     {
-      value: 'in 1 hour',
+      value: '1 hour',
+      string: 'in 1 hour',
       ed50: {
         immediate: 0.04167,
         delayed: 0.05893
@@ -12,10 +13,12 @@ module.exports = {
       }
     },
     {
-      value: 'in 2 hour',
+      value: '2 hour',
+      string: 'in 2 hour',
     },
     {
-      value: 'in 3 hour',
+      value: '3 hour',
+      string: 'in 3 hour',
       ed50: {
         immediate: 0.1021,
         delayed: 0.1444
@@ -26,10 +29,12 @@ module.exports = {
       }
     },
     {
-      value: 'in 4 hour',
+      value: '4 hour',
+      string: 'in 4 hour',
     },
     {
-      value: 'in 6 hour',
+      value: '6 hour',
+      string: 'in 6 hour',
       ed50: {
         immediate: 0.2041,
         delayed: 0.3062
@@ -40,10 +45,12 @@ module.exports = {
       }
     },
     {
-      value: 'in 9 hour',
+      value: '9 hour',
+      string: 'in 9 hour',
     },
     {
-      value: 'in 12 hour',
+      value: '12 hour',
+      string: 'in 12 hour',
       ed50: {
         immediate: 0.4330,
         delayed: 0.7071
@@ -54,10 +61,12 @@ module.exports = {
       }
     },
     {
-      value: 'in 1 day',
+      value: '1 day',
+      string: 'in 1 day',
     },
     {
-      value: 'in 1.5 days',
+      value: '1.5 days',
+      string: 'in 1.5 days',
       ed50: {
         immediate: 1.225,
         delayed: 1.732
@@ -68,10 +77,12 @@ module.exports = {
       }
     },
     {
-      value: 'in 2 days',
+      value: '2 days',
+      string: 'in 2 days',
     },
     {
-      value: 'in 3 days',
+      value: '3 days',
+      string: 'in 3 days',
       ed50: {
         immediate: 2.450,
         delayed: 3.464
@@ -82,10 +93,12 @@ module.exports = {
       }
     },
     {
-      value: 'in 4 days'
+      value: '4 days',
+      string: 'in 4 days'
     },
     {
-      value: 'in 1 week',
+      value: '1 week',
+      string: 'in 1 week',
       ed50: {
         immediate: 5.292,
         delayed: 8.573
@@ -96,10 +109,12 @@ module.exports = {
       }
     },
     {
-      value: 'in 1.5 weeks',
+      value: '1.5 weeks',
+      string: 'in 1.5 weeks',
     },
     {
-      value: 'in 2 weeks',
+      value: '2 weeks',
+      string: 'in 2 weeks',
       ed50: {
         immediate: 12.12,
         delayed: 17.15
@@ -110,10 +125,12 @@ module.exports = {
       }
     },
     {
-      value: 'in 3 weeks',
+      value: '3 weeks',
+      string: 'in 3 weeks',
     },
     {
-      value: 'in 1 month',
+      value: '1 month',
+      string: 'in 1 month',
       ed50: {
         immediate: 25.28,
         delayed: 43.05
@@ -124,10 +141,12 @@ module.exports = {
       }
     },
     {
-      value: 'in 2 months',
+      value: '2 months',
+      string: 'in 2 months',
     },
     {
-      value: 'in 3 months',
+      value: '3 months',
+      string: 'in 3 months',
       ed50: {
         immediate: 74.56,
         delayed: 105.4
@@ -138,10 +157,12 @@ module.exports = {
       }
     },
     {
-      value: 'in 4 months',
+      value: '4 months',
+      string: 'in 4 months',
     },
     {
-      value: 'in 6 months',
+      value: '6 months',
+      string: 'in 6 months',
       ed50: {
         immediate: 149.1,
         delayed: 210.9
@@ -152,10 +173,12 @@ module.exports = {
       }
     },
     {
-      value: 'in 8 months',
+      value: '8 months',
+      string: 'in 8 months',
     },
     {
-      value: 'in 1 year',
+      value: '1 year',
+      string: 'in 1 year',
       ed50: {
         immediate: 298.2,
         delayed: 516.5
@@ -166,10 +189,12 @@ module.exports = {
       }
     },
     {
-      value: 'in 2 years',
+      value: '2 years',
+      string: 'in 2 years',
     },
     {
-      value: 'in 3 years',
+      value: '3 years',
+      string: 'in 3 years',
       ed50: {
         immediate: 894.7,
         delayed: 1265.0
@@ -180,10 +205,12 @@ module.exports = {
       }
     },
     {
-      value: 'in 4 years',
+      value: '4 years',
+      string: 'in 4 years',
     },
     {
-      value: 'in 5 years',
+      value: '5 years',
+      string: 'in 5 years',
       ed50: {
         immediate: 1633.0,
         delayed: 2310.0
@@ -194,10 +221,12 @@ module.exports = {
       }
     },
     {
-      value: 'in 8 years',
+      value: '8 years',
+      string: 'in 8 years',
     },
     {
-      value: 'in 12 years',
+      value: '12 years',
+      string: 'in 12 years',
       ed50: {
         immediate: 3579.0,
         delayed: 5368.0
@@ -208,10 +237,12 @@ module.exports = {
       }
     },
     {
-      value: 'in 18 years',
+      value: '18 years',
+      string: 'in 18 years',
     },
     {
-      value: 'in 25 years',
+      value: '25 years',
+      string: 'in 25 years',
       ed50: {
         immediate: 7748.0,
         delayed: 9131.0
@@ -224,7 +255,7 @@ module.exports = {
   ],
   kn: [
     {
-      value: 'ಒಂದು ಗಂಟೆ',
+      string: 'ಒಂದು ಗಂಟೆ',
       ed50: {
         immediate: 0.04167,
         delayed: 0.05893
@@ -235,10 +266,10 @@ module.exports = {
       }
     },
     {
-      value: 'ಎರಡು ಗಂಟೆ',
+      string: 'ಎರಡು ಗಂಟೆ',
     },
     {
-      value: 'ಮೂರು ಗಂಟೆ',
+      string: 'ಮೂರು ಗಂಟೆ',
       ed50: {
         immediate: 0.1021,
         delayed: 0.1444
@@ -249,10 +280,10 @@ module.exports = {
       }
     },
     {
-      value: 'ನಾಲ್ಕು ಗಂಟೆ',
+      string: 'ನಾಲ್ಕು ಗಂಟೆ',
     },
     {
-      value: 'ಆರು ಗಂಟೆ',
+      string: 'ಆರು ಗಂಟೆ',
       ed50: {
         immediate: 0.2041,
         delayed: 0.3062
@@ -263,10 +294,10 @@ module.exports = {
       }
     },
     {
-      value: 'ಒಂಬತ್ತು ಗಂಟೆ',
+      string: 'ಒಂಬತ್ತು ಗಂಟೆ',
     },
     {
-      value: 'ಹನ್ನೆರಡು ಗಂಟೆ',
+      string: 'ಹನ್ನೆರಡು ಗಂಟೆ',
       ed50: {
         immediate: 0.4330,
         delayed: 0.7071
@@ -277,10 +308,10 @@ module.exports = {
       }
     },
     {
-      value: 'ಒಂದು ದಿನ',
+      string: 'ಒಂದು ದಿನ',
     },
     {
-      value: 'ಒಂದೂವರೆ ದಿನಗಳು',
+      string: 'ಒಂದೂವರೆ ದಿನಗಳು',
       ed50: {
         immediate: 1.225,
         delayed: 1.732
@@ -291,10 +322,10 @@ module.exports = {
       }
     },
     {
-      value: 'ಎರಡು ದಿನಗಳು'
+      string: 'ಎರಡು ದಿನಗಳು'
     },
     {
-      value: 'ಮೂರು ದಿನಗಳು',
+      string: 'ಮೂರು ದಿನಗಳು',
       ed50: {
         immediate: 2.450,
         delayed: 3.464
@@ -305,10 +336,10 @@ module.exports = {
       }
     },
     {
-      value: 'ನಾಲ್ಕು ದಿನಗಳು'
+      string: 'ನಾಲ್ಕು ದಿನಗಳು'
     },
     {
-      value: 'ಒಂದು ವಾರ',
+      string: 'ಒಂದು ವಾರ',
       ed50: {
         immediate: 5.292,
         delayed: 8.573
@@ -319,10 +350,10 @@ module.exports = {
       }
     },
     {
-      value: 'ಒಂದೂವರೆ ವಾರಗಳ'
+      string: 'ಒಂದೂವರೆ ವಾರಗಳ'
     },
     {
-      value: 'ಎರಡು ವಾರಗಳ',
+      string: 'ಎರಡು ವಾರಗಳ',
       ed50: {
         immediate: 12.12,
         delayed: 17.15
@@ -333,10 +364,10 @@ module.exports = {
       }
     },
     {
-      value: 'ಮೂರು ವಾರಗಳ',
+      string: 'ಮೂರು ವಾರಗಳ',
     },
     {
-      value: 'ಒಂದು ತಿಂಗಳು',
+      string: 'ಒಂದು ತಿಂಗಳು',
       ed50: {
         immediate: 25.28,
         delayed: 43.05
@@ -347,10 +378,10 @@ module.exports = {
       }
     },
     {
-      value: 'ಎರಡು ತಿಂಗಳುಗಳು',
+      string: 'ಎರಡು ತಿಂಗಳುಗಳು',
     },
     {
-      value: 'ಮೂರು ತಿಂಗಳುಗಳು',
+      string: 'ಮೂರು ತಿಂಗಳುಗಳು',
       ed50: {
         immediate: 74.56,
         delayed: 105.4
@@ -361,10 +392,10 @@ module.exports = {
       }
     },
     {
-      value: 'ನಾಲ್ಕು ತಿಂಗಳುಗಳು',
+      string: 'ನಾಲ್ಕು ತಿಂಗಳುಗಳು',
     },
     {
-      value: 'ಆರು ತಿಂಗಳುಗಳು',
+      string: 'ಆರು ತಿಂಗಳುಗಳು',
       ed50: {
         immediate: 149.1,
         delayed: 210.9
@@ -375,10 +406,10 @@ module.exports = {
       }
     },
     {
-      value: 'ಎಂಟು ತಿಂಗಳುಗಳು',
+      string: 'ಎಂಟು ತಿಂಗಳುಗಳು',
     },
     {
-      value: 'ಒಂದು ವರ್ಷ',
+      string: 'ಒಂದು ವರ್ಷ',
       ed50: {
         immediate: 298.2,
         delayed: 516.5
@@ -389,10 +420,10 @@ module.exports = {
       }
     },
     {
-      value: 'ಎರಡು ವರ್ಷಗಳು',
+      string: 'ಎರಡು ವರ್ಷಗಳು',
     },
     {
-      value: 'ಮೂರು ವರ್ಷಗಳು',
+      string: 'ಮೂರು ವರ್ಷಗಳು',
       ed50: {
         immediate: 894.7,
         delayed: 1265.0
@@ -403,10 +434,10 @@ module.exports = {
       }
     },
     {
-      value: 'ನಾಲ್ಕು ವರ್ಷಗಳು',
+      string: 'ನಾಲ್ಕು ವರ್ಷಗಳು',
     },
     {
-      value: 'ಐದು ವರ್ಷಗಳು',
+      string: 'ಐದು ವರ್ಷಗಳು',
       ed50: {
         immediate: 1633.0,
         delayed: 2310.0
@@ -417,10 +448,10 @@ module.exports = {
       }
     },
     {
-      value: 'ಎಂಟು ವರ್ಷಗಳು',
+      string: 'ಎಂಟು ವರ್ಷಗಳು',
     },
     {
-      value: 'ಹನ್ನೆರಡು ವರ್ಷಗಳು',
+      string: 'ಹನ್ನೆರಡು ವರ್ಷಗಳು',
       ed50: {
         immediate: 3579.0,
         delayed: 5368.0
@@ -431,10 +462,10 @@ module.exports = {
       }
     },
     {
-      value: 'ಹದಿನೆಂಟು ವರ್ಷಗಳು',
+      string: 'ಹದಿನೆಂಟು ವರ್ಷಗಳು',
     },
     {
-      value: 'ಇಪ್ಪತ್ತೈದು ವರ್ಷಗಳು',
+      string: 'ಇಪ್ಪತ್ತೈದು ವರ್ಷಗಳು',
       ed50: {
         immediate: 7748.0,
         delayed: 9131.0

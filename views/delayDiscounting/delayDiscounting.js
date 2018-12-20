@@ -65,7 +65,7 @@ $(document).ready(() => {
   $('#now').on('click', () => {
     endRespTime = new Date();
     let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
-    let delayChoice = gamePayload[index-1].value;
+    let delayChoice = gamePayloadRaw.en[index-1].value;
 
     let ed50 = 'Not determined';
     let k = 'Not determined';
@@ -84,7 +84,7 @@ $(document).ready(() => {
       return;
     }
     index = index - currentAdjustment;
-    $('#later').text('₹1000 '+ gamePayload[index-1].value);
+    $('#later').text('₹1000 '+ gamePayload[index-1].string);
     startRespTime = new Date();
     currentAdjustment = currentAdjustment/2;
   })
@@ -92,7 +92,7 @@ $(document).ready(() => {
   $('#later').on('click', () => {
     endRespTime = new Date();
     let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
-    let delayChoice = gamePayload[index-1].value;
+    let delayChoice = gamePayloadRaw.en[index-1].value;
 
     let ed50 = 'Not determined';
     let k = 'Not determined';
@@ -111,7 +111,7 @@ $(document).ready(() => {
       return;
     }
     index = index + currentAdjustment;
-    $('#later').text('₹1000 '+ gamePayload[index-1].value);
+    $('#later').text('₹1000 '+ gamePayload[index-1].string);
     startRespTime = new Date();
     currentAdjustment = currentAdjustment/2;
   })
@@ -150,6 +150,6 @@ ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   $('#subText').html(string.strings.game5.subText);
   $('#now').text(string.strings.game5.buttonNow);
   gamePayload = (JSON.parse(window.localStorage.getItem('lang')).language == 'en') ? gamePayloadRaw.en : gamePayloadRaw.kn;
-  $('#later').text('₹1000 '+ gamePayload[index-1].value);
+  $('#later').text('₹1000 '+ gamePayload[index-1].string);
 });
   
