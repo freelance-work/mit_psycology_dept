@@ -92,7 +92,7 @@ module.exports = {
   },
   game5: {
     instructionTitle: '5-ವಿಚಾರಣೆ ಸರಿಹೊಂದಿಸುವುದು ವಿಳಂಬ ರಿಯಾಯಿತಿ ಕಾರ್ಯ',
-    instruction: 'In this game, you will be asked to make choices between having Rs 500 right now or getting Rs 1000 sometime in the future. Select the option you would prefer. This game takes about 1 minute to play. There is no right or wrong answers.',
+    instruction: 'ಈ ಆಟದಲ್ಲಿ, ನಿಮಗೆ 500 ರೂಪಾಯಿಗಳ ನಡುವಿನ ಆಯ್ಕೆಗಳನ್ನು ಮಾಡಲು ಅಥವಾ ಭವಿಷ್ಯದಲ್ಲಿ ಸುಮಾರು 1000 ರೂ. ನೀವು ಆದ್ಯತೆ ನೀಡುವ ಆಯ್ಕೆಯನ್ನು ಆರಿಸಿ. ಈ ಆಟವನ್ನು ಆಡಲು 1 ನಿಮಿಷ ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ. ಸರಿ ಅಥವಾ ತಪ್ಪು ಉತ್ತರಗಳು ಇಲ್ಲ.',
     question: 'ನೀವು ಹೊಂದಿದ್ದೀರಾ?',
     buttonNow: '₹500 ಈಗ',
     or: 'ಅಥವಾ',

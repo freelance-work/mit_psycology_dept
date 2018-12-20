@@ -2,6 +2,7 @@ const electron = require('electron');
 const { ipcRenderer } = electron;
 const gamePayloadRaw = require('../../assets/delay_discounting.js');
 let gamePayload;
+let index = 16;
 const csvHelper = require('../../utils/csvHelper');
 const remote = require('electron').remote
 const app = remote.app;
@@ -15,7 +16,6 @@ const {
 $(document).ready(() => {
   let trialCount = 1;
   let outputPayload = { "data": [] };
-  let index = 16;
   let currentAdjustment = index/2;
   let startRespTime = new Date();
   let string = JSON.parse(window.localStorage.getItem('lang'));
@@ -148,6 +148,8 @@ ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   $('#btn-now').html(string.strings.game5.buttonNow);
   $('.btn-seperator').html(string.strings.game5.or);
   $('#subText').html(string.strings.game5.subText);
+  $('#now').text(string.strings.game5.buttonNow);
   gamePayload = (JSON.parse(window.localStorage.getItem('lang')).language == 'en') ? gamePayloadRaw.en : gamePayloadRaw.kn;
+  $('#later').text('₹1000 '+ gamePayload[index-1].value);
 });
   
