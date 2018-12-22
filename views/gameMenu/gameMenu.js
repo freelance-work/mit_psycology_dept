@@ -29,6 +29,7 @@ $(document).ready(() => {
         $('.game-text3').html(string.strings.gamePage.game3);
         $('.game-text4').html(string.strings.gamePage.game4);
         $('.game-text5').html(string.strings.gamePage.game5);
+        $('.game-text6').html(string.strings.gamePage.game6);
     } catch (err) { };
 });
 
@@ -124,6 +125,12 @@ $('#game5').on('click', () => {
   }
 });
 
+$('#game6').on('click', () => {
+  if(ipcRenderer.sendSync(GET_TASK_STATE).data.length >= 6) {
+    window.location = "../prisonersDilemma/instruction.html";
+  }
+});
+
 
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
     window.localStorage.setItem('lang', JSON.stringify(string));
@@ -132,4 +139,5 @@ ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
     $('.game-text3').html(string.strings.gamePage.game3);
     $('.game-text4').html(string.strings.gamePage.game4);
     $('.game-text5').html(string.strings.gamePage.game5);
+    $('.game-text6').html(string.strings.gamePage.game6);
 });

@@ -20,7 +20,8 @@ module.exports = {
     game2: 'Affective Go-No-Go',
     game3: 'Word Affective Go–No-Go',
     game4: 'IOWA Gambling',
-    game5: '5-Trial Adjusting Delay Discounting Task'
+    game5: 'Trial Adjusting Delay Discounting Task',
+    game6: 'Prisoner\'s Dilemma'
   },
   game1: {
     instructionTitle: 'Emotion recognition',
@@ -98,5 +99,19 @@ module.exports = {
     or: 'or',
     buttonLater: '₹1000 in 3 weeks',
     subText: 'Click on the answer of your choice'
+  },
+  game6: {
+    instructionTitle: 'Prisoner\'s Dilemma',
+    instruction: 'In this game, you will be playing against 3 different opponents. With each of these opponents you have won some money. You can choose either to share or steal the money. You and your opponent have to choose without knowing what the other person is choosing.',
+    or: 'or',
+    question: 'What do you choose?',
+    buttonShare: 'Share',
+    buttonSteal: 'Steal',
+    subText: 'Click on the answer of your choice',
+    you : 'You: ',
+    oponent: 'Oponent',
+    youEarned : 'You earned',
+    andYourOponent : 'and your oponent earned',
+    wait: 'Please wait, your oponent is playing his Turn.'
   }
 }
