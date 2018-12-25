@@ -108,7 +108,7 @@ module.exports = {
     buttonShare: 'ಹಂಚು',
     buttonSteal: 'ಕದಿಯಲು',
     subText: 'ನಿಮ್ಮ ಆಯ್ಕೆಯ ಉತ್ತರವನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ',
-    you : 'ನೀನು: ',
+    you : 'ನೀನು',
     opponent: 'ಒಪನ್ಟೆಂಟ್',
     youEarned : 'ನೀವು ಸಂಪಾದಿಸಿದ್ದೀರಿ',
     andYourOpponent : 'ಮತ್ತು ನಿಮ್ಮ ಆಪ್ತಮಿತ್ರ ಗಳಿಸಿದರು',
