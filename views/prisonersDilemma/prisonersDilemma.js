@@ -167,7 +167,7 @@ $(document).ready(() => {
         opponent++;
       }
       previousChoice = userChoice;
-    }, 100) // change this back to 5000
+    }, 5000)
   }
 
   const showTurnResult = (upts, opts) => {
