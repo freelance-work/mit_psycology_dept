@@ -57,8 +57,8 @@ $(document).ready(() => {
 
   $('#exit-btn').on('click', () => {
     ipcRenderer.send(PUT_DATA, 'prisoners_dilemma', outputPayload);
-    let taskData = [1, 2, 3, 4, 5, 6];
-    if (outputPayload.data.length > 0 && ipcRenderer.sendSync(GET_TASK_STATE).data.length < taskData.length) {
+    let taskData = 6;
+    if (outputPayload.data.length > 0) {
       ipcRenderer.send(PUT_TASK_STATE, { data: taskData });
     }
     window.location = '../gameMenu/gameMenu.html';
@@ -89,8 +89,8 @@ $(document).ready(() => {
         userTotalPts = 0;
         opponentTotalPts  = 0;
         previousChoice = 'null'
-        $('.your-score').html(0);
-        $('.opponent-score').html(0);
+        $('.your-score').html(': '+0);
+        $('.opponent-score').html(': '+0);
         startRespTime = new Date();
       }, 5000)
     } else if (trialCount == 41){
@@ -112,6 +112,7 @@ $(document).ready(() => {
   })
 
   const playTurn = (userChoice) => {
+    let string = JSON.parse(window.localStorage.getItem('lang'));
     let endRespTime = new Date();
     let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
     let opponentChoice;
@@ -160,8 +161,8 @@ $(document).ready(() => {
     setTimeout(() => {
       hideSpinner();
       showTurnResult(userpts, opponentpts);
-      $('.your-score').html(userTotalPts);
-      $('.opponent-score').html(opponentTotalPts);
+      $('.your-score').html(': '+userTotalPts);
+      $('.opponent-score').html(': '+opponentTotalPts);
       trialCount++;
       if (trialCount == 21 || trialCount == 41 || trialCount == 61) {
         opponent++;
@@ -171,6 +172,7 @@ $(document).ready(() => {
   }
 
   const showTurnResult = (upts, opts) => {
+    let string = JSON.parse(window.localStorage.getItem('lang'));
     $('.result-modal-content-text').html(string.strings.game6.youEarned + ' ' + upts + ' ' + string.strings.game6.andYourOpponent + ' ' + opts);
     $('.spinner').hide();
     $('.result-modal-btns').show();
@@ -178,7 +180,7 @@ $(document).ready(() => {
   }
 
   const ShowSpinner = (modalText) => {
-    $('.result-modal-content-text').html(modalText)
+    $('.result-modal-content-text').html(modalText);
     $('.spinner').show();
     $('.result-modal-btns').hide();
     $('.result-modal-container').show();
@@ -227,4 +229,5 @@ ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   $('#subText').html(string.strings.game6.subText);
   $('#your-pts').html(string.strings.game6.you);
   $('#opponent-pts').html(string.strings.game6.opponent);
+  alert('Some strings may fail to translate now, They will be translated in the next trial');
 });

@@ -22,7 +22,6 @@ $(document).ready(() => {
 
 $('#start-btn').on('click', () => {
   let patientID = $('#patient-id').val();
-  ipcRenderer.send(PUT_TASK_STATE, {data: [1]});
   window.localStorage.setItem('patientId', patientID);
   window.location = "views/gameMenu/gameMenu.html";
 });
