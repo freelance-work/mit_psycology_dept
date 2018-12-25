@@ -14,12 +14,8 @@ $(document).ready(() => {
 
     let taskState = ipcRenderer.sendSync(GET_TASK_STATE);
 
-    taskState.data.map(state => {
-      if(taskState.data.length - 1 >= state) {
-        $('#gameCSV' + state).css('display', 'unset');
-      }
-      $('#game'+ state).css('filter', 'none');
-    })
+    $('#gameCSV' + taskState.data).css('display', 'unset');
+
 
     let string;
     try {
@@ -89,8 +85,20 @@ $('#gameCSV5').on('click', async (e) => {
   e.stopPropagation();
   let outputPayload = ipcRenderer.sendSync(GET_DATA, 'delay_dicounting');
   let id = window.localStorage.getItem('patientId');
-  //let fields = ['Trial', 'Card', 'Won', 'Lost', 'Total'];
+  let fields = ['choiceNo', 'index', 'indexAdjustment', 'delayChoice', 'response', 'responseTime', 'ed50', 'k'];
   csvHelper.write(outputPayload.data, id, 'delay_dicounting', fields).then((res) => {
+    if (res == "success") {
+      alert('CSV Exported');
+    }
+  })
+});
+
+$('#gameCSV6').on('click', async (e) => {
+  e.stopPropagation();
+  let outputPayload = ipcRenderer.sendSync(GET_DATA, 'prisoners_dilemma');
+  let id = window.localStorage.getItem('patientId');
+  let fields = ['trial', 'opponentStrategy', 'patientResponse', 'opponentResponse', 'patientGainedPts', 'opponentGainedPts', 'patientTotalPts', 'opponentTotalPts', 'reactionTime'];
+  csvHelper.write(outputPayload.data, id, 'prisoners_dilemma', fields).then((res) => {
     if (res == "success") {
       alert('CSV Exported');
     }
@@ -102,33 +110,23 @@ $('#game1').on('click', () => {
 });
 
 $('#game2').on('click', () => {
-  if(ipcRenderer.sendSync(GET_TASK_STATE).data.length >= 2) {
-    window.location = "../goNoGo/instruction.html";
-  }
+  window.location = "../goNoGo/instruction.html";
 });
 
 $('#game3').on('click', () => {
-  if(ipcRenderer.sendSync(GET_TASK_STATE).data.length >= 3) {
-    window.location = "../wordAffectiveGoNoGo/instruction.html";
-  }
+  window.location = "../wordAffectiveGoNoGo/instruction.html";
 });
 
 $('#game4').on('click', () => {
-  if(ipcRenderer.sendSync(GET_TASK_STATE).data.length >= 4) {
-    window.location = "../IOWAGambling/instruction.html";
-  }
+  window.location = "../IOWAGambling/instruction.html";
 });
 
 $('#game5').on('click', () => {
-  if(ipcRenderer.sendSync(GET_TASK_STATE).data.length >= 5) {
-    window.location = "../delayDiscounting/instruction.html";
-  }
+  window.location = "../delayDiscounting/instruction.html";
 });
 
 $('#game6').on('click', () => {
-  if(ipcRenderer.sendSync(GET_TASK_STATE).data.length >= 6) {
-    window.location = "../prisonersDilemma/instruction.html";
-  }
+  window.location = "../prisonersDilemma/instruction.html";
 });
 
 

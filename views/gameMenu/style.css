@@ -20,7 +20,6 @@ body{
     margin: 8px;
     border-radius: 10px;
     color: #ffffff;
-    filter: grayscale(1);
     cursor: pointer;
 }
 
@@ -91,6 +90,11 @@ body{
 #gameCSV5 {
     background: darkorange;
     box-shadow: -3px -3px 1px #FF5800 inset;
+}
+
+#gameCSV6 {
+    background: darkseagreen;
+    box-shadow: -3px -3px 1px lightseagreen inset;
 }
 
 #exp-icon {
