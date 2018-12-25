@@ -1,8 +1,5 @@
 const electron = require('electron');
 const { ipcRenderer } = electron;
-const gamePayloadRaw = require('../../assets/delay_discounting.js');
-let gamePayload;
-let index = 16;
 const csvHelper = require('../../utils/csvHelper');
 const remote = require('electron').remote
 const app = remote.app;
@@ -16,13 +13,14 @@ const {
 $(document).ready(() => {
   let previousChoice = null;
   let trialCount = 1;
-  let oponent = 1;
+  let opponent = 1;
   let userTotalPts = 0;
-  let oponentTotalPts = 0;
+  let opponentTotalPts = 0;
   let outputPayload = { "data": [] };
+  let startRespTime = new Date();
   let string = JSON.parse(window.localStorage.getItem('lang'));
 
-  $('#oponent').html('A');
+  $('#opponent').html('A');
 
   $('#close-modal-btn').text(string.strings.commons.modalCloseButton);
   $('.modal-content-text').html(string.strings.commons.modalContent);
@@ -35,8 +33,7 @@ $(document).ready(() => {
   $('#steal').text(string.strings.game6.buttonSteal);
   $('#subText').html(string.strings.game6.subText);
   $('#your-pts').html(string.strings.game6.you);
-  $('#oponent-pts').html(string.strings.game6.oponent);
-  gamePayload = (JSON.parse(window.localStorage.getItem('lang')).language == 'en') ? gamePayloadRaw.en : gamePayloadRaw.kn;
+  $('#opponent-pts').html(string.strings.game6.opponent);
 
   $('#end-game-btn').on('click', () => {
     let string = JSON.parse(window.localStorage.getItem('lang'));
@@ -49,8 +46,8 @@ $(document).ready(() => {
 
   $('#export-btn').on('click', async () => {
     let id = window.localStorage.getItem('patientId');
-    let fields = ['choiceNo', 'index', 'indexAdjustment', 'delayChoice', 'response', 'responseTime', 'ed50', 'k'];
-    csvHelper.write(outputPayload.data, id, 'delay_discounting', fields).then((res) => {
+    let fields = ['trial', 'opponentStrategy', 'patientResponse', 'opponentResponse', 'patientGainedPts', 'opponentGainedPts', 'patientTotalPts', 'opponentTotalPts', 'reactionTime'];
+    csvHelper.write(outputPayload.data, id, 'prisoners_dilemma', fields).then((res) => {
       if (res == "success") {
         $('#export-btn').addClass('btn-success').removeClass('btn-primary').prop('disabled', true).text(string.strings.commons.exported);
         $('#close-modal-btn').hide();
@@ -59,7 +56,7 @@ $(document).ready(() => {
   });
 
   $('#exit-btn').on('click', () => {
-    ipcRenderer.send(PUT_DATA, 'delay_discounting', outputPayload);
+    ipcRenderer.send(PUT_DATA, 'prisoners_dilemma', outputPayload);
     let taskData = [1, 2, 3, 4, 5, 6];
     if (outputPayload.data.length > 0 && ipcRenderer.sendSync(GET_TASK_STATE).data.length < taskData.length) {
       ipcRenderer.send(PUT_TASK_STATE, { data: taskData });
@@ -81,83 +78,107 @@ $(document).ready(() => {
   })
 
   $('#okay-btn').on('click', () => {
+    let string = JSON.parse(window.localStorage.getItem('lang'));
+    startRespTime = new Date();
     $('.result-modal-container').hide();
+    if(trialCount == 21){
+      ShowSpinner(string.strings.game6.doneOpponent1);
+      setTimeout(() => {
+        hideSpinner();
+        $('#opponent').html('B');
+        userTotalPts = 0;
+        opponentTotalPts  = 0;
+        previousChoice = 'null'
+        $('.your-score').html(0);
+        $('.opponent-score').html(0);
+        startRespTime = new Date();
+      }, 5000)
+    } else if (trialCount == 41){
+      ShowSpinner(string.strings.game6.doneOpponent2);
+      setTimeout(() => {
+        hideSpinner();
+        $('#opponent').html('C');
+        userTotalPts = 0;
+        opponentTotalPts  = 0;
+        $('.your-score').html(0);
+        $('.opponent-score').html(0);
+        startRespTime = new Date();
+      }, 5000) 
+    } else if (trialCount == 61){
+      $('#close-modal-btn').hide();
+      $('.final-modal-container').show();
+      startRespTime = new Date();
+    }
   })
 
   const playTurn = (userChoice) => {
-    let oponentChoice;
-    let oponentpts;
+    let endRespTime = new Date();
+    let reactionTime = ((endRespTime.getTime() - startRespTime.getTime()) / 1000).toPrecision(2);
+    let opponentChoice;
+    let opponentpts;
     let userpts;
+    ShowSpinner(string.strings.game6.wait);
+    
 
-    ShowSpinner();
-
-    switch (oponent) {
-      case 1: oponentChoice = aggressive(previousChoice)
+    switch (opponent) {
+      case 1: opponentChoice = aggressive(previousChoice);
         break;
-      case 2: oponentChoice = titForTwo();
+      case 2: opponentChoice = titForTwo(userChoice);
         break;
-      case 3: oponentChoice = alwaysShare();
+      case 3: opponentChoice = alwaysShare();
     }
 
-    console.log('u: ' + userChoice + ' o: ' + oponentChoice);
-
-    if (userChoice == 'share' && oponentChoice == 'share') {
-      oponentpts = userpts = 3;
-    } else if (userChoice == 'share' && oponentChoice == 'steal') {
-      oponentpts = 5;
+    if (userChoice == 'share' && opponentChoice == 'share') {
+      opponentpts = userpts = 3;
+    } else if (userChoice == 'share' && opponentChoice == 'steal') {
+      opponentpts = 5;
       userpts = 0;
-    } else if (userChoice == 'steal' && oponentChoice == 'share') {
-      oponentpts = 0;
+    } else if (userChoice == 'steal' && opponentChoice == 'share') {
+      opponentpts = 0;
       userpts = 5;
     } else {
-      oponentpts = userpts = 1;
+      opponentpts = userpts = 1;
     }
 
     userTotalPts += userpts;
-    oponentTotalPts += oponentpts;
+    opponentTotalPts += opponentpts;
 
     let payload = {
-      oponentStrategy: oponent,
+      opponentStrategy: opponent,
       trial: trialCount,
       patientResponse: userChoice,
-      oponentResponse: oponentChoice,
+      opponentResponse: opponentChoice,
       patientGainedPts: userpts,
-      oponentGainedPts: userpts,
+      opponentGainedPts: userpts,
       patientTotalPts: userTotalPts,
-      oponentTotalPts: oponentTotalPts,
+      opponentTotalPts: opponentTotalPts,
+      reactionTime : reactionTime
     }
 
     outputPayload.data.push(payload);
 
     setTimeout(() => {
       hideSpinner();
-      showTurnResult(userpts, oponentpts);
+      showTurnResult(userpts, opponentpts);
       $('.your-score').html(userTotalPts);
-      $('.oponent-score').html(oponentTotalPts);
-      if (trialCount++ > 30) {
-        oponent++;
-        if (oponent == 2) {
-          $('#oponent').html('B');
-        } else if (oponent == 3) {
-          $('#oponent').html('C');
-        } else {
-          $('.close-modal-btn').hide();
-          $('.final-modal-container').show();
-        }
+      $('.opponent-score').html(opponentTotalPts);
+      trialCount++;
+      if (trialCount == 21 || trialCount == 41 || trialCount == 61) {
+        opponent++;
       }
       previousChoice = userChoice;
-    }, 5000)
+    }, 100) // change this back to 5000
   }
 
   const showTurnResult = (upts, opts) => {
-    $('.result-modal-content-text').html(string.strings.game6.youEarned + ' ' + upts + ' ' + string.strings.game6.andYourOponent + ' ' + opts);
+    $('.result-modal-content-text').html(string.strings.game6.youEarned + ' ' + upts + ' ' + string.strings.game6.andYourOpponent + ' ' + opts);
     $('.spinner').hide();
     $('.result-modal-btns').show();
     $('.result-modal-container').show();
   }
 
-  const ShowSpinner = () => {
-    $('.result-modal-content-text').html(string.strings.game6.wait)
+  const ShowSpinner = (modalText) => {
+    $('.result-modal-content-text').html(modalText)
     $('.spinner').show();
     $('.result-modal-btns').hide();
     $('.result-modal-container').show();
@@ -175,6 +196,15 @@ $(document).ready(() => {
     } else {
       return previousChoice;
     }
+  }
+
+  const titForTwo = (userChoice) => {
+    if(previousChoice == 'steal' && userChoice == 'steal'){
+      return 'steal';
+    } else {
+      return 'share';
+    }
+
   }
 
   const alwaysShare = () => {
@@ -196,7 +226,5 @@ ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   $('#steal').text(string.strings.game6.buttonSteal);
   $('#subText').html(string.strings.game6.subText);
   $('#your-pts').html(string.strings.game6.you);
-  $('#oponent-pts').html(string.strings.game6.oponent);
-  gamePayload = (JSON.parse(window.localStorage.getItem('lang')).language == 'en') ? gamePayloadRaw.en : gamePayloadRaw.kn;
-  $('#later').text('₹1000 ' + gamePayload[index - 1].string);
+  $('#opponent-pts').html(string.strings.game6.opponent);
 });

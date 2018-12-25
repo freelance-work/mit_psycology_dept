@@ -68,7 +68,8 @@ html, body{
 	font-weight: bold;
 }
 
-#now {
+.result-modal-btns{
+    text-align: center;
 }
 
 .end-game-btn-container {

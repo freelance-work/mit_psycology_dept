@@ -109,9 +109,11 @@ module.exports = {
     buttonSteal: 'Steal',
     subText: 'Click on the answer of your choice',
     you : 'You: ',
-    oponent: 'Oponent',
+    opponent: 'Opponent',
     youEarned : 'You earned',
-    andYourOponent : 'and your oponent earned',
-    wait: 'Please wait, your oponent is playing his Turn.'
+    andYourOpponent : 'and your opponent earned',
+    wait: 'Please wait, your opponent is playing his Turn.',
+    doneOpponent1 : 'Done with Opponent 1, Opponent 2 is getting ready.',
+    doneOpponent2 : 'Done with Opponent 2, Opponent 3 is getting ready.'
   }
 }
