@@ -56,11 +56,13 @@ body{
 }
 
 #game5{
-    background-color: #f79e1d;
+    background-image: url('../../assets/delay_discounting.png');
+    background-size: cover;
 }
 
 #game6{
-    background-color: #00897B;
+    background-image: url('../../assets/prisoners_dilemma.png');
+    background-size: cover;
 }
 
 .game-container{
