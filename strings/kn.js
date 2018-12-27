@@ -7,7 +7,8 @@ module.exports = {
     backButton : 'ಹಿಂದೆ',
     startButton : "ಪ್ರಾರಂಭಿಸಿ",
     continueButton : 'ಮುಂದುವರೆಯಿರಿ',
-    exported: 'ರಫ್ತು ಮಾಡಲಾಗಿದೆ'
+    exported: 'ರಫ್ತು ಮಾಡಲಾಗಿದೆ',
+    nextButton: 'ಮುಂದಿನ',
   },
   landingPage: {
     title: 'ರೋಗಿಯ ID ಯನ್ನು ನಮೂದಿಸಿ',
@@ -103,6 +104,8 @@ module.exports = {
   game6: {
     instructionTitle: 'ಕೈದಿಗಳ ಸಂದಿಗ್ಧತೆ',
     instruction: 'ಈ ಪಂದ್ಯದಲ್ಲಿ, ನೀವು 3 ವಿರೋಧಿಗಳ ವಿರುದ್ಧ ಆಡುವಿರಿ. ಈ ಪ್ರತಿಸ್ಪರ್ಧಿಗಳೊಂದಿಗೆ ನೀವು ಸ್ವಲ್ಪ ಹಣವನ್ನು ಗೆದ್ದಿದ್ದೀರಿ. ಹಣವನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಅಥವಾ ಕದಿಯಲು ನೀವು ಆಯ್ಕೆ ಮಾಡಬಹುದು. ನೀವು ಮತ್ತು ನಿಮ್ಮ ಎದುರಾಳಿಯು ಇನ್ನೊಬ್ಬ ವ್ಯಕ್ತಿಯು ಯಾವುದನ್ನು ಆಯ್ಕೆ ಮಾಡಬೇಕೆಂಬುದನ್ನು ತಿಳಿಯದೆಯೇ ಆರಿಸಬೇಕಾಗುತ್ತದೆ.',
+    instruction2 : '<ul><li>If you and your opponent choose to share the money, you both will get 3 points for mutual co-operation.</li><li>If you choose to share the money and your opponent chooses to steal the money, you will get zero points and your opponent will get 5  points.</li><li>If you choose to steal the money and your opponent chooses to share the money, you will get 5 points and your opponent will get 0  points.</li><li>If you and your opponent choose to steal the money, you both will get 1 points for mutual co-operation.</li></ul>',
+    instruction3 : '<div class="instruction3-img"></div>',
     or: 'ಅಥವಾ',
     question: 'ನೀವು ಮತ್ತು ನಿಮ್ಮ ಎದುರಾಳಿಯು ಆಟದಲ್ಲಿ 2000 ದಲ್ಲಿ ಜಯಗಳಿಸಿದ್ದಾರೆ, ನೀವು ಬಯಸುತ್ತೀರಾ',
     buttonShare: 'ಹಣವನ್ನು ಹಂಚಿ',

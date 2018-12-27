@@ -8,7 +8,8 @@ module.exports = {
     startButton : "Start",
     continueButton : 'Continue',
     exported: 'Exported',
-    inGameExit: 'Are you sure you want to exit? The game cannot be resumed.'
+    inGameExit: 'Are you sure you want to exit? The game cannot be resumed.',
+    nextButton: 'Next',
   },
   landingPage: {
     title: 'Enter patient ID',
@@ -103,6 +104,8 @@ module.exports = {
   game6: {
     instructionTitle: 'Prisoner\'s Dilemma',
     instruction: 'In this game, you will be playing against 3 different opponents. With each of these opponents you have won some money. You can choose either to share or steal the money. You and your opponent have to choose without knowing what the other person is choosing.',
+    instruction2 : '<ul><li>If you and your opponent choose to share the money, you both will get 3 points for mutual co-operation.</li><li>If you choose to share the money and your opponent chooses to steal the money, you will get zero points and your opponent will get 5  points.</li><li>If you choose to steal the money and your opponent chooses to share the money, you will get 5 points and your opponent will get 0  points.</li><li>If you and your opponent choose to steal the money, you both will get 1 points for mutual co-operation.</li></ul>',
+    instruction3 : '<div class="instruction3-img"></div>',
     or: 'or',
     question: 'You and your opponent have won Rs 2000 in a game, Do you wish to',
     buttonShare: 'Share the money',
@@ -114,6 +117,7 @@ module.exports = {
     andYourOpponent : 'and your opponent earned',
     wait: 'Please wait, your opponent is playing his turn.',
     doneOpponent1 : 'Done with Opponent 1, Opponent 2 is getting ready.',
-    doneOpponent2 : 'Done with Opponent 2, Opponent 3 is getting ready.'
+    doneOpponent2 : 'Done with Opponent 2, Opponent 3 is getting ready.',
+    
   }
 }
