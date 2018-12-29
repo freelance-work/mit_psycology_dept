@@ -16,6 +16,7 @@ html, body{
 }
 
 .g6-instruction-container{
+    min-width: 600px;
     width: auto;
     height: auto;
     background-color: #f5f5f5;
@@ -162,4 +163,11 @@ html, body{
 
 .pts{
     display: inline-block;
+}
+
+.instruction3-img{
+    background-image: url('../../assets/instruction3-img.png');
+    height: 40vh;
+    background-size: cover;
+    width: 100%;
 }
