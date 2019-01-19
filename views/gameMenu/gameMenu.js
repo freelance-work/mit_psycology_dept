@@ -14,7 +14,9 @@ $(document).ready(() => {
 
     let taskState = ipcRenderer.sendSync(GET_TASK_STATE);
 
-    $('#gameCSV' + taskState.data).css('display', 'unset');
+    try {
+      $('#gameCSV' + taskState.data).css('display', 'unset');
+    } catch(e) {}
 
 
     let string;
