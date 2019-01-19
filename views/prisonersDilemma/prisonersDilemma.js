@@ -160,7 +160,7 @@ $(document).ready(() => {
 
     setTimeout(() => {
       hideSpinner();
-      showTurnResult(userpts, opponentpts);
+      showTurnResult(userpts, opponentpts, opponentChoice);
       $('.your-score').html(': '+userTotalPts);
       $('.opponent-score').html(': '+opponentTotalPts);
       trialCount++;
@@ -171,9 +171,16 @@ $(document).ready(() => {
     }, 5000)
   }
 
-  const showTurnResult = (upts, opts) => {
+  const showTurnResult = (upts, opts, opponentChoice) => {
+    let optchoice = null;
     let string = JSON.parse(window.localStorage.getItem('lang'));
-    $('.result-modal-content-text').html(string.strings.game6.youEarned + ' ' + upts + ' ' + string.strings.game6.andYourOpponent + ' ' + opts);
+    console.log(string.language)
+    if(string.language == 'en'){
+      (opponentChoice == 'steal') ? optchoice = string.strings.game6.steal : optchoice = string.strings.game6.share;
+    } else if(string.language == 'kn'){
+      (opponentChoice == 'steal') ? optchoice = string.strings.game6.steal : optchoice = string.strings.game6.share;
+    }
+    $('.result-modal-content-text').html( string.strings.game6.yourOponentChoose + optchoice + "<br>" + string.strings.game6.youEarned + ' ' + upts + ' ' + string.strings.game6.andYourOpponent + ' ' + opts);
     $('.spinner').hide();
     $('.result-modal-btns').show();
     $('.result-modal-container').show();

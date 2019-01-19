@@ -110,6 +110,8 @@ module.exports = {
     question: 'You and your opponent have won Rs 2000 in a game, Do you wish to',
     buttonShare: 'Share the money',
     buttonSteal: 'Steal the money',
+    share: 'share',
+    steal: 'steal',
     subText: 'Click on the answer of your choice',
     you : 'You',
     opponent: 'Opponent',
@@ -118,6 +120,6 @@ module.exports = {
     wait: 'Please wait, your opponent is playing his turn.',
     doneOpponent1 : 'Done with Opponent 1, Opponent 2 is getting ready.',
     doneOpponent2 : 'Done with Opponent 2, Opponent 3 is getting ready.',
-    
+    yourOponentChoose: 'Your Oponent Choose to ',
   }
 }
