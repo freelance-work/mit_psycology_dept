@@ -100,9 +100,8 @@ $(document).ready(() => {
 
   $('#exit-btn').on('click', () => {
     ipcRenderer.send(PUT_DATA, 'emotion_recognition', outputPayload);
-    let taskData = 1;
     if (outputPayload.data.length > 0) {
-      ipcRenderer.send(PUT_TASK_STATE, { data: taskData });
+      ipcRenderer.send(PUT_TASK_STATE, 1);
     }
     window.location = '../gameMenu/gameMenu.html';
   });

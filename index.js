@@ -6,7 +6,6 @@ const {
     HANDLE_CLEAR_STORAGE,
     GET_STRINGS,
     HANDLE_LANGUAGE_CHANGE,
-    PUT_TASK_STATE,
 } = require('./utils/constants');
 
 $(document).ready(() => {

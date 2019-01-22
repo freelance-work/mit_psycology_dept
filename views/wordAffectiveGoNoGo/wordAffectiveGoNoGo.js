@@ -195,9 +195,8 @@ $('#exit-btn-info').on('click', () => {
 
 const exitToMenu = () => {
   ipcRenderer.send(PUT_DATA, 'gonogo', payload);
-  let taskData = 3;
   if (payload.data.length > 0) {
-    ipcRenderer.send(PUT_TASK_STATE, { data: taskData });
+    ipcRenderer.send(PUT_TASK_STATE, 3);
   }
   window.location = '../gameMenu/gameMenu.html';
 }

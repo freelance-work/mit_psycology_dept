@@ -12,10 +12,12 @@ const {
 $(document).ready(() => {
     $('.game-item').css({ 'height': $('.game-item').width() + 'px' });
 
-    let taskState = ipcRenderer.sendSync(GET_TASK_STATE);
-
+    let taskState = ipcRenderer.sendSync(GET_TASK_STATE);    
+    console.log(taskState);
     try {
-      $('#gameCSV' + taskState.data).css('display', 'unset');
+      taskState.map(e => {
+        $('#gameCSV' + e).css('display', 'unset');
+      })
     } catch(e) {}
 
 

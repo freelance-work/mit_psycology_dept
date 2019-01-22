@@ -68,9 +68,8 @@ $(document).ready(() => {
 
   $('#exit-btn').on('click', () => {
     ipcRenderer.send(PUT_DATA, 'iowa_gambling', outputPayload);
-    let taskData = 4;
     if (outputPayload.data.length > 0) {
-      ipcRenderer.send(PUT_TASK_STATE, { data: taskData });
+      ipcRenderer.send(PUT_TASK_STATE, 4);
     }
     window.location = '../gameMenu/gameMenu.html';
   });

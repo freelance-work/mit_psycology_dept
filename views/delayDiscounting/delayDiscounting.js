@@ -55,9 +55,8 @@ $(document).ready(() => {
 
   $('#exit-btn').on('click', () => {
     ipcRenderer.send(PUT_DATA, 'delay_discounting', outputPayload);
-    let taskData = 5;
     if (outputPayload.data.length > 0) {
-      ipcRenderer.send(PUT_TASK_STATE, { data: taskData });
+      ipcRenderer.send(PUT_TASK_STATE, 5);
     }
     window.location = '../gameMenu/gameMenu.html';
   });

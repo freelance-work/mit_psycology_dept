@@ -57,9 +57,8 @@ $(document).ready(() => {
 
   $('#exit-btn').on('click', () => {
     ipcRenderer.send(PUT_DATA, 'prisoners_dilemma', outputPayload);
-    let taskData = 6;
     if (outputPayload.data.length > 0) {
-      ipcRenderer.send(PUT_TASK_STATE, { data: taskData });
+      ipcRenderer.send(PUT_TASK_STATE, 6);
     }
     window.location = '../gameMenu/gameMenu.html';
   });
