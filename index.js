@@ -21,9 +21,13 @@ $(document).ready(() => {
 });
 
 $('#start-btn').on('click', () => {
-  let patientID = $('#patient-id').val();
-  window.localStorage.setItem('patientId', patientID);
-  window.location = "views/gameMenu/gameMenu.html";
+  let patientID = $('#patient-id').val().trim();
+  if (patientID == '') {
+    alert("Please enter patient ID")
+  } else {
+    window.localStorage.setItem('patientId', patientID);
+    window.location = "views/gameMenu/gameMenu.html";
+  }
 });
 
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
