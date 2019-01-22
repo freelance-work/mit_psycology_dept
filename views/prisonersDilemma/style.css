@@ -5,9 +5,22 @@ html, body{
     margin: 0; 
 }
 
+.u-score{
+    margin: 0px;
+    padding: 0px;
+}
+
 .g6-instruction-title-container{
     text-align: center;
     margin: 32px;
+}
+
+#you-img{
+    width: 40px;
+}
+
+#opponent-img{
+    width: 40px;
 }
 
 .g6-instructions-content{

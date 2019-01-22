@@ -1,7 +1,7 @@
 const electron = require('electron');
 const { ipcRenderer } = electron;
 const csvHelper = require('../../utils/csvHelper');
-const remote = require('electron').remote
+const remote = require('electron').remote;
 const app = remote.app;
 const {
   HANDLE_LANGUAGE_CHANGE,
@@ -86,6 +86,7 @@ $(document).ready(() => {
       setTimeout(() => {
         hideSpinner();
         $('#opponent').html('B');
+        $('#opponent-img').attr("src","../../assets/opponent2.png");
         userTotalPts = 0;
         opponentTotalPts  = 0;
         previousChoice = 'null'
@@ -98,6 +99,7 @@ $(document).ready(() => {
       setTimeout(() => {
         hideSpinner();
         $('#opponent').html('C');
+        $('#opponent-img').attr("src","../../assets/opponent3.png");
         userTotalPts = 0;
         opponentTotalPts  = 0;
         $('.your-score').html(0);

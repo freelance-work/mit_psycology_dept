@@ -41,7 +41,6 @@ html, body{
     background-color: #07512a;
     height: 100vh;
     border: 15px #9e5a15 solid;
-    border-radius: 5px;
     box-sizing: border-box;
     width: 100%;
 }
@@ -158,6 +157,13 @@ html, body{
     opacity: 0.3;
     position: absolute;
     z-index: 9;
+}
+
+#moneybag {
+    width: 30px;
+    position: relative;
+    bottom: 5px;
+    margin-right: 5px;
 }
 
 .finish-modal{
