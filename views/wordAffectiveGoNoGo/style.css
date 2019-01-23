@@ -26,6 +26,7 @@ body{
 .g3-instructions-content{
     text-align: center;
     margin: 32px;
+    font-size: 1.3em;
 }
 
 .start-g3-btn{
@@ -96,6 +97,7 @@ body{
 .modal-cont{
     text-align: center;
     background-color: #f5f5f5;
+    font-size: 1.3em;
 }
 
 .modal-btns{
@@ -130,7 +132,11 @@ body{
     transform: translate(-50%, -50%);
     /* border-radius: 5px; */
     z-index: 10;
-    padding: 16px;
+    padding: 32px;
+}
+
+#close-modal-btn{
+    margin-bottom: 16px;
 }
 
 @media all and (max-width: 992px) {

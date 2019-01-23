@@ -26,6 +26,7 @@ body{
 .g1-instructions-content{
     text-align: center;
     margin: 32px;
+    font-size: 1.3em;
 }
 
 .start-g1-btn{
@@ -97,12 +98,17 @@ body{
     transform: translate(-50%, -50%);
     /* border-radius: 5px; */
     z-index: 10;
-    padding: 16px;
+    padding: 32px;
 }
 
 .modal-cont{
     text-align: center;
     background-color: #f5f5f5;
+    font-size: 1.3em;
+}
+
+#close-modal-btn{
+    margin-bottom: 16px;
 }
 
 .modal-btns{
