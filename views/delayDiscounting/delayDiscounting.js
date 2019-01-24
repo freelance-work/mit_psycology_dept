@@ -127,7 +127,6 @@ $(document).ready(() => {
       k: k
     };
     outputPayload.data.push(res);
-    console.log(outputPayload);
   }
 
 });

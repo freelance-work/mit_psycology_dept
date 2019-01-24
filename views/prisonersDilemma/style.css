@@ -10,11 +10,6 @@ html, body{
     padding: 0px;
 }
 
-.g6-instruction-title-container{
-    text-align: center;
-    margin: 32px;
-}
-
 #you-img{
     width: 40px;
 }
@@ -23,35 +18,9 @@ html, body{
     width: 40px;
 }
 
-.g6-instructions-content{
-    text-align: center;
-    margin: 32px;
-    font-size: 1.3em;
-}
-
 .g6-instruction-container{
     z-index: 1;
     min-width: 600px;
-    width: auto;
-    height: auto;
-    background-color: #f5f5f5;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 5px;
-    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1);
-}
-
-.start-g6-btn{
-    margin-top: 16px;
-    margin-bottom: 16px;
-    text-align: center;
-}
-
-#back-btn{
-    margin-top: 32px;
-    z-index: 1000;
 }
 
 .trialContainer {
