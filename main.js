@@ -85,8 +85,8 @@ ipcMain.on(CLEAR_STORAGE, () => {
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
-    'minHeight': config.dimensions.height,
-    'minWidth': config.dimensions.width,
+    'height': config.dimensions.height,
+    'width': config.dimensions.width,
   });
 
   mainWindow.setTitle('AFCO');

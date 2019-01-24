@@ -201,3 +201,11 @@ html, body{
 #close-modal-btn{
     margin-bottom: 16px;
 }
+
+
+#result-image {
+    width: 50px;
+    margin-left: 50%;
+    margin-bottom: 16px;
+    transform: translateX(-50%);
+}

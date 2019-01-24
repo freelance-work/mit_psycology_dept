@@ -18,6 +18,7 @@ $(document).ready(() => {
   let opponentTotalPts = 0;
   let outputPayload = { "data": [] };
   let startRespTime = new Date();
+  let result = null;
   let string = JSON.parse(window.localStorage.getItem('lang'));
 
   $('#opponent').html('A');
@@ -132,14 +133,18 @@ $(document).ready(() => {
 
     if (userChoice == 'share' && opponentChoice == 'share') {
       opponentpts = userpts = 3;
+      result = 0;
     } else if (userChoice == 'share' && opponentChoice == 'steal') {
       opponentpts = 5;
       userpts = 0;
+      result = -1;
     } else if (userChoice == 'steal' && opponentChoice == 'share') {
       opponentpts = 0;
       userpts = 5;
+      result = 1;
     } else {
       opponentpts = userpts = 1;
+      result = 0;
     }
 
     userTotalPts += userpts;
@@ -175,7 +180,16 @@ $(document).ready(() => {
   const showTurnResult = (upts, opts, opponentChoice) => {
     let optchoice = null;
     let string = JSON.parse(window.localStorage.getItem('lang'));
+    
     (opponentChoice == 'steal') ? optchoice = string.strings.game6.steal : optchoice = string.strings.game6.share;
+
+    if(result == 0) {
+      $('#result-image').attr('src','../../assets/handshake.png');
+    } else if(result == 1) {
+      $('#result-image').attr('src','../../assets/happy.png');
+    } else {
+      $('#result-image').attr('src','../../assets/sad.png');
+    }
     $('.result-modal-content-text').html( string.strings.game6.yourOponentChoose + optchoice + "<br>" + string.strings.game6.youEarned + ' ' + upts + ' ' + string.strings.game6.andYourOpponent + ' ' + opts);
     $('.spinner').hide();
     $('.result-modal-btns').show();
@@ -183,6 +197,7 @@ $(document).ready(() => {
   }
 
   const ShowSpinner = (modalText) => {
+    $('#result-image').attr('src','');
     $('.result-modal-content-text').html(modalText);
     $('.spinner').show();
     $('.result-modal-btns').hide();
