@@ -175,12 +175,7 @@ $(document).ready(() => {
   const showTurnResult = (upts, opts, opponentChoice) => {
     let optchoice = null;
     let string = JSON.parse(window.localStorage.getItem('lang'));
-    console.log(string.language)
-    if(string.language == 'en'){
-      (opponentChoice == 'steal') ? optchoice = string.strings.game6.steal : optchoice = string.strings.game6.share;
-    } else if(string.language == 'kn'){
-      (opponentChoice == 'steal') ? optchoice = string.strings.game6.steal : optchoice = string.strings.game6.share;
-    }
+    (opponentChoice == 'steal') ? optchoice = string.strings.game6.steal : optchoice = string.strings.game6.share;
     $('.result-modal-content-text').html( string.strings.game6.yourOponentChoose + optchoice + "<br>" + string.strings.game6.youEarned + ' ' + upts + ' ' + string.strings.game6.andYourOpponent + ' ' + opts);
     $('.spinner').hide();
     $('.result-modal-btns').show();
