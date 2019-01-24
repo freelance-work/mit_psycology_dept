@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../../assets/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+    <script>window.$ = window.jQuery = require('../../assets/jquery.min.js');</script>
+    <script src="../../assets/bootstrap/bootstrap.js"></script>
+</head>
+
+<body>
+    <div class="final-modal-container">
+        <div class="finish-modal">
+            <button id="close-modal-btn" type="button" class="btn btn-secondary btn-sm">close</button>
+            <div class="modal-cont">
+                <p class="modal-content-text">You are done with the game. Do you want to export the result to CSV ?</p>
+            </div>
+            <div class="modal-btns">
+                <button id="exit-btn" type="button" class="btn btn-primary modal-btn">Exit</button>
+                <button id="export-btn" type="button" class="btn btn-primary modal-btn export-btn">Export to CSV</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="result-modal-container">
+        <div class="result-modal">
+          <div id="result-image-container">
+            <img id="result-image" src=""></img>
+          </div>
+            <div class="modal-cont">
+                <p class="result-modal-content-text">Please wait, your opponent is playing his turn.</p>
+                <p class="spinner">
+                    <svg class="lds-spinner" width="200px"  height="200px"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none;"><g transform="rotate(0 50 50)">
+                        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000000">
+                          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+                        </rect>
+                      </g><g transform="rotate(30 50 50)">
+                        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000000">
+                          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+                        </rect>
+                      </g><g transform="rotate(60 50 50)">
+                        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000000">
+                          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+                        </rect>
+                      </g><g transform="rotate(90 50 50)">
+                        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000000">
+                          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+                        </rect>
+                      </g><g transform="rotate(120 50 50)">
+                        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000000">
+                          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+                        </rect>
+                      </g><g transform="rotate(150 50 50)">
+                        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000000">
+                          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+                        </rect>
+                      </g><g transform="rotate(180 50 50)">
+                        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000000">
+                          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+                        </rect>
+                      </g><g transform="rotate(210 50 50)">
+                        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000000">
+                          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+                        </rect>
+                      </g><g transform="rotate(240 50 50)">
+                        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000000">
+                          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+                        </rect>
+                      </g><g transform="rotate(270 50 50)">
+                        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000000">
+                          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+                        </rect>
+                      </g><g transform="rotate(300 50 50)">
+                        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000000">
+                          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+                        </rect>
+                      </g><g transform="rotate(330 50 50)">
+                        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000000">
+                          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+                        </rect>
+                      </g></svg>
+                </p>
+            </div>
+            <div class="result-modal-btns">
+                <button id="okay-btn" type="button" class="btn btn-primary modal-btn col-md-4">Okay</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="score">
+        <div >
+          <img id="you-img" src="../../assets/player.png"></img>
+          <div id="your-pts" class="pts">You</div><div class="pts your-score">: 0</div>
+          </div>
+        <br>
+        <div>
+          <img id="opponent-img" src="../../assets/opponent1.png">
+         <div id="opponent-pts" class="pts">Opponent</div> <div id="opponent" class="pts"> A: </div>   <div class="pts opponent-score">: 0</div>
+        </div>
+    </div>
+
+    <div class="end-game-btn-container">
+        <button type="button" id="end-game-btn" class="btn btn-secondary">Exit</button>
+    </div>
+
+    <div class="trialContainer">
+        <h2 id="question">
+            You and your opponent have won Rs 2000 in a game, Do you wish to
+        </h2>
+        <div class="buttons">
+            <button type="button" id="share" class="adjusting-btn btn btn-dark">Share the money</span></button>
+            <span class="btn-seperator">or</span>
+            <button type="button" id="steal" class="adjusting-btn btn btn-dark">Steal the money</button>
+        </div>
+        <h4 id="subText">Click on the answer of your choice</h4>
+    </div>
+
+
+    <script src="prisonersDilemma.js"></script>
+</body>
+
+</html>

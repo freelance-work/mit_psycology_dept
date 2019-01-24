@@ -12,15 +12,14 @@ const {
 $(document).ready(() => {
     $('.game-item').css({ 'height': $('.game-item').width() + 'px' });
 
-    let taskState = ipcRenderer.sendSync(GET_TASK_STATE);
+    let taskState = ipcRenderer.sendSync(GET_TASK_STATE);    
+    console.log(taskState);
+    try {
+      taskState.map(e => {
+        $('#gameCSV' + e).css('display', 'unset');
+      })
+    } catch(e) {}
 
-    taskState.data.map(state => {
-      if(taskState.data.length - 1 >= state) {
-        console.log(state);
-        $('#gameCSV' + state).css('display', 'unset');
-      }
-      $('#game'+ state).css('filter', 'none');
-    })
 
     let string;
     try {
@@ -29,6 +28,8 @@ $(document).ready(() => {
         $('.game-text2').html(string.strings.gamePage.game2);
         $('.game-text3').html(string.strings.gamePage.game3);
         $('.game-text4').html(string.strings.gamePage.game4);
+        $('.game-text5').html(string.strings.gamePage.game5);
+        $('.game-text6').html(string.strings.gamePage.game6);
     } catch (err) { };
 });
 
@@ -84,26 +85,52 @@ $('#gameCSV4').on('click', async (e) => {
   })
 });
 
+$('#gameCSV5').on('click', async (e) => {
+  e.stopPropagation();
+  let outputPayload = ipcRenderer.sendSync(GET_DATA, 'delay_dicounting');
+  let id = window.localStorage.getItem('patientId');
+  let fields = ['choiceNo', 'index', 'indexAdjustment', 'delayChoice', 'response', 'responseTime', 'ed50', 'k'];
+  csvHelper.write(outputPayload.data, id, 'delay_dicounting', fields).then((res) => {
+    if (res == "success") {
+      alert('CSV Exported');
+    }
+  })
+});
+
+$('#gameCSV6').on('click', async (e) => {
+  e.stopPropagation();
+  let outputPayload = ipcRenderer.sendSync(GET_DATA, 'prisoners_dilemma');
+  let id = window.localStorage.getItem('patientId');
+  let fields = ['trial', 'opponentStrategy', 'patientResponse', 'opponentResponse', 'patientGainedPts', 'opponentGainedPts', 'patientTotalPts', 'opponentTotalPts', 'reactionTime'];
+  csvHelper.write(outputPayload.data, id, 'prisoners_dilemma', fields).then((res) => {
+    if (res == "success") {
+      alert('CSV Exported');
+    }
+  })
+});
+
 $('#game1').on('click', () => {
   window.location = "../gameSpotEmotion/instructions.html";
 });
 
 $('#game2').on('click', () => {
-  if(ipcRenderer.sendSync(GET_TASK_STATE).data.length >= 2) {
-    window.location = "../goNoGo/instruction.html";
-  }
+  window.location = "../goNoGo/instruction.html";
 });
 
 $('#game3').on('click', () => {
-  if(ipcRenderer.sendSync(GET_TASK_STATE).data.length >= 3) {
-    window.location = "../wordAffectiveGoNoGo/instruction.html";
-  }
+  window.location = "../wordAffectiveGoNoGo/instruction.html";
 });
 
 $('#game4').on('click', () => {
-  if(ipcRenderer.sendSync(GET_TASK_STATE).data.length >= 4) {
-    window.location = "../IOWAGambling/instruction.html";
-  }
+  window.location = "../IOWAGambling/instruction.html";
+});
+
+$('#game5').on('click', () => {
+  window.location = "../delayDiscounting/instruction.html";
+});
+
+$('#game6').on('click', () => {
+  window.location = "../prisonersDilemma/instruction.html";
 });
 
 
@@ -113,4 +140,6 @@ ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
     $('.game-text2').html(string.strings.gamePage.game2);
     $('.game-text3').html(string.strings.gamePage.game3);
     $('.game-text4').html(string.strings.gamePage.game4);
+    $('.game-text5').html(string.strings.gamePage.game5);
+    $('.game-text6').html(string.strings.gamePage.game6);
 });

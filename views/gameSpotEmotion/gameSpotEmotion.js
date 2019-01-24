@@ -8,7 +8,8 @@ const app = remote.app;
 const {
   HANDLE_LANGUAGE_CHANGE,
   PUT_DATA,
-  PUT_TASK_STATE
+  PUT_TASK_STATE,
+  GET_TASK_STATE
 } = require('../../utils/constants');
 
 $(document).ready(() => {
@@ -100,7 +101,7 @@ $(document).ready(() => {
   $('#exit-btn').on('click', () => {
     ipcRenderer.send(PUT_DATA, 'emotion_recognition', outputPayload);
     if (outputPayload.data.length > 0) {
-      ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2] });
+      ipcRenderer.send(PUT_TASK_STATE, 1);
     }
     window.location = '../gameMenu/gameMenu.html';
   });

@@ -6,6 +6,7 @@ const {
   HANDLE_LANGUAGE_CHANGE,
   PUT_DATA,
   PUT_TASK_STATE,
+  GET_TASK_STATE
 } = require('../../utils/constants');
 let face;
 let resp = { faceID: '', response: 'noResponse' };
@@ -160,20 +161,20 @@ $('#export-btn-info').on('click', async () => {
 
 
 $('#exit-btn').on('click', () => {
-  ipcRenderer.send(PUT_DATA, 'gonogo', payload);
-  if(payload.data.length > 0) {
-    ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3] });
-  }  
-  window.location = '../gameMenu/gameMenu.html';
+  exitToMenu();
 });
 
 $('#exit-btn-info').on('click', () => {
+  exitToMenu();
+})
+
+const exitToMenu = () => {
   ipcRenderer.send(PUT_DATA, 'gonogo', payload);
   if(payload.data.length > 0) {
-    ipcRenderer.send(PUT_TASK_STATE, { data: [1, 2, 3] });
+    ipcRenderer.send(PUT_TASK_STATE, 2);
   }  
   window.location = '../gameMenu/gameMenu.html';
-})
+}
 
 $('#end-game-btn').on('click', () => {
   clearInterval(timer);

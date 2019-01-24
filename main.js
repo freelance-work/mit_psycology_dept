@@ -35,7 +35,14 @@ let mainWindow;
 
 ipcMain.on(PUT_TASK_STATE, (e, data) => {
   if(data) {
-    store.set('task_state', data);
+    let arr = [];
+    if(store.get('task_state')) {
+      arr = [...store.get('task_state')];
+    }
+    if(!arr.includes(data)) {
+      arr.push(data);
+    }
+    store.set('task_state', arr);
   }
 });
 

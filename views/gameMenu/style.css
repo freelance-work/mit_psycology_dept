@@ -20,7 +20,6 @@ body{
     margin: 8px;
     border-radius: 10px;
     color: #ffffff;
-    filter: grayscale(1);
     cursor: pointer;
 }
 
@@ -57,11 +56,13 @@ body{
 }
 
 #game5{
-    background-color: #f79e1d;
+    background-image: url('../../assets/delay_discounting.png');
+    background-size: cover;
 }
 
 #game6{
-    background-color: #00897B;
+    background-image: url('../../assets/prisoners_dilemma.png');
+    background-size: cover;
 }
 
 .game-container{
@@ -86,6 +87,16 @@ body{
 #gameCSV4 {
     background: #3F7D9F;
     box-shadow: -3px -3px 1px #054567 inset;
+}
+
+#gameCSV5 {
+    background: darkorange;
+    box-shadow: -3px -3px 1px #FF5800 inset;
+}
+
+#gameCSV6 {
+    background: darkseagreen;
+    box-shadow: -3px -3px 1px lightseagreen inset;
 }
 
 #exp-icon {
