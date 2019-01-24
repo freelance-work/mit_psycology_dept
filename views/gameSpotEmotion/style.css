@@ -61,6 +61,11 @@ body{
     text-align: center;
 }
 
+@media screen and (min-height: 620px) {
+    .image-and-button{
+        transform: translate(0%,5%);
+    }
+}
 .emotion-buttons{
     margin-top: 16px;
 }
@@ -114,3 +119,5 @@ body{
 .modal-btns{
     text-align: center;
 }
+
+
