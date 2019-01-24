@@ -103,8 +103,8 @@ module.exports = {
   },
   game6: {
     instructionTitle: 'ಕೈದಿಗಳ ಸಂದಿಗ್ಧತೆ',
-    instruction: 'ಈ ಪಂದ್ಯದಲ್ಲಿ, ನೀವು 3 ವಿರೋಧಿಗಳ ವಿರುದ್ಧ ಆಡುವಿರಿ. ಈ ಪ್ರತಿಸ್ಪರ್ಧಿಗಳೊಂದಿಗೆ ನೀವು ಸ್ವಲ್ಪ ಹಣವನ್ನು ಗೆದ್ದಿದ್ದೀರಿ. ಹಣವನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಅಥವಾ ಕದಿಯಲು ನೀವು ಆಯ್ಕೆ ಮಾಡಬಹುದು. ನೀವು ಮತ್ತು ನಿಮ್ಮ ಎದುರಾಳಿಯು ಇನ್ನೊಬ್ಬ ವ್ಯಕ್ತಿಯು ಯಾವುದನ್ನು ಆಯ್ಕೆ ಮಾಡಬೇಕೆಂಬುದನ್ನು ತಿಳಿಯದೆಯೇ ಆರಿಸಬೇಕಾಗುತ್ತದೆ.',
-    instruction2 : '<ul><li>If you and your opponent choose to share the money, you both will get 3 points for mutual co-operation.</li><li>If you choose to share the money and your opponent chooses to steal the money, you will get zero points and your opponent will get 5  points.</li><li>If you choose to steal the money and your opponent chooses to share the money, you will get 5 points and your opponent will get 0  points.</li><li>If you and your opponent choose to steal the money, you both will get 1 points for mutual co-operation.</li></ul>',
+    instruction: 'ಈ ಆಟದಲ್ಲಿ ನೀವು 3 ವಿಭಿನ್ನ ಎದುರಾಳಿಗಳ ವಿರುದ್ಧ ಆಡುವಿರಿ. ಪ್ರತಿ ಎದುರಾಳಿಗಳೊಂದಿಗೆ ನೀವು ಸ್ವಲ್ಪ ಹಣವನ್ನು ಗೆದ್ದಿರುತ್ತೀರಿ. ಹಣವನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಅಥವಾ ಕದಿಯಲು ನೀವು ಆಯ್ಕೆ ಮಾಡಬಹುದು. ನೀವು ಮತ್ತು ನಿಮ್ಮ ಎದುರಾಳಿಯು ಇನ್ನೊಬ್ಬ ವ್ಯಕ್ತಿಯು ಯಾವುದನ್ನು ಆಯ್ಕೆ ಮಾಡಿದ್ದಾರೆ ಎಂದು ತಿಳಿಯದೆಯೇ ಆರಿಸಬೇಕಾಗುತ್ತದೆ.',
+    instruction2 : '<ul><li>ನೀವು ಮತ್ತು ನಿಮ್ಮ ಎದುರಾಳಿಯು ಹಣವನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಆರಿಸಿದರೆ, ಪರಸ್ಪರ ಸಹಕಾರಕ್ಕಾಗಿ ನೀವು 3 ಅಂಕಗಳನ್ನು ಪಡೆಯುತ್ತೀರಿ.</li><li>ನೀವು ಹಣವನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಆಯ್ಕೆ ಮಾಡಿದರೆ ಮತ್ತು ನಿಮ್ಮ ಎದುರಾಳಿಯು ಹಣವನ್ನು ಕದಿಯಲು ಆಯ್ಕೆ ಮಾಡಿದರೆ, ನೀವು 0 ಅಂಕಗಳನ್ನು ಪಡೆಯುತ್ತೀರಿ ಮತ್ತು ನಿಮ್ಮ ಎದುರಾಳಿಯು 5 ಅಂಕಗಳನ್ನು ಪಡೆಯುತ್ತಾನೆ.</li><li>ನೀವು ಹಣವನ್ನು ಕದಿಯಲು ಆಯ್ಕೆ ಮಾಡಿದರೆ ಮತ್ತು ನಿಮ್ಮ ಎದುರಾಳಿಯು ಹಣವನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಆಯ್ಕೆ ಮಾಡಿದರೆ, ನೀವು 5 ಅಂಕಗಳನ್ನು ಪಡೆಯುತ್ತೀರಿ ಮತ್ತು ನಿಮ್ಮ ಎದುರಾಳಿಯು 0 ಅಂಕಗಳನ್ನು ಪಡೆಯುತ್ತಾನೆ.</li><li>ನೀವು ಮತ್ತು ನಿಮ್ಮ ಎದುರಾಳಿಯು ಹಣವನ್ನು ಕದಿಯಲು ಆಯ್ಕೆ ಮಾಡಿದರೆ, ಪರಸ್ಪರ ಸಹಕಾರಕ್ಕಾಗಿ ನೀವು 1 ಅಂಕಗಳನ್ನು ಪಡೆಯುತ್ತೀರಿ.</li></ul>',
     instruction3 : '<div class="instruction3-img"></div>',
     or: 'ಅಥವಾ',
     question: 'ನೀವು ಮತ್ತು ನಿಮ್ಮ ಎದುರಾಳಿಯು ಆಟದಲ್ಲಿ 2000 ದಲ್ಲಿ ಜಯಗಳಿಸಿದ್ದಾರೆ, ನೀವು ಬಯಸುತ್ತೀರಾ',
@@ -120,6 +120,6 @@ module.exports = {
     wait: 'ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ, ನಿಮ್ಮ ಓಪನರ್ ತನ್ನ ತಿರುವುವನ್ನು ಆಡುತ್ತಿದ್ದಾನೆ.',
     doneOpponent1 : 'ಎದುರಾಳಿ 1 ಮುಗಿದಿದೆ, ಎದುರಾಳಿ 2 ತಯಾರಾಗುತ್ತಿದೆ.',
     doneOpponent2 : 'ಎದುರಾಳಿ 2 ಮುಗಿದಿದೆ, ಎದುರಾಳಿ 3 ತಯಾರಾಗುತ್ತಿದೆ.',
-    yourOponentChoose: 'Your Oponent Choose to ',
+    yourOponentChoose: 'ನಿಮ್ಮ ಓಪನ್ ಲೆಂಟ್ ಗೆ ಆಯ್ಕೆ ಮಾಡಿ ',
   }
 }
