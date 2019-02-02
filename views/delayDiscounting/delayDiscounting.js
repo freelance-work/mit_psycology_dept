@@ -53,6 +53,11 @@ $(document).ready(() => {
     })
   });
 
+  $('#close-modal-btn').on('click', () => {
+    $('.final-modal-container').hide();
+    $('#close-modal-btn').hide();
+  })
+
   $('#exit-btn').on('click', () => {
     ipcRenderer.send(PUT_DATA, 'delay_discounting', outputPayload);
     if (outputPayload.data.length > 0) {
@@ -127,7 +132,6 @@ $(document).ready(() => {
       k: k
     };
     outputPayload.data.push(res);
-    console.log(outputPayload);
   }
 
 });

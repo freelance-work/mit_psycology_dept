@@ -9,6 +9,16 @@ const {
 } = require('./utils/constants');
 
 $(document).ready(() => {
+  $('#patient-id').focus();
+
+  $(document).keypress(function (e) {
+    if(e.which == 13)
+     {
+       $('#start-btn').click();
+       return false;  
+     }
+   });   
+
   try {
     ipcRenderer.send(CLEAR_STORAGE);
     window.localStorage.setItem('lang', JSON.stringify(ipcRenderer.sendSync(GET_STRINGS)));

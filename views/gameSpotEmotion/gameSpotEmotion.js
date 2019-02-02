@@ -34,7 +34,7 @@ $(document).ready(() => {
     
 
 
-  } catch (err) { console.log(err) };
+  } catch (err) { };
 
   $('.image-box').css('background-image', 'url(../../assets/faces/' + dataSet.data[idx].faceID + '.jpg)');
 
