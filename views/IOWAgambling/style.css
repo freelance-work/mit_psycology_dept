@@ -13,10 +13,6 @@ html, body{
     width: 100%;
 }
 
-#end-game-btn {
-    background-color: #9e5a15;
-    border: 1px solid #232323;
-}
 
 #end-game-btn:hover {
     opacity: 0.9;
@@ -28,7 +24,8 @@ html, body{
     color: #ffffff;
     position: absolute;
     display: inline-block;
-    right: 0;
+    text-align: center;
+    margin-left: 3%;
 }
 
 .iowa-card{
@@ -56,10 +53,11 @@ html, body{
     position: relative;
 }
 .end-game-btn-container {
-    padding-top: 16px;
     width: 100%;
     position: relative;
     display: inline-block;
+    float: right;
+    margin: 0.7%;
 }
 
 .iowa-card-text{
@@ -155,9 +153,28 @@ html, body{
     transform: translate(-50%, -50%);
     border-radius: 5px;
     z-index: 10;
-    padding: 32px;
 }
 
 #close-modal-btn{
-    margin-bottom: 16px;
+    margin: 16px;
+}
+
+.close-img{
+    width: 25px;
+    cursor: pointer;
+    float: right;
+    margin: 0.7%;
+}
+
+.modal-btns{
+    text-align: center;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.modal-cont{
+    text-align: center;
+    background-color: #f5f5f5;
+    font-size: 1.3em;
+    padding: 32px;
+    border-radius: 8px;
 }

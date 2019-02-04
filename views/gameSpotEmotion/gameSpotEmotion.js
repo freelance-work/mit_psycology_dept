@@ -28,11 +28,10 @@ $(document).ready(() => {
     $('#DISGUST').text(string.strings.game1.disgust);
     $('#FEAR').text(string.strings.game1.fear);
     $('#SURPRISE').text(string.strings.game1.surprise);
-    $('#close-modal-btn').text(string.strings.commons.modalCloseButton);
     $('.modal-content-text').text(string.strings.commons.modalContent);
     $('#exit-btn').text(string.strings.commons.modalExitButton);
     $('#export-btn').text(string.strings.commons.exportButton);
-    $('#end-game-btn').text(string.strings.commons.modalExitButton);
+    
 
 
   } catch (err) { };
@@ -121,9 +120,7 @@ ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {
   $('#DISGUST').text(string.strings.game1.disgust);
   $('#FEAR').text(string.strings.game1.fear);
   $('#SURPRISE').text(string.strings.game1.surprise);
-  $('#close-modal-btn').text(string.strings.commons.modalCloseButton);
   $('.modal-content-text').text(string.strings.commons.modalContent);
   $('#exit-btn').text(string.strings.commons.modalExitButton);
   $('#export-btn').text(string.strings.commons.exportButton);
-  $('#end-game-btn').text(string.strings.commons.modalExitButton);
 });
