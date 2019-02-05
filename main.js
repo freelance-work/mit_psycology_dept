@@ -90,7 +90,7 @@ app.on('ready', () => {
     icon: path.join(__dirname, 'assets/logo.png')
   });
 
-  mainWindow.setTitle('AFCO');
+  mainWindow.setTitle('AFCOG Battery');
 
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),

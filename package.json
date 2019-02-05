@@ -1,7 +1,7 @@
 {
-  "name": "AFCO",
+  "name": "afcog",
   "version": "1.0.0",
-  "description": "afco",
+  "description": "afcog",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
