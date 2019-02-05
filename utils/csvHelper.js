@@ -33,7 +33,6 @@ exports.write = async function (json, id, task, fields) {
         fs.writeFile(filePath, csv, (err) => {
           if (err) reject(err);
           else {
-            console.log("Successfully Written to File.");
             resolve("success");
           }
         });
@@ -41,8 +40,6 @@ exports.write = async function (json, id, task, fields) {
     });
 
   } catch (err) {
-    console.log(err);
-    console.log("Couldn't export to CSV");
     return "failed";
   }
 }

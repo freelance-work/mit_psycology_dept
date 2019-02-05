@@ -39,7 +39,7 @@ module.exports = {
     instructionTitle: 'Affective Go-No-Go',
     instructions : [
       {
-        instruction :  'Press space bar when you see a happy face, do nothing when you see a angry face. <br> <p style="color: red"> Trail run </p>'
+        instruction :  'Press space bar when you see a happy face, do nothing when you see a angry face. <br> <p style="color: red"> Trial run </p>'
       },
       {
         instruction : 'Set 1, Press space bar when you see a happy face, do nothing when you see a angry face.'
@@ -65,7 +65,7 @@ module.exports = {
     instructionTitle: 'Word Affective Go-No-Go',
     instructions : [
       {
-        instruction :  'Press space bar when you see a happy word, do nothing when you see a sad word.<br> <p style="color: red"> Trail run </p>'
+        instruction :  'Press space bar when you see a happy word, do nothing when you see a sad word.<br> <p style="color: red"> Trial run </p>'
       },
       {
         instruction : 'Set 1, Press space bar when you see a happy word, do nothing when you see a sad word.'

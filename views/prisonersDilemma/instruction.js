@@ -18,11 +18,10 @@ $(document).ready(() => {
   $('#start-btn').on('click', () => {
       let string = JSON.parse(window.localStorage.getItem('lang'));
       count++;
-      console.log(count);
       if(count == 2){
          $('.g6-instructions').html(string.strings.game6.instruction2);
       } else if(count == 3){
-        $('.g6-instructions-content').html(string.strings.game6.instruction3);
+        $('.g6-instructions').html(string.strings.game6.instruction3);
         $('#start-btn').text(string.strings.commons.startButton);
       } else if(count == 4){
         window.location = "./prisonersDilemma.html";

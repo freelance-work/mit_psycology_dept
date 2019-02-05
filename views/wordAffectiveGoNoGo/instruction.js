@@ -12,7 +12,7 @@ $(document).ready(() => {
     $('.g3-instruction-title').html(string.strings.game3.instructionTitle);
     $('#start-btn').text(string.strings.commons.startButton);
     $('#back-btn').text(string.strings.commons.backButton);
-  } catch(err) { console.log(err) };
+  } catch(err) {};
 });
 
 ipcRenderer.on(HANDLE_LANGUAGE_CHANGE, (e, string) => {

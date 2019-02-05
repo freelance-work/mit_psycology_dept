@@ -65,8 +65,10 @@ body{
     background-size: cover;
 }
 
-.game-container{
-    margin-top: 32px;
+@media screen and (min-height: 620px) {
+    .game-container{
+        margin-top: 32px;
+    }
 }
 
 #gameCSV1 {

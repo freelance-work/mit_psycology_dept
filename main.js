@@ -85,11 +85,12 @@ ipcMain.on(CLEAR_STORAGE, () => {
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
-    'minHeight': config.dimensions.height,
-    'minWidth': config.dimensions.width,
+    minHeight: config.dimensions.height,
+    minWidth: config.dimensions.width,
+    icon: path.join(__dirname, 'assets/logo.png')
   });
 
-  mainWindow.setTitle('AFCO');
+  mainWindow.setTitle('AFCOG Battery');
 
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),

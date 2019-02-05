@@ -4,6 +4,7 @@
 <head>
     <link rel="stylesheet" href="../../assets/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../common.css">
     <script>window.$ = window.jQuery = require('../../assets/jquery.min.js');</script>
     <script src="../../assets/bootstrap/bootstrap.js"></script>
 </head>
@@ -11,22 +12,19 @@
 <body>
     <div class="container">
         <a href="../gameMenu/gameMenu.html">
-            <button id="back-btn" type="button" class="btn btn-secondary">
-                <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="24" height="24" viewBox="0 0 24 24"><path d="M0 12l9-8v6h15v4h-15v6z"/></svg>
-                </span>
+            <button id="back-btn" type="button" class="btn btn-secondary game-back-btn">
                 Back
             </button>
         </a>
-        <div class="g6-instruction-container">
-            <div class="g6-instruction-title-container">
+        <div class="g6-instruction-container instruction-container">
+            <div class="game-instruction-title-container">
                 <h3 class="g6-instruction-title">Prisoner's Dilemma</h3>
             </div>
-            <div class="g6-instructions-content">
+            <div class="game-instructions-content">
                 <p class="g6-instructions"></p>
             </div>
-                <div class="start-g6-btn">
-                    <button id="start-btn" type="button" class="btn btn-primary start-g6-btn col-md-3">Next</button>
+                <div class="start-game-btn">
+                    <button id="start-btn" type="button" class="btn btn-primary col-md-3">Next</button>
                 </div>
         </div>
     </div>
