@@ -18,7 +18,7 @@
                     face, do not respond when you see any other emotion.</p>
             </div>
             <div class="modal-btns">
-                <button type="button" id="end-game-btn-info" class="btn btn-secondary">Exit</button>
+                <button type="button" id="end-game-btn-info" class="btn btn-danger">Exit</button>
                 <button id="continue-btn" type="button" class="btn btn-primary modal-btn continue-btn">Continue</button>
             </div>
         </div>
@@ -41,15 +41,18 @@
 
     <div class="final-modal-container-info">
         <div class="finish-modal">
-            <button id="close-modal-btn-info" type="button" class="btn btn-secondary btn-sm">close</button>
+            <div class="end-game-btn-modal-container">
+                <img id="close-modal-btn-info" src="../../assets/close.png" class="close-img">
+            </div>
             <div class="modal-cont">
                 <p class="final-modal-content-text">You are done with the game. Do you want to export the result to CSV
                     ?</p>
-            </div>
-            <div class="modal-btns">
-                <button id="exit-btn-info" type="button" class="btn btn-primary modal-btn col-md-4">Exit</button>
+                <div class="modal-btnss">
+                <button id="exit-btn-info" type="button" class="btn btn-danger modal-btn col-md-4">Exit</button>
                 <button id="export-btn-info" type="button" class="btn btn-primary modal-btn export-btn">Export to CSV</button>
             </div>
+            </div>
+
         </div>
     </div>
     <div class="end-game-btn-container">
