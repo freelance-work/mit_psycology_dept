@@ -14,8 +14,11 @@ const {
   BrowserWindow,
   Menu,
   ipcMain,
-  dialog
+  dialog,
+  Tray,
+  nativeImage
 } = electron;
+
 
 const {
  CLEAR_STORAGE,
@@ -28,6 +31,8 @@ const {
  HANDLE_PUT_DATA,
  GET_DATA
 } = require('./utils/constants');
+
+let Icon = nativeImage.createFromPath(path.join(__dirname, "assets/logo.png"))
 
 let mainWindow;
 
@@ -87,10 +92,12 @@ app.on('ready', () => {
   mainWindow = new BrowserWindow({
     minHeight: config.dimensions.height,
     minWidth: config.dimensions.width,
-    icon: path.join(__dirname, 'assets/logo.png')
+    icon: Icon
   });
 
   mainWindow.setTitle('AFCOG Battery');
+
+  mainWindow.tray = new Tray(Icon);
 
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
