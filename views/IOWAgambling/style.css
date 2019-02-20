@@ -20,7 +20,7 @@ html, body{
 
 .cash-left{
     margin-top: 16px;
-    font-size: 32px;
+    font-size: 48px;
     color: #ffffff;
     position: absolute;
     display: inline-block;
@@ -137,10 +137,10 @@ html, body{
 }
 
 #moneybag {
-    width: 30px;
+    width: 40px;
     position: relative;
     bottom: 5px;
-    margin-right: 5px;
+    margin-right: 16px;
 }
 
 .finish-modal{

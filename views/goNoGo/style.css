@@ -3,7 +3,7 @@ body{
 }
 
 .quadrant{
-    height: 40vh;
+    height: 45vh;
     margin-left: 2vh;
     margin-right: 2vh;
     background-color: #f5f5f5;
@@ -84,7 +84,6 @@ body{
 
 .finish-modal{
     width: 50%;
-    height: 28vh;
     background-color: #f5f5f5;
     position: absolute;
     left: 50%;
