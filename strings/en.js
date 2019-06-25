@@ -89,7 +89,7 @@ module.exports = {
   },
   game4: {
     instructionTitle: 'IOWA Gambling',
-    instruction: 'In front of you, on the screen, there will be 4 decks of cards: A, B, C, D. When we begin the game, I want you to select one card at a time by clicking on a card from any deck you choose. Each time you select a card, the computer will tell you that you won some money, but then it will say that you lost some money as well. You will start with Rs 2000 initially. The aim of the task is to win as much money as you can.',
+    instruction: 'In this task you play a Gambling game. In front of you, on the screen, there will be four cards, A, B, C and D. You need to select one card at a time. Each time, you can win some money, but you may sometimes also lose money. After each trial you will collect the money, which will adjust your bag of money. Your bag of money will be displayed in the left-hand corner of the screen You will start with Rs 2000 , given to you by the bank. Try making as much money as possible.',
     cashLeft: '₹'
   },
   game5: {
@@ -105,7 +105,7 @@ module.exports = {
     instructionTitle: 'Prisoner\'s Dilemma',
     instruction: 'In this game, you will be playing against 3 different opponents. With each of these opponents you have won some money. You can choose either to share or steal the money. You and your opponent have to choose without knowing what the other person is choosing.',
     instruction2 : '<ul><li>If you and your opponent choose to share the money, you both will get 3 points for mutual co-operation.</li><li>If you choose to share the money and your opponent chooses to steal the money, you will get zero points and your opponent will get 5  points.</li><li>If you choose to steal the money and your opponent chooses to share the money, you will get 5 points and your opponent will get 0  points.</li><li>If you and your opponent choose to steal the money, you both will get 1 points for mutual co-operation.</li></ul>',
-    instruction3 : '<div class="instruction3-img"></div>',
+    instruction3 : 'Collect as many points as you can to win the game.',
     or: 'or',
     question: 'You and your opponent have won Rs 2000 in a game, Do you wish to',
     buttonShare: 'Share the money',

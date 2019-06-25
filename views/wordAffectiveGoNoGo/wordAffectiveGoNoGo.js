@@ -69,8 +69,29 @@ $('.continue-btn').on('click', () => {
 })
 
 startGame = (payloadSet) => {
+  let gameArray = [];
+  let gameEngArray = []; 
+  let temp;
+  for(let i = 0 ;i < 23 ; i++){
+    let randomNum = Math.floor(Math.random() * 30)
+    gameArray.push(payloadSet.obj[randomNum]);
+    gameEngArray.push(payloadSet.obj[randomNum])
+  }
+
+  for(let i = 0 ; i < 7 ; i++){
+    let randomNum = Math.floor(Math.random() * 30) + 30
+    gameArray.push(payloadSet.obj[randomNum]);
+    gameEngArray.push(payloadSet.obj[randomNum])
+  }
+
+  for(let i = 0 ; i < 30 ; i++){
+    let rand = Math.floor((i + 1) * Math.random());
+    temp = gameArray[rand];
+    gameArray[rand] = gameArray[i];
+    gameArray[i] = temp;
+  }
+  
   let string = JSON.parse(window.localStorage.getItem('lang'));
-  let random_idx;
   let trial;
 
   timer = setInterval(function () {
@@ -118,18 +139,9 @@ startGame = (payloadSet) => {
 
     setTimeout(function () {
       quad = Math.floor(Math.random() * 4) + 1;
-      random_idx = Math.random();
-      let rIdx;
-      let eng_word;
-      if (random_idx <= 0.75) {
-        rIdx = Math.floor(Math.random() * 30)
-        face = payloadSet.obj[rIdx];
-        eng_word = payloadSet.engObj[rIdx];
-      } else {
-        let rIdx = Math.floor(Math.random() * 30) + 30
-        face = payloadSet.obj[rIdx];
-        eng_word = payloadSet.engObj[rIdx];
-      }
+      console.log(count - 1)
+      face = gameArray[count - 1];
+      let eng_word = gameEngArray[count - 1];
       resp.correctResponse = resp.correctResponse == face.type ? "Press" : "Don't Press";
 
       resp = {

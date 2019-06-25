@@ -64,6 +64,23 @@ $('.continue-btn').on('click', () => {
 })
 
 startGame = (payloadSet) => {
+  let gameArray = []; 
+  let temp;
+  for(let i = 0 ;i < 23 ; i++){
+    gameArray.push(payloadSet[Math.floor(Math.random() * 30)]);
+  }
+
+  for(let i = 0 ; i < 7 ; i++){
+    gameArray.push(payloadSet[Math.floor(Math.random() * 30) + 30]);
+  }
+
+  for(let i = 0 ; i < 30 ; i++){
+    let rand = Math.floor((i + 1) * Math.random());
+    temp = gameArray[rand];
+    gameArray[rand] = gameArray[i];
+    gameArray[i] = temp;
+  }
+
   let string = JSON.parse(window.localStorage.getItem('lang'));
   let random_idx;
   let trial;
@@ -113,13 +130,7 @@ startGame = (payloadSet) => {
     
     setTimeout(function () {
       quad = Math.floor(Math.random() * 4) + 1;
-      random_idx = Math.random();
-      if (random_idx <= 0.75) {
-          face = payloadSet[Math.floor(Math.random() * 30)];
-      } else {
-          face = payloadSet[Math.floor(Math.random() * 30) + 30];
-      }
-
+      face = gameArray[count - 1];
       resp.correctResponse = resp.correctResponse == face.response ? "Press" : "Don't Press";
 
       resp = {

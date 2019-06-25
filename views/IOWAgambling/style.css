@@ -102,7 +102,7 @@ html, body{
 .emoji-symbol{
     font-size: 3em;
     position: absolute;
-    left: 70%;
+    left: 100%;
     bottom: -10%;
     color: #ffffff;
     display: inline-block;
