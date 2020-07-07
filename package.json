@@ -52,7 +52,7 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "electron": "^3.0.9",
+    "electron": "^7.2.4",
     "electron-builder": "^20.38.2",
     "fs": "0.0.1-security"
   }
